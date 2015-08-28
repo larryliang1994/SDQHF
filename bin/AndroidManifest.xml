@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.nuaa.shoudaoqinghuifu"
+    android:versionCode="1"
+    android:versionName="0.7">
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="22" />
+
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+    <!-- 获取mac地址作为用户的备用唯一标识 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <!-- 获取用户手机的IMEI，用来唯一的标识用户。 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <!-- 写入SDcard权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!--打开关闭sd卡权限-->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+
+    <!--网络权限-->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- 用于读取sd卡图片 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/icon_outside_normal"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".Activity_Welcome"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".Activity_Start"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar"></activity>
+
+        <activity
+            android:name=".Activity_Msg"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar"></activity>
+
+        <activity
+            android:name=".Activity_Group"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar"></activity>
+
+        <activity
+            android:name=".Activity_CheckMsg"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar"></activity>
+
+        <activity
+            android:name=".Activity_Memo"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar"></activity>
+
+        <activity
+            android:name=".Activity_Temp"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar"></activity>
+
+        <activity
+            android:name=".Activity_AddTemp"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar"></activity>
+
+        <activity
+            android:name=".Activity_SendMsg"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustResize"></activity>
+
+        <activity
+            android:name=".Activity_Feedback"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustResize"></activity>
+
+        <activity
+            android:name=".Activity_Contacts"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar"></activity>
+
+        <activity
+            android:name=".Activity_CheckMemo"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar"></activity>
+
+        <activity
+            android:name=".Activity_AddGroup"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"></activity>
+
+        <activity
+            android:name=".Activity_AddMemo"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+
+        <activity
+            android:name=".Activity_Preference"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar"></activity>
+
+        <activity
+            android:name=".Activity_About"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar"></activity>
+
+        <receiver android:name=".BroadcastReceiver_CatchBoot">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name=".BroadcastReceiver_Alarm"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.nuaa.action.alarm" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name=".BroadcastReceiver_SendMsg"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.nuaa.action.sendmsg" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".Service_Alarm"/>
+
+        <!-- 友推渠道号，应用名(英文或拼音)+"_yt"，如：“jd_yt”，用于识别通过友推下载的应用，请正确填写否则无法正确统计 -->
+        <meta-data
+            android:name="YOUTUI_CHANNEL"
+            android:value="shoudaoqinghuifu_yt"/>
+
+    </application>
+
+</manifest>

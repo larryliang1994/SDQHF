@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/item_modify"
+        android:orderInCategory="80"
+        android:title="@string/title_under"
+        android:icon="@drawable/modify_selector"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/item_delete"
+        android:orderInCategory="80"
+        android:title="@string/title_under"
+        android:icon="@drawable/delete_selector"
+        app:showAsAction="always" />
+</menu><!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/menu/toolbar_items_check.xml -->

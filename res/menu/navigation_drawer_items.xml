@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="all">
+        <item
+            android:id="@+id/navItem_msg"
+            android:icon="@drawable/msg_navigation"
+            android:title="@string/msg" />
+        <item
+            android:id="@+id/navItem_group"
+            android:icon="@drawable/group_navigation"
+            android:title="@string/group"/>
+        <item
+            android:id="@+id/navItem_memo"
+            android:icon="@drawable/memo_navigation"
+            android:title="@string/memo"/>
+        <item
+            android:id="@+id/navItem_temp"
+            android:icon="@drawable/temp_navigation"
+            android:title="@string/temp"/>
+        <item
+            android:id="@+id/navItem_setting"
+            android:icon="@drawable/navigation_setting"
+            android:title="@string/setting"/>
+    </group>
+</menu>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="0.7" package="com.nuaa.shoudaoqinghuifu">
+
+    <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="22"/>
+
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_CALENDAR"/>
+    <uses-permission android:name="android.permission.WRITE_CALENDAR"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+
+
+    <application android:allowBackup="true" android:icon="@drawable/icon_outside_normal" android:label="@string/app_name" android:theme="@style/AppTheme">
+        <activity android:label="@string/app_name" android:name=".Activity_Welcome" android:theme="@android:style/Theme.Holo.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:launchMode="singleTask" android:name=".Activity_Start" android:theme="@android:style/Theme.Holo.Light.NoActionBar"/>
+
+        <activity android:launchMode="singleTask" android:name=".Activity_Msg" android:theme="@android:style/Theme.Holo.Light.NoActionBar"/>
+
+        <activity android:name=".Activity_Group" android:theme="@android:style/Theme.Holo.Light.NoActionBar"/>
+
+        <activity android:name=".Activity_CheckMsg" android:theme="@android:style/Theme.Holo.Light.NoActionBar"/>
+
+        <activity android:launchMode="singleTask" android:name=".Activity_Memo" android:theme="@android:style/Theme.Holo.Light.NoActionBar"/>
+
+        <activity android:name=".Activity_Temp" android:theme="@android:style/Theme.Holo.Light.NoActionBar"/>
+
+        <activity android:name=".Activity_AddTemp" android:theme="@android:style/Theme.Holo.Light.NoActionBar"/>
+
+        <activity android:name=".Activity_SendMsg" android:theme="@android:style/Theme.Holo.Light.NoActionBar" android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustResize"/>
+
+        <activity android:name=".Activity_Feedback" android:theme="@android:style/Theme.Holo.Light.NoActionBar" android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustResize"/>
+
+        <activity android:name=".Activity_Contacts" android:theme="@android:style/Theme.Holo.Light.NoActionBar"/>
+
+        <activity android:name=".Activity_CheckMemo" android:theme="@android:style/Theme.Holo.Light.NoActionBar"/>
+
+        <activity android:name=".Activity_AddGroup" android:theme="@android:style/Theme.Holo.Light.NoActionBar" android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
+
+        <activity android:name=".Activity_AddMemo" android:theme="@android:style/Theme.Holo.Light.NoActionBar" android:windowSoftInputMode="adjustResize|stateHidden"/>
+
+        <activity android:name=".Activity_Preference" android:theme="@android:style/Theme.Holo.Light.NoActionBar"/>
+
+        <activity android:name=".Activity_About" android:theme="@android:style/Theme.Holo.Light.NoActionBar"/>
+
+        <receiver android:name=".BroadcastReceiver_CatchBoot">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:exported="false" android:name=".BroadcastReceiver_Alarm">
+            <intent-filter>
+                <action android:name="com.nuaa.action.alarm"/>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:exported="false" android:name=".BroadcastReceiver_SendMsg">
+            <intent-filter>
+                <action android:name="com.nuaa.action.sendmsg"/>
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".Service_Alarm"/>
+
+</application>
+
+</manifest>

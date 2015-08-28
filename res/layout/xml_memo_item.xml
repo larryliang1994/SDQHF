@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.nuaa.shoudaoqinghuifu.RippleView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView_memo_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:rv_color="#B6B6B6"
+    app:rv_zoom="true"
+    app:rv_type="rectangle"
+    app:rv_rippleDuration="100">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardUseCompatPadding="true"
+        app:cardBackgroundColor="#ffffff"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="4dp"
+        app:contentPadding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView_memo_item_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginBottom="1dp"
+                    android:ellipsize="end"
+                    android:ems="10"
+                    android:gravity="left"
+                    android:singleLine="true"
+                    android:text="@string/app_name"
+                    android:textColor="#212121"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/textView_memo_item_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:text="@string/time_happen"
+                    android:textColor="#727272"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:layout_width="0.8dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dp"
+                android:background="#B6B6B6"
+                android:contentDescription="@string/hello" />
+
+            <ImageView
+                android:id="@+id/imageView_memo_item_alarm"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/hello"
+                android:scaleType="centerInside"
+                android:src="@drawable/alarm_off" />
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</com.nuaa.shoudaoqinghuifu.RippleView>

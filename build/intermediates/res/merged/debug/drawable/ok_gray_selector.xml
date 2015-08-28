@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/ok_gray" android:state_pressed="false" />
+    <item android:drawable="@drawable/ok_gray_press" android:state_pressed="true" />
+    <item android:drawable="@drawable/ok_gray_press" android:state_focused="true" />
+    <item android:drawable="@drawable/ok_gray_press" />
+
+</selector><!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/drawable/ok_gray_selector.xml -->

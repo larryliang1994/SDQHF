@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/contacts_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar_contacts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_contacts"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#03A9F4"
+            app:navigationIcon="@drawable/back_selector"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:title="@string/contact_choose" />
+    </android.support.design.widget.AppBarLayout>
+
+    <ListView
+        android:id="@+id/listView_contacts"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/appbar_contacts"
+        android:divider="#ffffff"
+        android:dividerHeight="0dp"
+        android:scrollbars="none"
+        android:scrollingCache="true" />
+
+    <com.nuaa.shoudaoqinghuifu.QuickAlphabeticBar
+        android:id="@+id/fast_scroller"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/listView_contacts"
+        android:layout_below="@id/appbar_contacts"
+        android:layout_gravity="top|end|center"
+        android:layout_marginTop="15dp"
+        android:background="@null"
+        android:scaleType="centerInside"
+        android:src="@drawable/a_z_selector" />
+
+    <TextView
+        android:id="@+id/fast_position"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_margin="34dp"
+        android:background="#44C0C0C0"
+        android:gravity="center"
+        android:padding="2dp"
+        android:textColor="#404040"
+        android:textSize="48sp"
+        android:visibility="invisible" />
+
+    <ProgressBar
+        android:id="@+id/progressBar_contacts"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_centerInParent="true" />
+
+</RelativeLayout><!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/layout/xml_contacts.xml -->

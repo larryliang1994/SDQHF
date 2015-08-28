@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="pref_first_preferencescreen_key"
+    android:title="设置">
+
+    <PreferenceCategory android:title="功能">
+
+        <Preference
+            android:key="wallPaper"
+            android:summary="选择一张新的壁纸"
+            android:title="主题" />
+
+        <Preference
+            android:key="reset"
+            android:summary="恢复默认设置，包括壁纸和模板"
+            android:title="恢复" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="其他">
+
+        <Preference
+            android:key="share"
+            android:summary="将该软件分享给你的朋友"
+            android:title="分享" />
+
+        <Preference
+            android:key="feedBack"
+            android:summary="给我们提出意见"
+            android:title="反馈" />
+
+        <Preference
+            android:key="update"
+            android:title="检查更新" />
+
+        <Preference
+            android:key="about"
+            android:title="关于" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
+<!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/xml/xml_preference.xml -->
