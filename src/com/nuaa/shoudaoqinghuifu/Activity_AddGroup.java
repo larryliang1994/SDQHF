@@ -52,7 +52,7 @@ public class Activity_AddGroup extends AppCompatActivity {
 
 
 
-        
+
         initView();
     }
 
