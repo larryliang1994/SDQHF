@@ -34,8 +34,8 @@ public class Activity_AddGroup extends AppCompatActivity {
     @Bind(R.id.toolbar_addgroup)
     Toolbar tb_addgroup;
 
-    boolean isModify = false;
-    float startX = 0.0f; // 起始坐标
+    private boolean isModify = false;
+    private float startX = 0.0f; // 起始坐标
     private String[] names = null;
     private ArrayList<String> phones;
 
@@ -46,9 +46,6 @@ public class Activity_AddGroup extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-
-
-        
         initView();
     }
 
