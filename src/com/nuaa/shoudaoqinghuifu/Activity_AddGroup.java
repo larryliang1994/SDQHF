@@ -45,15 +45,7 @@ public class Activity_AddGroup extends AppCompatActivity {
         setContentView(R.layout.xml_addgroup);
 
         ButterKnife.bind(this);
-
-
-
-
-
-
-
-
-
+        
         initView();
     }
 
