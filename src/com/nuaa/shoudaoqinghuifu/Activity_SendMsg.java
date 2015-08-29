@@ -1,6 +1,5 @@
 package com.nuaa.shoudaoqinghuifu;
 
-import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -13,14 +12,18 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.telephony.SmsManager;
 import android.text.format.DateFormat;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -37,7 +40,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class Activity_SendMsg extends Activity {
+public class Activity_SendMsg extends AppCompatActivity {
     @Bind(R.id.imageButton_sendmsg_send)
     ImageButton ibtn_send;
 
@@ -50,14 +53,17 @@ public class Activity_SendMsg extends Activity {
     @Bind(R.id.linearLayout_sendmsg_menu)
     LinearLayout ll_menu;
 
-    private static TextView tv_title;
+    @Bind(R.id.toolbar_sendmsg)
+    Toolbar tb_sendmsg;
 
+    private static TextView tv_receiver;
     private SmsManager smsManager;
     private static String date = null;
     private static int mYear, mMonth, mDay, mHour, mMinute;
     private ArrayList<String> phones = new ArrayList<>(); // 联系人号码
     private boolean hasMenu = false, isGroup = false, isTemp = false;
     private static boolean isOnTime = false;
+    private String[] names = null;
     private float startX = 0.0f;
 
     @Override
@@ -78,7 +84,30 @@ public class Activity_SendMsg extends Activity {
     }
 
     private void initView() {
-        tv_title = (TextView) findViewById(R.id.textView_sendmsg_title);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.setStatusBarColor(Color.parseColor("#e51c23"));
+        }
+
+        setSupportActionBar(tb_sendmsg);
+        tb_sendmsg.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 若来自群组，需启动Group，若来自模板，需启动Temp
+                if (isGroup) {
+                    Intent intent = new Intent(Activity_SendMsg.this, Activity_Group.class);
+                    startActivity(intent);
+                } else if (isTemp) {
+                    Intent intent = new Intent(Activity_SendMsg.this, Activity_Temp.class);
+                    startActivity(intent);
+                }
+
+                Activity_SendMsg.this.setResult(RESULT_CANCELED);
+                Activity_SendMsg.this.finish();
+                overridePendingTransition(R.anim.scale_stay,
+                        R.anim.out_left_right);
+            }
+        });
 
         ibtn_send.setBackgroundColor(Color.TRANSPARENT);
 
@@ -103,9 +132,11 @@ public class Activity_SendMsg extends Activity {
             isTemp = true;
             et_content.setText(temp);
         }
+
+        tv_receiver = (TextView) findViewById(R.id.textView_sendmsg_receiver);
     }
 
-    @OnClick({R.id.imageButton_sendmsg_back, R.id.imageButton_sendmsg_add,
+    @OnClick({R.id.imageButton_sendmsg_add,
             R.id.imageButton_sendmsg_menu_temp, R.id.imageButton_sendmsg_send,
             R.id.imageButton_sendmsg_menu, R.id.imageButton_sendmsg_menu_settime,
             R.id.imageButton_sendmsg_menu_urgent, R.id.editText_sendmsg_names,
@@ -113,22 +144,6 @@ public class Activity_SendMsg extends Activity {
     public void onClick(View v) {
         Toast toast;
         switch (v.getId()) {
-            case R.id.imageButton_sendmsg_back:
-                // 若来自群组，需启动Group，若来自模板，需启动Temp
-                if (isGroup) {
-                    Intent intent = new Intent(this, Activity_Group.class);
-                    startActivity(intent);
-                } else if (isTemp) {
-                    Intent intent = new Intent(this, Activity_Temp.class);
-                    startActivity(intent);
-                }
-
-                this.setResult(RESULT_CANCELED);
-                this.finish();
-                overridePendingTransition(R.anim.scale_stay,
-                        R.anim.out_left_right);
-                break;
-
             case R.id.imageButton_sendmsg_menu:
                 if (!hasMenu) {
                     ll_menu.setVisibility(View.VISIBLE);
@@ -194,7 +209,7 @@ public class Activity_SendMsg extends Activity {
                     sdd.show(getFragmentManager(), "DatePicker");
                 } else { // 否则取消设定好的定时
                     isOnTime = false;
-                    tv_title.setText("新建消息");
+                    tv_receiver.setText("接收者");
 
                     Toast.makeText(this, "已取消定时发送", Toast.LENGTH_SHORT).show();
                 }
@@ -218,6 +233,8 @@ public class Activity_SendMsg extends Activity {
                         if (which == 0) {
                             Intent openActivity = new Intent(Activity_SendMsg.this,
                                     Activity_Contacts.class);
+                            openActivity.putExtra("names", names);
+
                             startActivityForResult(openActivity,
                                     Value.CHOOSE_CONTACTS);
                             overridePendingTransition(R.anim.in_right_left,
@@ -433,15 +450,13 @@ public class Activity_SendMsg extends Activity {
                 date += " " + hourOfDay + ":0" + minute;
             }
 
-            tv_title.append("  (定时:" + date + ")");
+            tv_receiver.append("  (定时:" + date + ")");
             date = null;
 
             mHour = hourOfDay;
             mMinute = minute;
 
             isOnTime = true;
-
-            //Toast.makeText(Activity_SendMsg.this, "已设置为定时发送", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -483,8 +498,12 @@ public class Activity_SendMsg extends Activity {
         switch (requestCode) {
             case Value.CHOOSE_CONTACTS:
                 if (resultCode == RESULT_OK) {
-                    et_names.setText(data.getStringExtra("names"));
-                    // names = data.getStringArrayListExtra("names");
+                    String names_s = data.getStringExtra("names");
+
+                    et_names.setText(names_s.replace(";", ","));
+
+                    names = names_s.split("; ");
+
                     phones = data.getStringArrayListExtra("phones");
                 }
                 break;

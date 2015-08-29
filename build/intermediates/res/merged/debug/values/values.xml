@@ -376,6 +376,7 @@
     <string name="name">姓名</string>
     <string name="needmemo">是否提醒</string>
     <string name="phone">电话号码</string>
+    <string name="receiver">接收者</string>
     <string name="setting">设置</string>
     <string name="sign">Copyright © 2014–2015 NUAA. All Rights Reserved.</string>
     <string name="sign_short"> © 2014–2015 NUAA. </string>

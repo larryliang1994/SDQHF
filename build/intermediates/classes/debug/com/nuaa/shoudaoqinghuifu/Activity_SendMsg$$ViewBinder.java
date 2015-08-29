@@ -40,15 +40,8 @@ public class Activity_SendMsg$$ViewBinder<T extends com.nuaa.shoudaoqinghuifu.Ac
       });
     view = finder.findRequiredView(source, 2131493072, "field 'll_menu'");
     target.ll_menu = finder.castView(view, 2131493072, "field 'll_menu'");
-    view = finder.findRequiredView(source, 2131493065, "method 'onClick'");
-    view.setOnClickListener(
-      new butterknife.internal.DebouncingOnClickListener() {
-        @Override public void doClick(
-          android.view.View p0
-        ) {
-          target.onClick(p0);
-        }
-      });
+    view = finder.findRequiredView(source, 2131493065, "field 'tb_sendmsg'");
+    target.tb_sendmsg = finder.castView(view, 2131493065, "field 'tb_sendmsg'");
     view = finder.findRequiredView(source, 2131493068, "method 'onClick'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
@@ -101,5 +94,6 @@ public class Activity_SendMsg$$ViewBinder<T extends com.nuaa.shoudaoqinghuifu.Ac
     target.et_names = null;
     target.et_content = null;
     target.ll_menu = null;
+    target.tb_sendmsg = null;
   }
 }

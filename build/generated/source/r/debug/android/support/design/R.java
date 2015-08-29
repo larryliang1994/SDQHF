@@ -516,9 +516,9 @@ public final class R {
 		public static final int abc_textfield_search_activated_mtrl_alpha = 0x7f02003b;
 		public static final int abc_textfield_search_default_mtrl_alpha = 0x7f02003c;
 		public static final int abc_textfield_search_material = 0x7f02003d;
-		public static final int fab_background = 0x7f02005c;
-		public static final int notification_template_icon_bg = 0x7f0200a0;
-		public static final int snackbar_background = 0x7f02008c;
+		public static final int fab_background = 0x7f02005d;
+		public static final int notification_template_icon_bg = 0x7f0200a1;
+		public static final int snackbar_background = 0x7f02008d;
 	}
 	public static final class id {
 		public static final int action0 = 0x7f0c0072;
@@ -714,7 +714,7 @@ public final class R {
 		public static final int abc_shareactionprovider_share_with_application = 0x7f06000c;
 		public static final int abc_toolbar_collapse_description = 0x7f060010;
 		public static final int appbar_scrolling_view_behavior = 0x7f060018;
-		public static final int status_bar_notification_info_overflow = 0x7f06003d;
+		public static final int status_bar_notification_info_overflow = 0x7f06003e;
 	}
 	public static final class style {
 		public static final int AlertDialog_AppCompat = 0x7f080076;
