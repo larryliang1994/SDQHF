@@ -717,7 +717,7 @@ int id editText_addtemp_title 0x7f0c008d
 int id editText_feedback_contact_edit 0x7f0c00a7
 int id editText_feedback_content 0x7f0c00a6
 int id editText_sendmsg_content 0x7f0c00cf
-int id editText_sendmsg_names 0x7f0c00cb
+int id editText_sendmsg_names 0x7f0c00cc
 int id edit_query 0x7f0c005c
 int id empty_view 0x7f0c006e
 int id end 0x7f0c0020
@@ -740,7 +740,7 @@ int id homeAsUp 0x7f0c000e
 int id icon 0x7f0c0045
 int id ifRoom 0x7f0c002d
 int id image 0x7f0c0042
-int id imageButton_sendmsg_add 0x7f0c00cc
+int id imageButton_sendmsg_add 0x7f0c00cb
 int id imageButton_sendmsg_menu 0x7f0c00cd
 int id imageButton_sendmsg_menu_settime 0x7f0c00d4
 int id imageButton_sendmsg_menu_temp 0x7f0c00d2

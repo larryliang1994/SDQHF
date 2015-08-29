@@ -2381,7 +2381,7 @@ containing a value of this type.
         public static final int editText_feedback_contact_edit=0x7f0c00a7;
         public static final int editText_feedback_content=0x7f0c00a6;
         public static final int editText_sendmsg_content=0x7f0c00cf;
-        public static final int editText_sendmsg_names=0x7f0c00cb;
+        public static final int editText_sendmsg_names=0x7f0c00cc;
         public static final int edit_query=0x7f0c005c;
         public static final int empty_view=0x7f0c006e;
         public static final int end=0x7f0c0020;
@@ -2404,7 +2404,7 @@ containing a value of this type.
         public static final int icon=0x7f0c0045;
         public static final int ifRoom=0x7f0c002d;
         public static final int image=0x7f0c0042;
-        public static final int imageButton_sendmsg_add=0x7f0c00cc;
+        public static final int imageButton_sendmsg_add=0x7f0c00cb;
         public static final int imageButton_sendmsg_menu=0x7f0c00cd;
         public static final int imageButton_sendmsg_menu_settime=0x7f0c00d4;
         public static final int imageButton_sendmsg_menu_temp=0x7f0c00d2;
