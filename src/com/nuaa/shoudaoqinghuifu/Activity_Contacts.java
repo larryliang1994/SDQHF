@@ -98,7 +98,7 @@ public class Activity_Contacts extends AppCompatActivity {
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void initView() {
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.setStatusBarColor(Color.parseColor("#0288d1"));
         }
@@ -190,22 +190,22 @@ public class Activity_Contacts extends AppCompatActivity {
         pb.setVisibility(View.INVISIBLE);
         pb = null;
 
-//		// 初始化勾选
-//				if (!list.isEmpty() && names.length != 0) {
-//					int i = 0, j = 0;
-//
-//					while (j < names.length && i < list.size()) {
-//						Log.i("fg", "!!");
-//						if (names[j].equals(list.get(i).getAsString(NAME))) {
-//							Log.i("fg", "!!!");
-//							isChecked.set(i, true);
-//							Log.i("fg", "!!!!");
-//
-//							j++;
-//						}
-//						i++;
-//					}
-//				}
+        String[] names = getIntent().getStringArrayExtra("names");
+        // 初始化勾选
+        if (!list.isEmpty() && names != null) {
+            int i = 0, j = 0;
+
+            while (j < names.length && i < list.size()) {
+                if (names[j].equals(list.get(i).getAsString(NAME))) {
+                    isChecked.set(i, true);
+
+                    j++;
+                }
+                i++;
+            }
+
+            adapter.notifyDataSetChanged();
+        }
     }
 
     // 设置列表动画
