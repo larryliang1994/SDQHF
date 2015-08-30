@@ -65,7 +65,7 @@
             android:singleLine="true"
             android:textColor="#ffffff"
             android:textColorHint="#ffffff"
-            android:textSize="15sp" />
+            android:textSize="16sp" />
 
         <ImageView
             android:layout_width="match_parent"

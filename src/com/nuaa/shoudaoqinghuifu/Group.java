@@ -46,6 +46,7 @@ public class Group implements Serializable {
         return name + "#!#" + members.toString();
     }
 
+
     // 保存时的格式
     public String toSave() {
         String text = name;

@@ -45,6 +45,7 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
             android:background="@null"
             android:contentDescription="@string/hello"
@@ -64,7 +65,7 @@
             android:singleLine="true"
             android:textColor="#ffffff"
             android:textColorHint="#ffffff"
-            android:textSize="15sp" />
+            android:textSize="16sp" />
 
         <ImageView
             android:layout_width="match_parent"
