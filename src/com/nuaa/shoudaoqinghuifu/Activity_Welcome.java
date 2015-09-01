@@ -7,10 +7,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LayoutAnimationController;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import java.io.File;
@@ -21,6 +23,9 @@ import butterknife.ButterKnife;
 public class Activity_Welcome extends Activity {
     @Bind(R.id.layout_welcome)
     LinearLayout layout;
+
+    @Bind(R.id.imageView_expand)
+    ImageView iv_expand;
 
     public static String picturePath = null;
     private DBHelper helper = new DBHelper(this, "TempTbl");
@@ -35,7 +40,7 @@ public class Activity_Welcome extends Activity {
         ButterKnife.bind(this);
 
         // 设置启动动画
-        Animation animation = AnimationUtils.loadAnimation(this, android.R.anim.fade_in);
+        final Animation animation = AnimationUtils.loadAnimation(this, android.R.anim.fade_in);
         animation.setDuration(1000);
         animation.setInterpolator(new DecelerateInterpolator());
         LayoutAnimationController lac = new LayoutAnimationController(animation);
@@ -63,40 +68,61 @@ public class Activity_Welcome extends Activity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                SharedPreferences sp = getSharedPreferences("setting", MODE_PRIVATE);
-                String launch = sp.getString("launch", null);
-                if (launch != null) {
-                    Intent intent = null;
-                    switch (launch) {
-                        case "msg":
-                            intent = new Intent(Activity_Welcome.this, Activity_Msg.class);
-                            break;
+                Animation anim = AnimationUtils.loadAnimation(Activity_Welcome.this, R.anim.scale_expand_cycle);
+                anim.setFillAfter(true);
 
-                        case "group":
-                            intent = new Intent(Activity_Welcome.this, Activity_Group.class);
-                            break;
+                anim.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
 
-                        case "memo":
-                            intent = new Intent(Activity_Welcome.this, Activity_Memo.class);
-                            break;
-
-                        case "temp":
-                            intent = new Intent(Activity_Welcome.this, Activity_Temp.class);
-                            break;
                     }
-                    if (intent != null) {
-                        startActivity(intent);
-                        Activity_Welcome.this.finish();
-                        overridePendingTransition(R.anim.in_right_left, R.anim.scale_stay);
-                    }
-                } else {
-                    Intent intent = new Intent(Activity_Welcome.this, Activity_Msg.class);
-                    startActivity(intent);
-                    Activity_Welcome.this.finish();
-                    overridePendingTransition(R.anim.in_right_left, R.anim.scale_stay);
-                }
 
-                helper.close();
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        SharedPreferences sp = getSharedPreferences("setting", MODE_PRIVATE);
+                        String launch = sp.getString("launch", null);
+                        if (launch != null) {
+                            Intent intent = null;
+                            switch (launch) {
+                                case "msg":
+                                    intent = new Intent(Activity_Welcome.this, Activity_Msg.class);
+                                    break;
+
+                                case "group":
+                                    intent = new Intent(Activity_Welcome.this, Activity_Group.class);
+                                    break;
+
+                                case "memo":
+                                    intent = new Intent(Activity_Welcome.this, Activity_Memo.class);
+                                    break;
+
+                                case "temp":
+                                    intent = new Intent(Activity_Welcome.this, Activity_Temp.class);
+                                    break;
+                            }
+                            if (intent != null) {
+                                startActivity(intent);
+                                Activity_Welcome.this.finish();
+                                overridePendingTransition(0, 0);
+                            }
+                        } else {
+                            Intent intent = new Intent(Activity_Welcome.this, Activity_Msg.class);
+                            startActivity(intent);
+                            Activity_Welcome.this.finish();
+                            overridePendingTransition(0, 0);
+                        }
+
+                        helper.close();
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+
+                iv_expand.setVisibility(View.VISIBLE);
+                iv_expand.startAnimation(anim);
             }
         }, 2000);
     }

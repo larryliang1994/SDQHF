@@ -85,7 +85,7 @@ public class Activity_Temp extends AppCompatActivity {
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void initView() {
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.setStatusBarColor(Color.parseColor("#689f38"));
         }
@@ -148,7 +148,7 @@ public class Activity_Temp extends AppCompatActivity {
 
                 if (intent != null) {
                     startActivity(intent);
-                    overridePendingTransition(android.R.anim.fade_in, R.anim.scale_stay);
+                    overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
                 }
 
                 return true;
@@ -349,7 +349,7 @@ public class Activity_Temp extends AppCompatActivity {
         animation.setDuration(500);
         LayoutAnimationController lac = new LayoutAnimationController(animation);
         lac.setOrder(LayoutAnimationController.ORDER_NORMAL);
-        lac.setDelay(0.2f);
+        lac.setDelay(0.3f);
 
         gv_temp.setLayoutAnimation(lac);
     }

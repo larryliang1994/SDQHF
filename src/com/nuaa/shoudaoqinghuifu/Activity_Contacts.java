@@ -214,7 +214,7 @@ public class Activity_Contacts extends AppCompatActivity {
         animation.setDuration(500);
         LayoutAnimationController lac = new LayoutAnimationController(animation);
         lac.setOrder(LayoutAnimationController.ORDER_NORMAL);
-        lac.setDelay(0.5f);
+        lac.setDelay(0.3f);
 
         lv_contacts.setLayoutAnimation(lac);
     }

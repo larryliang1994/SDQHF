@@ -77,7 +77,7 @@ ADDED from D:\Others\EngineeringPractice\android\ShouDaoQingHuiFu\AndroidManifes
 	android:label
 		ADDED from D:\Others\EngineeringPractice\android\ShouDaoQingHuiFu\AndroidManifest.xml:17:19-51
 	android:theme
-		ADDED from D:\Others\EngineeringPractice\android\ShouDaoQingHuiFu\AndroidManifest.xml:17:85-143
+		ADDED from D:\Others\EngineeringPractice\android\ShouDaoQingHuiFu\AndroidManifest.xml:17:85-141
 	android:name
 		ADDED from D:\Others\EngineeringPractice\android\ShouDaoQingHuiFu\AndroidManifest.xml:17:52-84
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER

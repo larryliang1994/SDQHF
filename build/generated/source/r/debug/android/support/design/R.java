@@ -20,8 +20,8 @@ public final class R {
 		public static final int abc_slide_out_top = 0x7f040009;
 		public static final int fab_in = 0x7f04000b;
 		public static final int fab_out = 0x7f04000c;
-		public static final int snackbar_in = 0x7f040018;
-		public static final int snackbar_out = 0x7f040019;
+		public static final int snackbar_in = 0x7f04001c;
+		public static final int snackbar_out = 0x7f04001d;
 	}
 	public static final class attr {
 		public static final int actionBarDivider = 0x7f0100ac;

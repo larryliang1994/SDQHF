@@ -170,7 +170,7 @@ public class Activity_Memo extends AppCompatActivity {
 
                 if (intent != null) {
                     startActivity(intent);
-                    overridePendingTransition(android.R.anim.fade_in, R.anim.scale_stay);
+                    overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
                 }
 
                 return true;
@@ -453,7 +453,7 @@ public class Activity_Memo extends AppCompatActivity {
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.in_down_up);
         LayoutAnimationController lac = new LayoutAnimationController(animation);
         lac.setOrder(LayoutAnimationController.ORDER_NORMAL);
-        lac.setDelay(0.1f);
+        lac.setDelay(0.3f);
 
         lv_memo.setLayoutAnimation(lac);
     }

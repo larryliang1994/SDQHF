@@ -148,7 +148,7 @@ public class Activity_Msg extends AppCompatActivity {
 
                 if (intent != null) {
                     startActivity(intent);
-                    overridePendingTransition(android.R.anim.fade_in, R.anim.scale_stay);
+                    overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
                 }
 
                 return true;
