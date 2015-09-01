@@ -103,13 +103,13 @@ public class Activity_Welcome extends Activity {
                             if (intent != null) {
                                 startActivity(intent);
                                 Activity_Welcome.this.finish();
-                                overridePendingTransition(0, 0);
+                                overridePendingTransition(R.anim.zoom_restore, 0);
                             }
                         } else {
                             Intent intent = new Intent(Activity_Welcome.this, Activity_Msg.class);
                             startActivity(intent);
                             Activity_Welcome.this.finish();
-                            overridePendingTransition(0, 0);
+                            overridePendingTransition(R.anim.zoom_restore, 0);
                         }
 
                         helper.close();

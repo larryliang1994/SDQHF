@@ -41,6 +41,7 @@ public final class R {
         public static final int snackbar_out=0x7f04001d;
         public static final int zoom_in=0x7f04001e;
         public static final int zoom_out=0x7f04001f;
+        public static final int zoom_restore=0x7f040020;
     }
     public static final class attr {
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"

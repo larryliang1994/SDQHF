@@ -30,6 +30,7 @@ int anim snackbar_in 0x7f04001c
 int anim snackbar_out 0x7f04001d
 int anim zoom_in 0x7f04001e
 int anim zoom_out 0x7f04001f
+int anim zoom_restore 0x7f040020
 int attr actionBarDivider 0x7f0100ac
 int attr actionBarItemBackground 0x7f0100ad
 int attr actionBarPopupTheme 0x7f0100a6
