@@ -23,6 +23,11 @@
     <color name="background_floating_material_light">#ffeeeeee</color>
     <color name="background_material_dark">#ff303030</color>
     <color name="background_material_light">#ffeeeeee</color>
+    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/colors.xml -->
+    <eat-comment/>
+    <color name="blue">#03A9F4</color>
+    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
+    <eat-comment/>
     <color name="bright_foreground_disabled_material_dark">#80ffffff</color>
     <color name="bright_foreground_disabled_material_light">#80000000</color>
     <color name="bright_foreground_inverse_material_dark">@color/bright_foreground_material_light</color>
@@ -1627,6 +1632,17 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="Theme.Application" parent="@style/Theme.AppCompat"/>
+    <style name="Theme.Settings" parent="@style/AppBaseTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+
+        <item name="toolbarStyle">@style/Widget.Toolbar</item>
+    </style>
+    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
+    <eat-comment/>
     <style name="ThemeOverlay.AppCompat" parent="Base.ThemeOverlay.AppCompat"/>
     <style name="ThemeOverlay.AppCompat.ActionBar" parent="Base.ThemeOverlay.AppCompat.ActionBar"/>
     <style name="ThemeOverlay.AppCompat.Dark" parent="Base.ThemeOverlay.AppCompat.Dark"/>
@@ -1775,6 +1791,9 @@
     </style>
     <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/styles.xml -->
     <eat-comment/>
+    <style name="Widget.Toolbar" parent="@style/Widget.AppCompat.Toolbar">
+        <item name="android:background">#03A9F4</item>
+    </style>
     <style name="mystyle" parent="android:Animation">
         <item name="@android:windowEnterAnimation">@anim/in_left_right</item>  //进入时的动画
         <item name="@android:windowExitAnimation">@anim/out_right_left</item>    //退出时的动画

@@ -2,4 +2,5 @@
 <resources>
     <color name="transparent">#00FFFFFF</color>
     <color name="rippelColor">#FFFFFF</color>
+    <color name="blue">#03A9F4</color>
 </resources>

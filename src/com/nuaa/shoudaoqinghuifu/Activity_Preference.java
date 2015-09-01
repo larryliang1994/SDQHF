@@ -5,17 +5,24 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import me.drakeet.materialdialog.MaterialDialog;
@@ -35,6 +42,36 @@ public class Activity_Preference extends PreferenceActivity {
         addPreferencesFromResource(R.xml.xml_preference);
 
         isTemp = getIntent().getBooleanExtra("isTemp", false);
+    }
+
+    @Override
+    public void setContentView(int layoutResID) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.setStatusBarColor(Color.parseColor("#0288d1"));
+        }
+
+        ViewGroup contentView = (ViewGroup) LayoutInflater.from(this).inflate(
+                R.layout.actionbar_preference, new LinearLayout(this), false);
+
+        ViewGroup contentWrapper = (ViewGroup) contentView.findViewById(R.id.content_wrapper);
+        LayoutInflater.from(this).inflate(layoutResID, contentWrapper, true);
+
+        Toolbar tb_preference = (Toolbar) contentView.findViewById(R.id.toolbar_preference);
+        tb_preference.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isTemp) {
+                    startActivity(new Intent(Activity_Preference.this, Activity_Temp.class));
+                }
+
+                Activity_Preference.this.finish();
+                overridePendingTransition(R.anim.scale_stay,
+                        R.anim.out_left_right);
+            }
+        });
+
+        getWindow().setContentView(contentView);
     }
 
     @SuppressWarnings("deprecation")
@@ -251,7 +288,7 @@ public class Activity_Preference extends PreferenceActivity {
     public boolean onKeyDown(int keyCode, @NonNull KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK
                 && event.getAction() == KeyEvent.ACTION_DOWN) {
-            if(isTemp){
+            if (isTemp) {
                 startActivity(new Intent(this, Activity_Temp.class));
             }
 
@@ -268,7 +305,7 @@ public class Activity_Preference extends PreferenceActivity {
             startX = event.getX();
         } else if (event.getAction() == MotionEvent.ACTION_UP
                 && event.getX() - startX > 200) {
-            if(isTemp){
+            if (isTemp) {
                 startActivity(new Intent(this, Activity_Temp.class));
             }
 

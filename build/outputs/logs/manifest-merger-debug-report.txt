@@ -171,9 +171,9 @@ ADDED from D:\Others\EngineeringPractice\android\ShouDaoQingHuiFu\AndroidManifes
 	android:name
 		ADDED from D:\Others\EngineeringPractice\android\ShouDaoQingHuiFu\AndroidManifest.xml:47:19-51
 activity#com.nuaa.shoudaoqinghuifu.Activity_Preference
-ADDED from D:\Others\EngineeringPractice\android\ShouDaoQingHuiFu\AndroidManifest.xml:49:9-116
+ADDED from D:\Others\EngineeringPractice\android\ShouDaoQingHuiFu\AndroidManifest.xml:49:9-94
 	android:theme
-		ADDED from D:\Others\EngineeringPractice\android\ShouDaoQingHuiFu\AndroidManifest.xml:49:55-114
+		ADDED from D:\Others\EngineeringPractice\android\ShouDaoQingHuiFu\AndroidManifest.xml:49:55-92
 	android:name
 		ADDED from D:\Others\EngineeringPractice\android\ShouDaoQingHuiFu\AndroidManifest.xml:49:19-54
 activity#com.nuaa.shoudaoqinghuifu.Activity_About

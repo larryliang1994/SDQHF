@@ -46,7 +46,7 @@
 
         <activity android:name=".Activity_AddMemo" android:theme="@style/Theme.AppCompat.Light.NoActionBar" android:windowSoftInputMode="adjustResize|stateHidden"/>
 
-        <activity android:name=".Activity_Preference" android:theme="@android:style/Theme.Holo.Light.NoActionBar"/>
+        <activity android:name=".Activity_Preference" android:theme="@style/Theme.Settings"/>
 
         <activity android:name=".Activity_About" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
