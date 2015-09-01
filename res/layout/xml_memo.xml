@@ -15,15 +15,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-                <android.support.v7.widget.Toolbar
-                    android:id="@+id/toolbar_memo"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    android:background="#FF9800"
-                    app:navigationIcon="@drawable/navigation"
-                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                    app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                    app:title="@string/memo" />
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar_memo"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="#FF9800"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:navigationIcon="@drawable/navigation"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:title="@string/memo" />
 
         </android.support.design.widget.AppBarLayout>
 

@@ -21,9 +21,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="#03A9F4"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 app:navigationIcon="@drawable/navigation"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 app:title="@string/group" />
 
         </android.support.design.widget.AppBarLayout>

@@ -2722,15 +2722,16 @@ containing a value of this type.
         public static final int temp_empty=0x7f060045;
         public static final int temp_title=0x7f060046;
         public static final int temp_title_input=0x7f060047;
-        public static final int time_happen=0x7f060048;
-        public static final int time_happen_colon=0x7f060049;
-        public static final int time_memo=0x7f06004a;
-        public static final int time_memo_colon=0x7f06004b;
-        public static final int time_set_happen=0x7f06004c;
-        public static final int time_set_memo=0x7f06004d;
-        public static final int title=0x7f06004e;
-        public static final int title_under=0x7f06004f;
-        public static final int version=0x7f060050;
+        public static final int temp_use=0x7f060048;
+        public static final int time_happen=0x7f060049;
+        public static final int time_happen_colon=0x7f06004a;
+        public static final int time_memo=0x7f06004b;
+        public static final int time_memo_colon=0x7f06004c;
+        public static final int time_set_happen=0x7f06004d;
+        public static final int time_set_memo=0x7f06004e;
+        public static final int title=0x7f06004f;
+        public static final int title_under=0x7f060050;
+        public static final int version=0x7f060051;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f080076;

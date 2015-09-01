@@ -3,18 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center_vertical"
-    android:padding="15dp"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:padding="15dp">
 
     <ImageView
         android:id="@+id/imageView_msg_item_left"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        android:padding="12dp"
-        android:contentDescription="@string/hello"
-        android:scaleType="centerInside"
         android:background="@drawable/cycle"
+        android:contentDescription="@string/hello"
+        android:padding="12dp"
+        android:scaleType="centerInside"
         android:src="@drawable/icon_msg" />
 
     <LinearLayout
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:text="@string/msg_sendtime"
             android:textColor="#727272"
-            android:textSize="14sp"/>
+            android:textSize="14sp" />
 
     </LinearLayout>
 </LinearLayout><!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/layout/xml_msg_item.xml -->

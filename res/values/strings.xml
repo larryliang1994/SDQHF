@@ -62,4 +62,5 @@
     <string name="temp_title_input">点此输入模板标题</string>
     <string name="temp_content_input">点此输入模板内容</string>
     <string name="receiver">接收者</string>
+    <string name="temp_use">使用该模板</string>
 </resources>

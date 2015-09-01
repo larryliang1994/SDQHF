@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardView_dialog_item"
     android:layout_width="match_parent"
@@ -24,6 +23,7 @@
                 android:id="@+id/textView_temp_dialog_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:ellipsize="end"
                 android:gravity="center"
                 android:lines="8"
                 android:padding="16dp"
@@ -32,16 +32,25 @@
                 android:textSize="17sp" />
         </ScrollView>
 
-        <TextView
+        <com.nuaa.shoudaoqinghuifu.RippleView
             android:id="@+id/textView_temp_dialog_title"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="#33000000"
-            android:ellipsize="end"
-            android:ems="8"
-            android:gravity="center"
-            android:text="@string/temp"
-            android:textColor="#ffffff"
-            android:textSize="14sp" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:rv_color="#B6B6B6"
+            app:rv_rippleDuration="100"
+            app:rv_type="rectangle"
+            app:rv_zoom="true">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="#33000000"
+                android:ellipsize="end"
+                android:ems="8"
+                android:gravity="center"
+                android:text="@string/temp_use"
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
+        </com.nuaa.shoudaoqinghuifu.RippleView>
     </LinearLayout>
 </android.support.v7.widget.CardView><!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/layout/xml_temp_dialog.xml -->

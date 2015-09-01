@@ -157,7 +157,7 @@ public class Activity_Temp extends AppCompatActivity {
 
         gv_temp.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
 
                 // 创建布局填充器
                 LayoutInflater inflater = getLayoutInflater();
@@ -167,20 +167,33 @@ public class Activity_Temp extends AppCompatActivity {
                 final View v = inflater.inflate(R.layout.xml_temp_dialog, null);
 
                 TextView tv_content = (TextView) v.findViewById(R.id.textView_temp_dialog_content);
-                TextView tv_title = (TextView) v.findViewById(R.id.textView_temp_dialog_title);
                 CardView cv = (CardView) v.findViewById(R.id.cardView_dialog_item);
 
+                // 设置属性
                 Temp temp = vector_temps.get(position);
-
-                tv_title.setText(temp.title);
                 tv_content.setText(temp.content);
                 cv.setCardBackgroundColor(Color.parseColor(Value.colors[position % Value.colors.length]));
 
+                // 设置单击事件
+                RippleView tv_title = (RippleView)v.findViewById(R.id.textView_temp_dialog_title);
+                tv_title.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
+                    @Override
+                    public void onComplete(RippleView rippleView) {
+                        Intent intent = new Intent(Activity_Temp.this, Activity_SendMsg.class);
+                        intent.putExtra("temp", vector_temps.get(position).content);
+                        startActivity(intent);
+                        Activity_Temp.this.finish();
+                        overridePendingTransition(R.anim.in_right_left, R.anim.scale_stay);
+                    }
+                });
+
+                // 创建对话框
                 AlertDialog.Builder builder = new AlertDialog.Builder(Activity_Temp.this);
                 AlertDialog dialog = builder.create();
                 dialog.setCanceledOnTouchOutside(true);
                 dialog.setView(v, 0, 0, 0, 0);
 
+                // 设置动画
                 Window window = dialog.getWindow();
                 WindowManager.LayoutParams lp = window.getAttributes();
                 lp.alpha = 0.97f;

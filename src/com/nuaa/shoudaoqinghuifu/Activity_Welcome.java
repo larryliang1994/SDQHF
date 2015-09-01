@@ -8,10 +8,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LayoutAnimationController;
+import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -27,6 +30,9 @@ public class Activity_Welcome extends Activity {
     @Bind(R.id.imageView_expand)
     ImageView iv_expand;
 
+    @Bind(R.id.imageView_welcome)
+    ImageView iv_welcome;
+
     public static String picturePath = null;
     private DBHelper helper = new DBHelper(this, "TempTbl");
 
@@ -41,7 +47,7 @@ public class Activity_Welcome extends Activity {
 
         // 设置启动动画
         final Animation animation = AnimationUtils.loadAnimation(this, android.R.anim.fade_in);
-        animation.setDuration(1000);
+        animation.setDuration(2000);
         animation.setInterpolator(new DecelerateInterpolator());
         LayoutAnimationController lac = new LayoutAnimationController(animation);
         lac.setOrder(LayoutAnimationController.ORDER_NORMAL);
@@ -124,7 +130,7 @@ public class Activity_Welcome extends Activity {
                 iv_expand.setVisibility(View.VISIBLE);
                 iv_expand.startAnimation(anim);
             }
-        }, 2000);
+        }, 3000);
     }
 
     // 将自带模板写入数据库

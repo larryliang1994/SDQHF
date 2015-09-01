@@ -12,10 +12,13 @@ public class Activity_Welcome$$ViewBinder<T extends com.nuaa.shoudaoqinghuifu.Ac
     target.layout = finder.castView(view, 2131493090, "field 'layout'");
     view = finder.findRequiredView(source, 2131493093, "field 'iv_expand'");
     target.iv_expand = finder.castView(view, 2131493093, "field 'iv_expand'");
+    view = finder.findRequiredView(source, 2131493091, "field 'iv_welcome'");
+    target.iv_welcome = finder.castView(view, 2131493091, "field 'iv_welcome'");
   }
 
   @Override public void unbind(T target) {
     target.layout = null;
     target.iv_expand = null;
+    target.iv_welcome = null;
   }
 }

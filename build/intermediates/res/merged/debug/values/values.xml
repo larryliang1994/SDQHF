@@ -394,6 +394,7 @@
     <string name="temp_empty">还没有模板呢。。\n点击右上角按钮制作一个吧</string>
     <string name="temp_title">标题：</string>
     <string name="temp_title_input">点此输入模板标题</string>
+    <string name="temp_use">使用该模板</string>
     <string name="time_happen">事件时间</string>
     <string name="time_happen_colon">事件时间:</string>
     <string name="time_memo">提醒时间</string>
@@ -411,7 +412,7 @@
     <style name="Animation.AppCompat.DropDownUp" parent="Base.Animation.AppCompat.DropDownUp"/>
     <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/styles.xml -->
     <eat-comment/>
-    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
