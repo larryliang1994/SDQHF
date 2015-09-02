@@ -77,7 +77,7 @@ public class Activity_AddMemo extends AppCompatActivity implements View.OnTouchL
 
         initView();
 
-        
+        // 一个个
         position = getIntent().getIntExtra("position", -1);
     }
 
