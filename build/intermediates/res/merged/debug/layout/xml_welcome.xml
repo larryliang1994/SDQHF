@@ -61,4 +61,4 @@
         android:layout_centerHorizontal="true"
         android:background="@drawable/cycle"
         android:visibility="invisible" />
-</RelativeLayout><!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/layout/xml_welcome.xml -->
+</RelativeLayout><!-- From: file:/E:/2015cotrun/SDQHF/res/layout/xml_welcome.xml -->
