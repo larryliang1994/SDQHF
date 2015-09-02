@@ -6,4 +6,4 @@
     <item android:drawable="@drawable/sendout_press" android:state_focused="true" />
     <item android:drawable="@drawable/sendout" />
 
-</selector><!-- From: file:/E:/2015cotrun/SDQHF/res/drawable/sendout_selector.xml -->
+</selector><!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/drawable/sendout_selector.xml -->

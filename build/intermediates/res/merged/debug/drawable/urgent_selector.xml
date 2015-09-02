@@ -6,4 +6,4 @@
     <item android:drawable="@drawable/urgent_press" android:state_focused="true" />
     <item android:drawable="@drawable/urgent" />
 
-</selector><!-- From: file:/E:/2015cotrun/SDQHF/res/drawable/urgent_selector.xml -->
+</selector><!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/drawable/urgent_selector.xml -->

@@ -10,7 +10,8 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:elevation="0dp">
+        app:elevation="0dp"
+        >
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar_sendmsg"
@@ -261,4 +262,4 @@
             android:layout_weight="0.25" />
     </LinearLayout>
 
-</LinearLayout><!-- From: file:/E:/2015cotrun/SDQHF/res/layout/xml_sendmsg.xml -->
+</LinearLayout><!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/layout/xml_sendmsg.xml -->

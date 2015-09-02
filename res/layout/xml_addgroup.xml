@@ -20,7 +20,6 @@
             app:navigationIcon="@drawable/back_selector"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:title="@string/group_new" />
-
     </android.support.design.widget.AppBarLayout>
 
     <LinearLayout
