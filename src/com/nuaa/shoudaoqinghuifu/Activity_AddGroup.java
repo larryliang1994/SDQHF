@@ -31,9 +31,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class Activity_AddGroup extends AppCompatActivity {
-    @Bind(R.id.editText_addgroup_member)
-    EditText et_member;
-
     @Bind(R.id.editText_addgroup_name)
     EditText et_name;
 
@@ -66,7 +63,7 @@ public class Activity_AddGroup extends AppCompatActivity {
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void initView() {
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.setStatusBarColor(Color.parseColor("#0288d1"));
         }
@@ -175,12 +172,12 @@ public class Activity_AddGroup extends AppCompatActivity {
     }
 
     // 自定义单击事件
-    @OnClick({R.id.editText_addgroup_member})
+    @OnClick({R.id.editText_addgroup_member, R.id.imageView_addgroup_addmember})
     public void onClick(View v) {
         Intent openActivity;
 
         switch (v.getId()) {
-
+            case R.id.imageView_addgroup_addmember:
             case R.id.editText_addgroup_member:
 
                 openActivity = new Intent(this, Activity_Contacts.class);
@@ -259,16 +256,16 @@ public class Activity_AddGroup extends AppCompatActivity {
         return super.onTouchEvent(event);
     }
 
-    class MyAdapter extends BaseAdapter{
+    class MyAdapter extends BaseAdapter {
 
         @Override
         public int getCount() {
-            return names == null ?  0 : names.length;
+            return names == null ? 0 : names.length;
         }
 
         @Override
         public Object getItem(int position) {
-            return names == null ?  null : names[position];
+            return names == null ? null : names[position];
         }
 
         @Override
@@ -280,7 +277,7 @@ public class Activity_AddGroup extends AppCompatActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             ViewHolder holder;
-            if(convertView == null){
+            if (convertView == null) {
                 convertView = getLayoutInflater().inflate(R.layout.xml_addgroup_item, null);
 
                 holder = new ViewHolder();
@@ -305,7 +302,7 @@ public class Activity_AddGroup extends AppCompatActivity {
         }
     }
 
-    class ViewHolder{
+    class ViewHolder {
         TextView tv_photo = null;
         TextView tv_name = null;
         TextView tv_phone = null;
