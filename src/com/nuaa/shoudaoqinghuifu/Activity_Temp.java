@@ -8,9 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.database.Cursor;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -34,7 +32,6 @@ import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -332,21 +329,6 @@ public class Activity_Temp extends AppCompatActivity {
             tv_empty.setVisibility(View.VISIBLE);
         } else {
             tv_empty.setVisibility(View.INVISIBLE);
-        }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        ImageView iv = (ImageView) nv_temp.findViewById(R.id.imageView_navigation_background);
-        // 获取壁纸
-        if (Activity_Welcome.picturePath != null) {
-            BitmapDrawable bd = new BitmapDrawable(this.getResources(),
-                    BitmapFactory.decodeFile(Activity_Welcome.picturePath));
-            iv.setImageDrawable(bd);
-        } else {
-            iv.setImageResource(R.drawable.background_navigation);
         }
     }
 

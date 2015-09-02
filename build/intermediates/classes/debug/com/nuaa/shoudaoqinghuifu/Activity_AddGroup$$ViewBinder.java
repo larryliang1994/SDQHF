@@ -18,8 +18,10 @@ public class Activity_AddGroup$$ViewBinder<T extends com.nuaa.shoudaoqinghuifu.A
           target.onClick(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131492997, "field 'et_name'");
-    target.et_name = finder.castView(view, 2131492997, "field 'et_name'");
+    view = finder.findRequiredView(source, 2131492998, "field 'et_name'");
+    target.et_name = finder.castView(view, 2131492998, "field 'et_name'");
+    view = finder.findRequiredView(source, 2131493000, "field 'lv_addgroup'");
+    target.lv_addgroup = finder.castView(view, 2131493000, "field 'lv_addgroup'");
     view = finder.findRequiredView(source, 2131492995, "field 'tb_addgroup'");
     target.tb_addgroup = finder.castView(view, 2131492995, "field 'tb_addgroup'");
   }
@@ -27,6 +29,7 @@ public class Activity_AddGroup$$ViewBinder<T extends com.nuaa.shoudaoqinghuifu.A
   @Override public void unbind(T target) {
     target.et_member = null;
     target.et_name = null;
+    target.lv_addgroup = null;
     target.tb_addgroup = null;
   }
 }

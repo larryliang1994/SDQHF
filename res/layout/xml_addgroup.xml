@@ -20,71 +20,56 @@
             app:navigationIcon="@drawable/back_selector"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:title="@string/group_new" />
+
     </android.support.design.widget.AppBarLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout_focus"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout_addgroup_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingLeft="15dp"
-        android:paddingTop="5dp">
-
-        <TextView
-            android:id="@+id/textView_addgroup_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="@string/group_name"
-            android:textColor="#212121"
-            android:textSize="16sp" />
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp">
 
         <EditText
             android:id="@+id/editText_addgroup_name"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="3dp"
-            android:layout_weight="1"
-            android:background="@drawable/shape_round"
-            android:ems="10"
             android:hint="@string/group_name_input"
-            android:padding="10dp"
             android:textColor="#212121"
             android:textSize="16sp" />
-    </LinearLayout>
+    </android.support.design.widget.TextInputLayout>
 
-    <LinearLayout
+    <EditText
+        android:id="@+id/editText_addgroup_member"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="top"
-        android:orientation="horizontal"
-        android:paddingLeft="15dp">
+        android:layout_gravity="center"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:focusable="false"
+        android:hint="@string/group_member_input"
+        android:textColor="#212121"
+        android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/textView_addgroup_member"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="top"
-            android:text="@string/group_member"
-            android:textColor="#212121"
-            android:textSize="16sp" />
-
-        <EditText
-            android:id="@+id/editText_addgroup_member"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="3dp"
-            android:layout_weight="1"
-            android:background="@drawable/shape_round"
-            android:focusable="false"
-            android:hint="@string/group_member_input"
-            android:padding="10dp"
-            android:textColor="#212121"
-            android:textSize="16sp" />
-    </LinearLayout>
+    <ListView
+        android:id="@+id/listView_addgroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="19dp"
+        android:layout_marginRight="19dp"
+        android:layout_marginTop="5dp"
+        android:divider="#B6B6B6"
+        android:dividerHeight="0.5dp" />
 
 </LinearLayout>

@@ -9,9 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.database.Cursor;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -247,21 +245,6 @@ public class Activity_Msg extends AppCompatActivity {
         lac.setDelay(0.3f);
 
         lv_msg.setLayoutAnimation(lac);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        ImageView iv = (ImageView) nv_msg.findViewById(R.id.imageView_navigation_background);
-
-        if (Activity_Welcome.picturePath != null) {
-            BitmapDrawable bd = new BitmapDrawable(this.getResources(),
-                    BitmapFactory.decodeFile(Activity_Welcome.picturePath));
-            iv.setImageDrawable(bd);
-        } else {
-            iv.setImageResource(R.drawable.background_navigation);
-        }
     }
 
     @Override

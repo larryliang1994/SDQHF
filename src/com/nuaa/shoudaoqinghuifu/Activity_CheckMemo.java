@@ -37,9 +37,6 @@ public class Activity_CheckMemo extends AppCompatActivity implements View.OnTouc
     @Bind(R.id.textView_checkmemo_address)
     TextView tv_address;
 
-    @Bind(R.id.textView_checkmemo_time_memo_title)
-    TextView tv_time_memo_title;
-
     @Bind(R.id.textView_checkmemo_time_memo)
     TextView tv_time_memo;
 
@@ -215,7 +212,7 @@ public class Activity_CheckMemo extends AppCompatActivity implements View.OnTouc
                 return true;
             }
         });
-        
+
         memo = (Memo) getIntent().getSerializableExtra("memo");
 
         tb_checkmemo.setTitle(memo.getContent());
@@ -230,8 +227,7 @@ public class Activity_CheckMemo extends AppCompatActivity implements View.OnTouc
         tv_address.setOnTouchListener(this);
 
         if (!memo.needNotify) {
-            tv_time_memo_title.setVisibility(View.GONE);
-            tv_time_memo.setVisibility(View.GONE);
+            tv_time_memo.setText("无提醒");
         } else {
             tv_time_memo.setText(memo.date_memo.toString());
             tv_time_memo.setOnTouchListener(this);
@@ -254,8 +250,7 @@ public class Activity_CheckMemo extends AppCompatActivity implements View.OnTouc
                     tv_content.setText(memo.content);
                     tv_address.setText(memo.address);
                     if (!memo.needNotify) {
-                        tv_time_memo_title.setVisibility(View.GONE);
-                        tv_time_memo.setVisibility(View.GONE);
+                        tv_time_memo.setText("无提醒");
                     } else {
                         tv_time_memo.setText(memo.date_memo.toString());
                     }

@@ -1,9 +1,11 @@
 package com.nuaa.shoudaoqinghuifu;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -14,8 +16,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.BaseAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -30,6 +36,9 @@ public class Activity_AddGroup extends AppCompatActivity {
 
     @Bind(R.id.editText_addgroup_name)
     EditText et_name;
+
+    @Bind(R.id.listView_addgroup)
+    ListView lv_addgroup;
 
     @Bind(R.id.toolbar_addgroup)
     Toolbar tb_addgroup;
@@ -86,7 +95,7 @@ public class Activity_AddGroup extends AppCompatActivity {
                     case R.id.item_ok:
                         if (et_name.getText().toString().isEmpty()) {
                             Toast.makeText(Activity_AddGroup.this, "请输入群组名", Toast.LENGTH_SHORT).show();
-                        } else if (et_member.getText().toString().isEmpty()) {
+                        } else if (names == null || names.length == 0) {
                             Toast.makeText(Activity_AddGroup.this, "至少添加一个群组成员", Toast.LENGTH_SHORT).show();
                         } else {
                             // 获取当前群组属性
@@ -162,8 +171,6 @@ public class Activity_AddGroup extends AppCompatActivity {
             }
 
             names = name.split(";");
-            et_member.setText(name);
-
         }
     }
 
@@ -188,6 +195,13 @@ public class Activity_AddGroup extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        lv_addgroup.setAdapter(new MyAdapter());
+    }
+
     // 重写返回结果方法
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -197,8 +211,6 @@ public class Activity_AddGroup extends AppCompatActivity {
             // 返回结果适用对象为选择成员
             case Value.CHOOSE_MEMBER:
                 if (resultCode == RESULT_OK) {
-                    et_member.setText(data.getStringExtra("names"));
-
                     names = data.getStringExtra("names").split("; ");
                     phones = data.getStringArrayListExtra("phones");
                 }
@@ -245,6 +257,58 @@ public class Activity_AddGroup extends AppCompatActivity {
         }
 
         return super.onTouchEvent(event);
+    }
+
+    class MyAdapter extends BaseAdapter{
+
+        @Override
+        public int getCount() {
+            return names == null ?  0 : names.length;
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return names == null ?  null : names[position];
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @SuppressLint("InflateParams")
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            ViewHolder holder;
+            if(convertView == null){
+                convertView = getLayoutInflater().inflate(R.layout.xml_addgroup_item, null);
+
+                holder = new ViewHolder();
+                holder.tv_photo = (TextView) convertView.findViewById(R.id.textView_addgroup_item_photo);
+                holder.tv_name = (TextView) convertView.findViewById(R.id.textView_addgroup_item_name);
+                holder.tv_phone = (TextView) convertView.findViewById(R.id.textView_addgroup_item_phone);
+
+                convertView.setTag(holder);
+            } else {
+                holder = (ViewHolder) convertView.getTag();
+            }
+
+            // 设置头像颜色
+            GradientDrawable bgShape = (GradientDrawable) holder.tv_photo.getBackground();
+            bgShape.setColor(Color.parseColor(Value.colors[position % Value.colors.length]));
+
+            holder.tv_photo.setText(names[position].substring(0, 1));
+            holder.tv_name.setText(names[position]);
+            holder.tv_phone.setText(phones.get(position));
+
+            return convertView;
+        }
+    }
+
+    class ViewHolder{
+        TextView tv_photo = null;
+        TextView tv_name = null;
+        TextView tv_phone = null;
     }
 
 }

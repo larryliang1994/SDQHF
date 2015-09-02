@@ -353,9 +353,9 @@
     <string name="group_choose">选择群组</string>
     <string name="group_empty">还没有群组呢\n点击右上角按钮添加吧</string>
     <string name="group_member">群组成员：</string>
-    <string name="group_member_input">点此添加群组成员</string>
+    <string name="group_member_input">选取群组成员</string>
     <string name="group_name">群组名称：</string>
-    <string name="group_name_input">点此输入群组名称</string>
+    <string name="group_name_input">群组名称</string>
     <string name="group_new">新建群组</string>
     <string name="hello">Hello world!</string>
     <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/me.drakeet.materialdialog/library/1.2.2/res/values/values.xml -->

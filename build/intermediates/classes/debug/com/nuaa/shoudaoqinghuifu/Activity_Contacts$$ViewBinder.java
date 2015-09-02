@@ -8,14 +8,14 @@ import butterknife.ButterKnife.ViewBinder;
 public class Activity_Contacts$$ViewBinder<T extends com.nuaa.shoudaoqinghuifu.Activity_Contacts> implements ViewBinder<T> {
   @Override public void bind(final Finder finder, final T target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131493028, "field 'lv_contacts'");
-    target.lv_contacts = finder.castView(view, 2131493028, "field 'lv_contacts'");
-    view = finder.findRequiredView(source, 2131493029, "field 'alpha'");
-    target.alpha = finder.castView(view, 2131493029, "field 'alpha'");
-    view = finder.findRequiredView(source, 2131493031, "field 'pb'");
-    target.pb = finder.castView(view, 2131493031, "field 'pb'");
-    view = finder.findRequiredView(source, 2131493027, "field 'tb_contacts'");
-    target.tb_contacts = finder.castView(view, 2131493027, "field 'tb_contacts'");
+    view = finder.findRequiredView(source, 2131493031, "field 'lv_contacts'");
+    target.lv_contacts = finder.castView(view, 2131493031, "field 'lv_contacts'");
+    view = finder.findRequiredView(source, 2131493032, "field 'alpha'");
+    target.alpha = finder.castView(view, 2131493032, "field 'alpha'");
+    view = finder.findRequiredView(source, 2131493034, "field 'pb'");
+    target.pb = finder.castView(view, 2131493034, "field 'pb'");
+    view = finder.findRequiredView(source, 2131493030, "field 'tb_contacts'");
+    target.tb_contacts = finder.castView(view, 2131493030, "field 'tb_contacts'");
   }
 
   @Override public void unbind(T target) {

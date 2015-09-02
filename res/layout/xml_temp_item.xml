@@ -11,10 +11,10 @@
         android:id="@+id/cardView_temp_item"
         android:layout_width="match_parent"
         android:layout_height="170dp"
+        android:layout_margin="4dp"
         app:cardBackgroundColor="#164616"
         app:cardCornerRadius="0dp"
-        app:cardElevation="2dp"
-        app:cardMaxElevation="0dp">
+        app:cardElevation="4dp">
 
         <LinearLayout
             android:layout_width="match_parent"

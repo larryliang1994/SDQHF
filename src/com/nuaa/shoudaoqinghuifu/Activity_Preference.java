@@ -4,16 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.database.Cursor;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
@@ -80,21 +77,10 @@ public class Activity_Preference extends PreferenceActivity {
                                          android.preference.Preference preference) {
         Intent intent;
         switch (preference.getKey()) {
-            case "wallPaper":
-                intent = new Intent(
-                        Intent.ACTION_PICK,
-                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-
-                startActivityForResult(intent, Value.LOAD_IMAGE);
-
-                overridePendingTransition(R.anim.in_right_left,
-                        R.anim.scale_stay);
-                break;
 
             case "reset":
                 final MaterialDialog mDialog = new MaterialDialog(Activity_Preference.this)
                         .setCanceledOnTouchOutside(true)
-                        .setTitle("恢复默认设置")
                         .setMessage("真的要恢复默认设置吗？");
                 mDialog.setPositiveButton("真的",
                         new View.OnClickListener() {
@@ -106,9 +92,8 @@ public class Activity_Preference extends PreferenceActivity {
                                 editor.clear();
                                 editor.apply();
 
-                                Activity_Welcome.picturePath = null;
-
                                 // 写入自带模板
+                                helper.clear();
                                 helper.creatTable();
                                 writeDataBase();
 
@@ -180,40 +165,6 @@ public class Activity_Preference extends PreferenceActivity {
 
                 startActivity(Intent.createChooser(intent, getTitle()));
 
-//                String appID = "55d429f067e58eab8e0020a8";
-//                String appKey = "55d429f067e58eab8e0020a8";
-//                String appSecret = "55d429f067e58eab8e0020a8";
-//
-//                final com.umeng.socialize.controller.UMSocialService mController = UMServiceFactory.getUMSocialService("com.umeng.share");
-//
-//
-//                // 添加微信平台
-//                UMWXHandler wxHandler = new UMWXHandler(this,appID,appSecret);
-//                wxHandler.addToSocialSDK();
-//                // 添加微信朋友圈
-//                UMWXHandler wxCircleHandler = new UMWXHandler(this,appID,appSecret);
-//                wxCircleHandler.setToCircle(true);
-//                wxCircleHandler.addToSocialSDK();
-//                // 添加QQ平台
-//                UMQQSsoHandler qqSsoHandler = new UMQQSsoHandler(this, appID,
-//                        appKey);
-//                qqSsoHandler.addToSocialSDK();
-//                // 添加QQ空间
-//                QZoneSsoHandler qZoneSsoHandler = new QZoneSsoHandler(this, appID, appKey);
-//                qZoneSsoHandler.addToSocialSDK();
-//                //设置新浪SSO handler
-//                mController.getConfig().setSsoHandler(new SinaSsoHandler());
-//
-//                // 设置分享内容
-//                mController.setShareContent("友盟社会化组件（SDK）让移动应用快速整合社交分享功能，http://www.umeng.com/social");
-//                // 设置分享图片, 参数2为图片的url地址
-//                mController.setShareMedia(new UMImage(this,
-//                        "http://www.umeng.com/images/pic/banner_module_social.png"));
-//
-//                mController.getConfig().removePlatform(SHARE_MEDIA.RENREN, SHARE_MEDIA.DOUBAN);
-//
-//                mController.openShare(this, false);
-
                 break;
             case "update":
 
@@ -227,8 +178,7 @@ public class Activity_Preference extends PreferenceActivity {
                     // 若网络可用，检查更新
                     Toast.makeText(this, "已经是最新版本", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(this, "Oops...网络出错了哦", Toast.LENGTH_SHORT)
-                            .show();
+                    Toast.makeText(this, "Oops...网络出错了哦", Toast.LENGTH_SHORT).show();
                 }
                 break;
 
@@ -245,43 +195,6 @@ public class Activity_Preference extends PreferenceActivity {
             Temp temp = new Temp(Value.titles[i], Value.temps[i]);
             helper.insert("temp", temp);
         }
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        switch (requestCode) {
-            case Value.LOAD_IMAGE:
-                if (resultCode == RESULT_OK && null != data) {
-                    Uri selectedImage = data.getData();
-                    String[] filePathColumn = {MediaStore.Images.Media.DATA};
-
-                    Cursor cursor = getContentResolver().query(selectedImage,
-                            filePathColumn, null, null, null);
-                    cursor.moveToFirst();
-
-                    // 获取壁纸路径
-                    int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                    String picturePath = cursor.getString(columnIndex);
-                    cursor.close();
-
-                    // 将路径保存到文件中
-                    sp = getSharedPreferences("setting", Context.MODE_PRIVATE);
-                    Editor editor = sp.edit();
-                    editor.putString("picturePath", picturePath);
-                    editor.apply();
-
-                    Activity_Welcome.picturePath = picturePath;
-
-                    Toast.makeText(this, "设置成功", Toast.LENGTH_SHORT).show();
-                }
-                break;
-
-            default:
-                break;
-        }
-
     }
 
     @Override

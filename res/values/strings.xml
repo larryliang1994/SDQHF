@@ -13,9 +13,9 @@
     <string name="setting">设置</string>
     <string name="group_new">新建群组</string>
     <string name="group_name">群组名称：</string>
-    <string name="group_name_input">点此输入群组名称</string>
+    <string name="group_name_input">群组名称</string>
     <string name="group_member">群组成员：</string>
-    <string name="group_member_input">点此添加群组成员</string>
+    <string name="group_member_input">选取群组成员</string>
     <string name="name">姓名</string>
     <string name="phone">电话号码</string>
     <string name="contact_choose">联系人</string>
