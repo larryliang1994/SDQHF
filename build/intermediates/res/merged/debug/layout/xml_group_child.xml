@@ -36,7 +36,7 @@
                 android:gravity="start"
                 android:text="@string/name"
                 android:textColor="#212121"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/textView_group_child_phone"
@@ -45,7 +45,7 @@
                 android:gravity="start"
                 android:text="@string/phone"
                 android:textColor="#727272"
-                android:textSize="15sp" />
+                android:textSize="14sp" />
 
         </LinearLayout>
 

@@ -8,12 +8,12 @@ import butterknife.ButterKnife.ViewBinder;
 public class Activity_Welcome$$ViewBinder<T extends com.nuaa.shoudaoqinghuifu.Activity_Welcome> implements ViewBinder<T> {
   @Override public void bind(final Finder finder, final T target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131493092, "field 'layout'");
-    target.layout = finder.castView(view, 2131493092, "field 'layout'");
-    view = finder.findRequiredView(source, 2131493095, "field 'iv_expand'");
-    target.iv_expand = finder.castView(view, 2131493095, "field 'iv_expand'");
-    view = finder.findRequiredView(source, 2131493093, "field 'iv_welcome'");
-    target.iv_welcome = finder.castView(view, 2131493093, "field 'iv_welcome'");
+    view = finder.findRequiredView(source, 2131493093, "field 'layout'");
+    target.layout = finder.castView(view, 2131493093, "field 'layout'");
+    view = finder.findRequiredView(source, 2131493096, "field 'iv_expand'");
+    target.iv_expand = finder.castView(view, 2131493096, "field 'iv_expand'");
+    view = finder.findRequiredView(source, 2131493094, "field 'iv_welcome'");
+    target.iv_welcome = finder.castView(view, 2131493094, "field 'iv_welcome'");
   }
 
   @Override public void unbind(T target) {

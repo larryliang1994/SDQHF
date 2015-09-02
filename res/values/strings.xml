@@ -31,8 +31,8 @@
     <string name="time_memo_colon">提醒时间:</string>
     <string name="time_happen">事件时间</string>
     <string name="time_happen_colon">事件时间:</string>
-    <string name="time_set_happen">点击以设置事件时间</string>
-    <string name="time_set_memo">点击以设置提醒时间</string>
+    <string name="time_set_happen">事件时间</string>
+    <string name="time_set_memo">提醒时间</string>
     <string name="needmemo">是否提醒</string>
     <string name="memo_content">备忘内容</string>
     <string name="memo_content_colon">备忘内容:</string>
@@ -42,7 +42,7 @@
     <string name="address_colon">地点:</string>
     <string name="modify">修改</string>
     <string name="delete">删除</string>
-    <string name="address_input">点此以输入地点</string>
+    <string name="address_input">添加地点</string>
     <string name="version">Version Beta</string>
     <string name="memo_new">新建备忘</string>
     <string name="group_choose">选择群组</string>
@@ -51,7 +51,7 @@
     <string name="msg_urgent">紧急通知</string>
     <string name="sign">Copyright © 2014&#8211;2015 NUAA. All Rights Reserved.</string>
     <string name="sign_short"> © 2014&#8211;2015 NUAA. </string>
-    <string name="addmemo_content_input">点此以输入备忘内容</string>
+    <string name="addmemo_content_input">备忘内容</string>
     <string name="memo_empty">还没有备忘事件呢\n点击右上角按钮添加吧</string>
     <string name="msg_empty">还没有任何消息呢\n点击右上角按钮发送一条吧</string>
     <string name="group_empty">还没有群组呢\n点击右上角按钮添加吧</string>

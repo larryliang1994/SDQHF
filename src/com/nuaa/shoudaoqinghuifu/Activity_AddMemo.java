@@ -14,6 +14,7 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -28,6 +29,7 @@ import android.view.Window;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -48,11 +50,14 @@ public class Activity_AddMemo extends AppCompatActivity implements View.OnTouchL
     @Bind(R.id.checkBox_addmemo)
     CheckBox cb_needNotify;
 
+    @Bind(R.id.scrollView_addmemo)
+    ScrollView sv;
+
     @Bind(R.id.toolbar_addmemo)
     Toolbar tb_addmemo;
 
-    private static TextView tv_time_happen;
-    private static TextView tv_time_memo;
+    private static EditText edt_time_happen;
+    private static EditText edt_time_memo;
 
     private float startX = 0.0f;
     private Msg msg;
@@ -85,7 +90,7 @@ public class Activity_AddMemo extends AppCompatActivity implements View.OnTouchL
     public void initView() {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
-            window.setStatusBarColor(Color.parseColor("#f57c00"));
+            window.setStatusBarColor(Color.parseColor("#512da8"));
         }
 
         setSupportActionBar(tb_addmemo);
@@ -203,10 +208,6 @@ public class Activity_AddMemo extends AppCompatActivity implements View.OnTouchL
             }
         });
 
-
-        tv_time_happen = (TextView) findViewById(R.id.textView_addmemo_time_happen);
-        tv_time_memo = (TextView) findViewById(R.id.textView_addmemo_time_memo);
-
         // 来自修改
         Memo memo = (Memo) getIntent().getSerializableExtra("memo");
         if (memo != null) {
@@ -220,19 +221,21 @@ public class Activity_AddMemo extends AppCompatActivity implements View.OnTouchL
             }
         }
 
+        edt_time_happen = (EditText) findViewById(R.id.editText_addmemo_time_happen);
+        edt_time_memo = (EditText) findViewById(R.id.editText_addmemo_time_memo);
+
         fromCheck = getIntent().getBooleanExtra("fromCheck", false);
 
         // 若来自修改，则初始化内容
         if (isModify) {
             assert memo != null;
             edt_content.setText(memo.content);
-            tv_time_happen.setText(memo.date_happen.toString());
+            edt_time_happen.setText(memo.date_happen.toString());
             edt_address.setText(memo.address);
 
             if (memo.needNotify) {
                 cb_needNotify.setChecked(true);
-                tv_time_memo.setVisibility(View.VISIBLE);
-                tv_time_memo.setText(memo.date_memo.toString());
+                edt_time_memo.setText(memo.date_memo.toString());
             }
 
             String date_happen_s = memo.date_happen.toSave();
@@ -259,39 +262,54 @@ public class Activity_AddMemo extends AppCompatActivity implements View.OnTouchL
         }
 
         edt_content.setOnTouchListener(this);
-        tv_time_happen.setOnTouchListener(this);
-        tv_time_happen.setOnTouchListener(this);
+        edt_time_happen.setOnTouchListener(this);
+        edt_time_memo.setOnTouchListener(this);
         edt_address.setOnTouchListener(this);
         cb_needNotify.setOnTouchListener(this);
     }
 
-    @OnClick({R.id.textView_addmemo_time_happen, R.id.textView_addmemo_time_memo,
-            R.id.checkBox_addmemo})
+    @OnClick({R.id.editText_addmemo_time_happen, R.id.editText_addmemo_time_memo,
+        R.id.editText_addmemo_content, R.id.checkBox_addmemo})
     public void onClick(View v) {
         SetDateDialog sdd;
 
         switch (v.getId()) {
-            case R.id.textView_addmemo_time_happen:
+            case R.id.editText_addmemo_time_happen:
                 isHappen = true;
 
                 sdd = new SetDateDialog();
                 sdd.show(getFragmentManager(), "DatePicker");
                 break;
 
-            case R.id.textView_addmemo_time_memo:
-                isMemo = true;
+            case R.id.editText_addmemo_time_memo:
+                if(cb_needNotify.isChecked()) {
+                    isMemo = true;
 
-                sdd = new SetDateDialog();
-                sdd.show(getFragmentManager(), "DatePicker");
+                    sdd = new SetDateDialog();
+                    sdd.show(getFragmentManager(), "DatePicker");
+                }
 
                 break;
 
+            case R.id.editText_addmemo_content:
+                //这里必须要给一个延迟，如果不加延迟则没有效果。我现在还没想明白为什么
+                new Handler().postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        //将ScrollView滚动到底
+                        sv.fullScroll(View.FOCUS_DOWN);
+                    }
+                }, 200);
+                break;
+
             case R.id.checkBox_addmemo:
-                boolean on = ((CheckBox) v).isChecked();
-                if (on) {
-                    tv_time_memo.setVisibility(View.VISIBLE);
+                if(cb_needNotify.isChecked()){
+                    edt_time_memo.setTextColor(Color.parseColor("#212121"));
+                    edt_time_memo.setHintTextColor(Color.parseColor("#99000000"));
                 } else {
-                    tv_time_memo.setVisibility(View.GONE);
+                    edt_time_memo.setTextColor(Color.parseColor("#9fb6b6b6"));
+                    edt_time_memo.setHintTextColor(Color.parseColor("#9fb6b6b6"));
                 }
                 break;
 
@@ -451,14 +469,14 @@ public class Activity_AddMemo extends AppCompatActivity implements View.OnTouchL
             if (isHappen) {
                 isHappen = false;
 
-                tv_time_happen.setText(date);
+                edt_time_happen.setText(date);
                 date = null;
 
                 hour_happen = hourOfDay;
                 minute_happen = minute;
             } else if (isMemo) {
                 isMemo = false;
-                tv_time_memo.setText(date);
+                edt_time_memo.setText(date);
                 date = null;
 
                 hour_memo = hourOfDay;

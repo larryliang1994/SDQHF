@@ -39,7 +39,7 @@
             android:gravity="center"
             android:text="@string/group_name"
             android:textColor="#212121"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/editText_addgroup_name"
@@ -53,7 +53,7 @@
             android:hint="@string/group_name_input"
             android:padding="10dp"
             android:textColor="#212121"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -71,7 +71,7 @@
             android:gravity="top"
             android:text="@string/group_member"
             android:textColor="#212121"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/editText_addgroup_member"
@@ -85,7 +85,7 @@
             android:hint="@string/group_member_input"
             android:padding="10dp"
             android:textColor="#212121"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
     </LinearLayout>
 
 </LinearLayout>

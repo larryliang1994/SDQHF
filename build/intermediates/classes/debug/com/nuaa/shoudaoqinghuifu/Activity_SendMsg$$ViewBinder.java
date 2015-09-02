@@ -8,8 +8,8 @@ import butterknife.ButterKnife.ViewBinder;
 public class Activity_SendMsg$$ViewBinder<T extends com.nuaa.shoudaoqinghuifu.Activity_SendMsg> implements ViewBinder<T> {
   @Override public void bind(final Finder finder, final T target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131493072, "field 'ibtn_send' and method 'onClick'");
-    target.ibtn_send = finder.castView(view, 2131493072, "field 'ibtn_send'");
+    view = finder.findRequiredView(source, 2131493073, "field 'ibtn_send' and method 'onClick'");
+    target.ibtn_send = finder.castView(view, 2131493073, "field 'ibtn_send'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(
@@ -18,8 +18,8 @@ public class Activity_SendMsg$$ViewBinder<T extends com.nuaa.shoudaoqinghuifu.Ac
           target.onClick(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131493070, "field 'et_names' and method 'onClick'");
-    target.et_names = finder.castView(view, 2131493070, "field 'et_names'");
+    view = finder.findRequiredView(source, 2131493071, "field 'et_names' and method 'onClick'");
+    target.et_names = finder.castView(view, 2131493071, "field 'et_names'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(
@@ -28,8 +28,8 @@ public class Activity_SendMsg$$ViewBinder<T extends com.nuaa.shoudaoqinghuifu.Ac
           target.onClick(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131493073, "field 'et_content' and method 'onClick'");
-    target.et_content = finder.castView(view, 2131493073, "field 'et_content'");
+    view = finder.findRequiredView(source, 2131493074, "field 'et_content' and method 'onClick'");
+    target.et_content = finder.castView(view, 2131493074, "field 'et_content'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(
@@ -38,11 +38,11 @@ public class Activity_SendMsg$$ViewBinder<T extends com.nuaa.shoudaoqinghuifu.Ac
           target.onClick(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131493074, "field 'll_menu'");
-    target.ll_menu = finder.castView(view, 2131493074, "field 'll_menu'");
-    view = finder.findRequiredView(source, 2131493067, "field 'tb_sendmsg'");
-    target.tb_sendmsg = finder.castView(view, 2131493067, "field 'tb_sendmsg'");
-    view = finder.findRequiredView(source, 2131493069, "method 'onClick'");
+    view = finder.findRequiredView(source, 2131493075, "field 'll_menu'");
+    target.ll_menu = finder.castView(view, 2131493075, "field 'll_menu'");
+    view = finder.findRequiredView(source, 2131493068, "field 'tb_sendmsg'");
+    target.tb_sendmsg = finder.castView(view, 2131493068, "field 'tb_sendmsg'");
+    view = finder.findRequiredView(source, 2131493070, "method 'onClick'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(
@@ -51,7 +51,7 @@ public class Activity_SendMsg$$ViewBinder<T extends com.nuaa.shoudaoqinghuifu.Ac
           target.onClick(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131493076, "method 'onClick'");
+    view = finder.findRequiredView(source, 2131493077, "method 'onClick'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(
@@ -60,16 +60,7 @@ public class Activity_SendMsg$$ViewBinder<T extends com.nuaa.shoudaoqinghuifu.Ac
           target.onClick(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131493071, "method 'onClick'");
-    view.setOnClickListener(
-      new butterknife.internal.DebouncingOnClickListener() {
-        @Override public void doClick(
-          android.view.View p0
-        ) {
-          target.onClick(p0);
-        }
-      });
-    view = finder.findRequiredView(source, 2131493078, "method 'onClick'");
+    view = finder.findRequiredView(source, 2131493072, "method 'onClick'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(
@@ -79,6 +70,15 @@ public class Activity_SendMsg$$ViewBinder<T extends com.nuaa.shoudaoqinghuifu.Ac
         }
       });
     view = finder.findRequiredView(source, 2131493079, "method 'onClick'");
+    view.setOnClickListener(
+      new butterknife.internal.DebouncingOnClickListener() {
+        @Override public void doClick(
+          android.view.View p0
+        ) {
+          target.onClick(p0);
+        }
+      });
+    view = finder.findRequiredView(source, 2131493080, "method 'onClick'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(

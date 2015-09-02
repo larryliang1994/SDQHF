@@ -334,10 +334,10 @@
     <eat-comment/>
     <string name="about">关于</string>
     <string name="action_settings">Settings</string>
-    <string name="addmemo_content_input">点此以输入备忘内容</string>
+    <string name="addmemo_content_input">备忘内容</string>
     <string name="address">地点</string>
     <string name="address_colon">地点:</string>
-    <string name="address_input">点此以输入地点</string>
+    <string name="address_input">添加地点</string>
     <string name="app_name">收到请回复</string>
     <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/design/22.2.1/res/values/values.xml -->
     <eat-comment/>
@@ -404,8 +404,8 @@
     <string name="time_happen_colon">事件时间:</string>
     <string name="time_memo">提醒时间</string>
     <string name="time_memo_colon">提醒时间:</string>
-    <string name="time_set_happen">点击以设置事件时间</string>
-    <string name="time_set_memo">点击以设置提醒时间</string>
+    <string name="time_set_happen">事件时间</string>
+    <string name="time_set_memo">提醒时间</string>
     <string name="title"> 收到请回复</string>
     <string name="title_under">生活可以更简单</string>
     <string name="version">Version Beta</string>

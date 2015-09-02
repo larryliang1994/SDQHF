@@ -8,16 +8,16 @@ import butterknife.ButterKnife.ViewBinder;
 public class Activity_Memo$$ViewBinder<T extends com.nuaa.shoudaoqinghuifu.Activity_Memo> implements ViewBinder<T> {
   @Override public void bind(final Finder finder, final T target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131493049, "field 'lv_memo'");
-    target.lv_memo = finder.castView(view, 2131493049, "field 'lv_memo'");
-    view = finder.findRequiredView(source, 2131493050, "field 'tv_empty'");
-    target.tv_empty = finder.castView(view, 2131493050, "field 'tv_empty'");
-    view = finder.findRequiredView(source, 2131493047, "field 'tb_memo'");
-    target.tb_memo = finder.castView(view, 2131493047, "field 'tb_memo'");
-    view = finder.findRequiredView(source, 2131493051, "field 'nv_memo'");
-    target.nv_memo = finder.castView(view, 2131493051, "field 'nv_memo'");
-    view = finder.findRequiredView(source, 2131493046, "field 'dw_memo'");
-    target.dw_memo = finder.castView(view, 2131493046, "field 'dw_memo'");
+    view = finder.findRequiredView(source, 2131493050, "field 'lv_memo'");
+    target.lv_memo = finder.castView(view, 2131493050, "field 'lv_memo'");
+    view = finder.findRequiredView(source, 2131493051, "field 'tv_empty'");
+    target.tv_empty = finder.castView(view, 2131493051, "field 'tv_empty'");
+    view = finder.findRequiredView(source, 2131493048, "field 'tb_memo'");
+    target.tb_memo = finder.castView(view, 2131493048, "field 'tb_memo'");
+    view = finder.findRequiredView(source, 2131493052, "field 'nv_memo'");
+    target.nv_memo = finder.castView(view, 2131493052, "field 'nv_memo'");
+    view = finder.findRequiredView(source, 2131493047, "field 'dw_memo'");
+    target.dw_memo = finder.castView(view, 2131493047, "field 'dw_memo'");
   }
 
   @Override public void unbind(T target) {

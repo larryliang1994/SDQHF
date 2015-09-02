@@ -18,11 +18,11 @@ public final class R {
 		public static final int activity_vertical_margin = 0x7f070049;
 	}
 	public static final class drawable {
-		public static final int button = 0x7f02004e;
-		public static final int material_card = 0x7f02006d;
-		public static final int material_card_nos = 0x7f02006e;
-		public static final int material_card_nos_pressed = 0x7f02006f;
-		public static final int material_dialog_window = 0x7f020070;
+		public static final int button = 0x7f02004f;
+		public static final int material_card = 0x7f020070;
+		public static final int material_card_nos = 0x7f020071;
+		public static final int material_card_nos_pressed = 0x7f020072;
+		public static final int material_dialog_window = 0x7f020073;
 	}
 	public static final class id {
 		public static final int buttonLayout = 0x7f0c006f;
