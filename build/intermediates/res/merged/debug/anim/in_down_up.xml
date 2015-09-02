@@ -5,4 +5,4 @@
         android:toYDelta="0"
         android:duration="500"
         android:interpolator="@android:anim/decelerate_interpolator"/>
-</set><!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/anim/in_down_up.xml -->
+</set><!-- From: file:/C:/Users/huangyu/Desktop/ShouDaoQingHuiFu_2015_8_22/SDQHF/res/anim/in_down_up.xml -->

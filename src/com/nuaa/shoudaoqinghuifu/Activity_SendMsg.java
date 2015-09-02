@@ -73,6 +73,7 @@ public class Activity_SendMsg extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
+        //123
         initView();
     }
 

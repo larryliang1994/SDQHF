@@ -8,4 +8,4 @@
         android:state_expanded="true"
         android:drawingCacheQuality="auto"
         android:drawable="@drawable/group_indicator_drop"/>
-</selector><!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/drawable/group_indicator.xml -->
+</selector><!-- From: file:/C:/Users/huangyu/Desktop/ShouDaoQingHuiFu_2015_8_22/SDQHF/res/drawable/group_indicator.xml -->

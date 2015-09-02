@@ -6,4 +6,4 @@
     <item android:drawable="@drawable/start_group_press" android:state_focused="true" />
     <item android:drawable="@drawable/start_group" />
 
-</selector><!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/drawable/group_selector.xml -->
+</selector><!-- From: file:/C:/Users/huangyu/Desktop/ShouDaoQingHuiFu_2015_8_22/SDQHF/res/drawable/group_selector.xml -->

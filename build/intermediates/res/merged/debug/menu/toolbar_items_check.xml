@@ -14,4 +14,4 @@
         android:title="@string/title_under"
         android:icon="@drawable/delete_selector"
         app:showAsAction="always" />
-</menu><!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/menu/toolbar_items_check.xml -->
+</menu><!-- From: file:/C:/Users/huangyu/Desktop/ShouDaoQingHuiFu_2015_8_22/SDQHF/res/menu/toolbar_items_check.xml -->
