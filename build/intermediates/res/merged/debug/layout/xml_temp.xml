@@ -44,14 +44,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_above="@id/space_temp_bottom"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="4dp"
                 android:gravity="center_horizontal"
-                android:horizontalSpacing="8dp"
+                android:horizontalSpacing="0dp"
                 android:numColumns="2"
                 android:scrollbars="none"
-                android:verticalSpacing="8dp" />
+                android:verticalSpacing="0dp" />
 
             <TextView
                 android:id="@+id/textView_temp_empty"
@@ -80,4 +80,4 @@
         app:menu="@menu/navigation_drawer_items"
         app:theme="@style/NavigationMenuStyle" />
 
-</android.support.v4.widget.DrawerLayout><!-- From: file:/E:/2015cotrun/SDQHF/res/layout/xml_temp.xml -->
+</android.support.v4.widget.DrawerLayout><!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/layout/xml_temp.xml -->

@@ -43,8 +43,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_above="@id/space_memo_bottom"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
                 android:layout_marginTop="8dp"
                 android:divider="#00B6B6B6"
                 android:dividerHeight="0dp"
@@ -77,4 +75,4 @@
         app:menu="@menu/navigation_drawer_items"
         app:theme="@style/NavigationMenuStyle" />
 
-</android.support.v4.widget.DrawerLayout><!-- From: file:/E:/2015cotrun/SDQHF/res/layout/xml_memo.xml -->
+</android.support.v4.widget.DrawerLayout><!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/layout/xml_memo.xml -->

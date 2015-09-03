@@ -13,9 +13,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.database.Cursor;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -430,16 +428,6 @@ public class Activity_Memo extends AppCompatActivity {
 
             needNotify = false;
         }
-
-        ImageView iv = (ImageView) nv_memo.findViewById(R.id.imageView_navigation_background);
-        // 获取壁纸
-        if (Activity_Welcome.picturePath != null) {
-            BitmapDrawable bd = new BitmapDrawable(this.getResources(),
-                    BitmapFactory.decodeFile(Activity_Welcome.picturePath));
-            iv.setImageDrawable(bd);
-        } else {
-            iv.setImageResource(R.drawable.background_navigation);
-        }
     }
 
     @Override
@@ -450,7 +438,7 @@ public class Activity_Memo extends AppCompatActivity {
 
     // 设置列表动画
     private void setListViewAnimation() {
-        Animation animation = AnimationUtils.loadAnimation(this, R.anim.in_down_up);
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.zoom_in_fullscale);
         LayoutAnimationController lac = new LayoutAnimationController(animation);
         lac.setOrder(LayoutAnimationController.ORDER_NORMAL);
         lac.setDelay(0.3f);

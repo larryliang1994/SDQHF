@@ -6,4 +6,4 @@
     <item android:drawable="@drawable/back_press" android:state_focused="true" />
     <item android:drawable="@drawable/back" />
 
-</selector><!-- From: file:/E:/2015cotrun/SDQHF/res/drawable/back_selector.xml -->
+</selector><!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/drawable/back_selector.xml -->

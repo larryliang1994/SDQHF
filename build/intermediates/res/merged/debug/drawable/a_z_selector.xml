@@ -5,4 +5,4 @@
     <item android:drawable="@drawable/a_z_press" android:state_enabled="true" android:state_focused="true" />
     <item android:drawable="@drawable/a_z" android:state_enabled="true" />
 
-</selector><!-- From: file:/E:/2015cotrun/SDQHF/res/drawable/a_z_selector.xml -->
+</selector><!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/drawable/a_z_selector.xml -->
