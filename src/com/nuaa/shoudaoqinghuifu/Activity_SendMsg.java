@@ -14,12 +14,11 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.telephony.SmsManager;
 import android.text.format.DateFormat;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -27,7 +26,6 @@ import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -41,8 +39,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class Activity_SendMsg extends AppCompatActivity {
-    @Bind(R.id.imageButton_sendmsg_send)
-    ImageButton ibtn_send;
+    @Bind(R.id.floatingActionButton_sendmsg_send)
+    FloatingActionButton fab_send;
 
     @Bind(R.id.editText_sendmsg_names)
     EditText et_names;
@@ -79,8 +77,6 @@ public class Activity_SendMsg extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
-        ll_menu.setVisibility(View.GONE);
     }
 
     private void initView() {
@@ -109,8 +105,6 @@ public class Activity_SendMsg extends AppCompatActivity {
             }
         });
 
-        ibtn_send.setBackgroundColor(Color.TRANSPARENT);
-
         // 获取默认信息管理器对象
         smsManager = SmsManager.getDefault();
 
@@ -136,10 +130,8 @@ public class Activity_SendMsg extends AppCompatActivity {
         tv_receiver = (TextView) findViewById(R.id.textView_sendmsg_receiver);
     }
 
-    @OnClick({R.id.imageButton_sendmsg_add,
-            R.id.imageButton_sendmsg_menu_temp, R.id.imageButton_sendmsg_send,
-            R.id.imageButton_sendmsg_menu, R.id.imageButton_sendmsg_menu_settime,
-            R.id.imageButton_sendmsg_menu_urgent, R.id.editText_sendmsg_names,
+    @OnClick({R.id.imageButton_sendmsg_add, R.id.floatingActionButton_sendmsg_send,
+            R.id.imageButton_sendmsg_menu, R.id.editText_sendmsg_names,
             R.id.editText_sendmsg_content})
     public void onClick(View v) {
         Toast toast;
@@ -162,63 +154,63 @@ public class Activity_SendMsg extends AppCompatActivity {
                 ll_menu.setVisibility(View.GONE);
                 break;
 
-            case R.id.imageButton_sendmsg_menu_temp:
-                AlertDialog.Builder tempBuilder = new AlertDialog.Builder(
-                        Activity_SendMsg.this);
-
-                tempBuilder.setTitle("选一个吧");
-
-                // 读取模板
-                final DBHelper tHelper = new DBHelper(this, "TempTbl");
-                final Cursor cursor = tHelper.query();
-                cursor.moveToFirst();
-
-                String[] titles = new String[cursor.getCount()];
-                for (int i = 0; i < cursor.getCount(); i++) {
-                    String title = cursor.getString(1);
-                    titles[i] = title;
-
-                    cursor.moveToNext();
-                }
-
-                // 参数（数据列表，默认索引（-1表示不选中），事件处理）
-                tempBuilder.setSingleChoiceItems(titles, -1,
-                        new DialogInterface.OnClickListener() {
-
-                            @Override
-                            public void onClick(DialogInterface dialog,
-                                                int which) {
-                                cursor.moveToPosition(which);
-                                et_content.setText(cursor.getString(2));
-
-                                tHelper.close();
-
-                                // 选择完就关掉
-                                dialog.dismiss();
-                                ll_menu.setVisibility(View.GONE);
-                            }
-                        });
-
-                tempBuilder.show();
-
-                break;
-
-            case R.id.imageButton_sendmsg_menu_settime:
-                if (!isOnTime) { // 非定时，则弹出时间设置
-                    SetDateDialog sdd = new SetDateDialog();
-                    sdd.show(getFragmentManager(), "DatePicker");
-                } else { // 否则取消设定好的定时
-                    isOnTime = false;
-                    tv_receiver.setText("接收者");
-
-                    Toast.makeText(this, "已取消定时发送", Toast.LENGTH_SHORT).show();
-                }
-                break;
-            case R.id.imageButton_sendmsg_menu_urgent:
-                toast = Toast.makeText(this, "还没有实现呢。。\\n做好了就告诉你吧", Toast.LENGTH_SHORT);
-                toast.setGravity(Gravity.CENTER, 0, 0);
-                toast.show();
-                break;
+//            case R.id.imageButton_sendmsg_menu_temp:
+//                AlertDialog.Builder tempBuilder = new AlertDialog.Builder(
+//                        Activity_SendMsg.this);
+//
+//                tempBuilder.setTitle("选一个吧");
+//
+//                // 读取模板
+//                final DBHelper tHelper = new DBHelper(this, "TempTbl");
+//                final Cursor cursor = tHelper.query();
+//                cursor.moveToFirst();
+//
+//                String[] titles = new String[cursor.getCount()];
+//                for (int i = 0; i < cursor.getCount(); i++) {
+//                    String title = cursor.getString(1);
+//                    titles[i] = title;
+//
+//                    cursor.moveToNext();
+//                }
+//
+//                // 参数（数据列表，默认索引（-1表示不选中），事件处理）
+//                tempBuilder.setSingleChoiceItems(titles, -1,
+//                        new DialogInterface.OnClickListener() {
+//
+//                            @Override
+//                            public void onClick(DialogInterface dialog,
+//                                                int which) {
+//                                cursor.moveToPosition(which);
+//                                et_content.setText(cursor.getString(2));
+//
+//                                tHelper.close();
+//
+//                                // 选择完就关掉
+//                                dialog.dismiss();
+//                                ll_menu.setVisibility(View.GONE);
+//                            }
+//                        });
+//
+//                tempBuilder.show();
+//
+//                break;
+//
+//            case R.id.imageButton_sendmsg_menu_settime:
+//                if (!isOnTime) { // 非定时，则弹出时间设置
+//                    SetDateDialog sdd = new SetDateDialog();
+//                    sdd.show(getFragmentManager(), "DatePicker");
+//                } else { // 否则取消设定好的定时
+//                    isOnTime = false;
+//                    tv_receiver.setText("接收者");
+//
+//                    Toast.makeText(this, "已取消定时发送", Toast.LENGTH_SHORT).show();
+//                }
+//                break;
+//            case R.id.imageButton_sendmsg_menu_urgent:
+//                toast = Toast.makeText(this, "还没有实现呢。。\\n做好了就告诉你吧", Toast.LENGTH_SHORT);
+//                toast.setGravity(Gravity.CENTER, 0, 0);
+//                toast.show();
+//                break;
 
             case R.id.editText_sendmsg_names:
             case R.id.imageButton_sendmsg_add:
@@ -295,7 +287,7 @@ public class Activity_SendMsg extends AppCompatActivity {
 
                 break;
 
-            case R.id.imageButton_sendmsg_send:
+            case R.id.floatingActionButton_sendmsg_send:
                 if (!et_names.getText().toString().isEmpty()
                         && !et_content.getText().toString().isEmpty()) {
                     if (isOnTime) {
@@ -514,7 +506,7 @@ public class Activity_SendMsg extends AppCompatActivity {
     }
 
     @Override
-    public boolean onKeyDown(int keyCode, @NonNull KeyEvent event) {
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK
                 && event.getAction() == KeyEvent.ACTION_DOWN) {
             // 若来自群组，需启动Group，若来自模板，需启动Temp

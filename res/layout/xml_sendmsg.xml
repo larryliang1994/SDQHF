@@ -79,197 +79,184 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#b6b6b6" />
+        android:background="#eeeeee" />
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <LinearLayout
-        android:id="@+id/linearLayout_sendmsg_menu"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#ffffff"
-        android:orientation="vertical">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:background="#ffffff">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="29dp"
-                android:background="#b6b6b6" />
-
-
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/imageButton_sendmsg_send"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_gravity="right"
-                android:layout_marginBottom="0dp"
-                android:layout_marginRight="10dp"
-                android:baselineAlignBottom="true"
-                android:contentDescription="@string/hello"
-                android:src="@drawable/ic_send_white_48dp"
-                app:backgroundTint="#ff5252"
-                app:borderWidth="0dp"
-                app:fabSize="normal" />
-
-
-        </RelativeLayout>
-
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/imageButton_sendmsg_menu"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="14dp"
-                android:background="@null"
-                android:contentDescription="@string/hello"
-                android:paddingLeft="3dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_border_color_grey600_48dp" />
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="false"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="32dp"
-                android:layout_marginRight="4dp"
-                android:layout_toRightOf="@id/imageButton_sendmsg_menu"
-                android:gravity="top"
-                android:hint="输入消息内容"
-                android:paddingBottom="5dp"
-                android:paddingTop="5dp"
-                android:textColor="#212121"
-                android:textSize="18sp" />
-
-
-        </RelativeLayout>
-
-        <EditText
-            android:id="@+id/editText_sendmsg_content"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="56dp"
-            android:layout_marginRight="16dp"
-            android:layout_weight="1"
-            android:background="#ffffff"
-            android:hint="哈哈哈哈哈哈哈" />
+        android:layout_height="wrap_content">
 
         <LinearLayout
+            android:id="@+id/linearLayout_sendmsg_menu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="left"
-            android:orientation="vertical"
-            android:weightSum="1">
+            android:background="#ffffff"
+            android:orientation="vertical">
 
-
-            <Space
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="5dp" />
-
-            <LinearLayout
-                android:id="@+id/linearLayout_sendmsg_menu_temp"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
-                android:gravity="left|center"
-                android:orientation="horizontal">
-
-                <ImageButton
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_marginLeft="3dp"
-                    android:background="@drawable/menu_temp_selector"
-                    android:contentDescription="@string/hello" />
+                android:layout_height="70dp"
+                android:background="#ffffff">
 
                 <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="29dp"
+                    android:background="#eeeeee" />
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/floatingActionButton_sendmsg_send"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:gravity="center"
-                    android:text="@string/temp_choose"
-                    android:textColor="#727272"
-                    android:textSize="13sp" />
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/ic_send_white_48dp"
+                    app:backgroundTint="#ff5252"
+                    app:fabSize="normal" />
 
-                <Switch
-                    android:id="@+id/switch_sendmsg_menu_temp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="210dp"
-                    android:background="#000000"
-                    android:gravity="right" />
+            </RelativeLayout>
 
-            </LinearLayout>
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="0dp" />
-
-            <LinearLayout
-                android:id="@+id/linearLayout_sendmsg_menu_settime"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
-                android:gravity="left|center"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content">
 
-                <ImageButton
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_marginLeft="3dp"
-                    android:background="@drawable/settime_selector"
-                    android:contentDescription="@string/hello" />
+                <ImageView
+                    android:id="@+id/imageButton_sendmsg_menu"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="14dp"
+                    android:background="@null"
+                    android:contentDescription="@string/hello"
+                    android:paddingLeft="3dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_border_color_grey600_48dp" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:gravity="center"
-                    android:text="@string/msg_settime"
-                    android:textColor="#727272"
-                    android:textSize="13sp" />
+                    android:layout_alignParentBottom="false"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_toRightOf="@id/imageButton_sendmsg_menu"
+                    android:gravity="top"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:text="输入消息内容"
+                    android:textColor="#B6B6B6"
+                    android:textSize="14sp" />
 
-                <Switch
-                    android:id="@+id/switch_sendmsg_menu_settime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="210dp"
-                    android:background="#0000000" />
-            </LinearLayout>
+            </RelativeLayout>
 
-            <Space
-                android:layout_width="0dp"
+            <EditText
+                android:id="@+id/editText_sendmsg_content"
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0" />
+                android:layout_gravity="center"
+                android:layout_marginLeft="56dp"
+                android:layout_marginRight="16dp"
+                android:layout_weight="1"
+                android:background="#ffffff"
+                android:hint="哈哈哈哈哈哈哈"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:orientation="vertical"
+                android:weightSum="1">
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout_sendmsg_menu_temp"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="left|center"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_marginLeft="3dp"
+                        android:background="@drawable/menu_temp_selector"
+                        android:contentDescription="@string/hello" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:text="@string/temp_choose"
+                        android:textColor="#727272"
+                        android:textSize="14sp" />
+
+                    <Switch
+                        android:id="@+id/switch_sendmsg_menu_temp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="15dp" />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="0dp" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout_sendmsg_menu_settime"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="left|center"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_marginLeft="3dp"
+                        android:background="@drawable/settime_selector"
+                        android:contentDescription="@string/hello" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:text="@string/msg_settime"
+                        android:textColor="#727272"
+                        android:textSize="14sp" />
+
+                    <Switch
+                        android:id="@+id/switch_sendmsg_menu_settime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="15dp" />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="0" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
-
-</ScrollView>
+    </ScrollView>
 
 
 </LinearLayout>
