@@ -74,6 +74,8 @@
             android:layout_height="24dp"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
+            android:layout_marginRight="3dp"
+            android:tint="#b6b6b6"
             android:scaleType="centerInside"
             android:src="@drawable/member_add" />
 

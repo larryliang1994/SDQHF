@@ -9,6 +9,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
 import android.support.annotation.NonNull;
@@ -20,11 +21,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import me.drakeet.materialdialog.MaterialDialog;
 
 public class Activity_Preference extends PreferenceActivity {
+    @Bind(R.id.progressBar_preference)
+    ProgressBar pb;
 
     private float startX = 0.0f;
     private SharedPreferences sp;
@@ -37,6 +43,8 @@ public class Activity_Preference extends PreferenceActivity {
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.xml_preference);
+
+        ButterKnife.bind(this);
 
         isTemp = getIntent().getBooleanExtra("isTemp", false);
     }
@@ -135,6 +143,16 @@ public class Activity_Preference extends PreferenceActivity {
                 break;
 
             case "share":
+                // 进度条出现，3秒后消失
+                pb.setVisibility(View.VISIBLE);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        pb.setVisibility(View.GONE);
+                    }
+                }, 3000);
+
+
                 intent = new Intent(Intent.ACTION_SEND);
 
                 intent.setType("text/plain"); // 纯文本
