@@ -5,4 +5,4 @@
     <item android:drawable="@drawable/settime_press" android:state_enabled="true" android:state_focused="true" />
     <item android:drawable="@drawable/settime" android:state_enabled="true" />
 
-</selector><!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/drawable/settime_selector.xml -->
+</selector><!-- From: file:/E:/2015cotrun/SDQHF/res/drawable/settime_selector.xml -->
