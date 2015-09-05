@@ -92,8 +92,10 @@ public class Activity_CheckMemo extends AppCompatActivity implements View.OnTouc
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void initView() {
-        Window window = getWindow();
-        window.setStatusBarColor(Color.parseColor("#512da8"));
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.setStatusBarColor(Color.parseColor("#512da8"));
+        }
 
         setSupportActionBar(tb_checkmemo);
         tb_checkmemo.setNavigationOnClickListener(new View.OnClickListener() {

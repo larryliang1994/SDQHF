@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -292,11 +293,12 @@ public class Activity_AddGroup extends AppCompatActivity {
 
             // 设置头像颜色
             GradientDrawable bgShape = (GradientDrawable) holder.tv_photo.getBackground();
-            bgShape.setColor(Color.parseColor(Value.colors[position % Value.colors.length]));
+            bgShape.setColor(Color.parseColor(Value.colors[position % Value.colors.length].replace("#", "#9f")));
 
             holder.tv_photo.setText(names[position].substring(0, 1));
             holder.tv_name.setText(names[position]);
-            holder.tv_phone.setText(phones.get(position));
+
+            holder.tv_phone.setText(phones.get(position).replace(" ", ""));
 
             return convertView;
         }
