@@ -11,7 +11,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -23,10 +23,21 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
+import android.view.animation.Animation;
+import android.view.animation.AnticipateInterpolator;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.ScaleAnimation;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -37,6 +48,7 @@ import java.util.Calendar;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import me.drakeet.materialdialog.MaterialDialog;
 
 public class Activity_SendMsg extends AppCompatActivity {
     @Bind(R.id.floatingActionButton_sendmsg_send)
@@ -48,19 +60,33 @@ public class Activity_SendMsg extends AppCompatActivity {
     @Bind(R.id.editText_sendmsg_content)
     EditText et_content;
 
-    @Bind(R.id.linearLayout_sendmsg_menu)
-    LinearLayout ll_menu;
+    @Bind(R.id.layout_sendmsg)
+    RelativeLayout layout_sendmsg;
 
     @Bind(R.id.toolbar_sendmsg)
     Toolbar tb_sendmsg;
 
+    @Bind(R.id.scrollView_sendmsg)
+    ScrollView sv_sendmsg;
+
+    @Bind(R.id.imageView_sendmsg_pen)
+    ImageView iv_pen;
+
+    @Bind(R.id.imageButton_sendmsg_temp)
+    ImageButton ibtn_temp;
+
+    @Bind(R.id.imageButton_sendmsg_settime)
+    ImageButton ibtn_settime;
+
     private static TextView tv_receiver;
+    private static Switch sw_settime, sw_temp;
     private SmsManager smsManager;
     private static String date = null;
     private static int mYear, mMonth, mDay, mHour, mMinute;
     private ArrayList<String> phones = new ArrayList<>(); // 联系人号码
-    private boolean hasMenu = false, isGroup = false, isTemp = false;
+    private boolean isGroup = false, isTemp = false, hasTemp = false;
     private static boolean isOnTime = false;
+    private float scale; // 用于dp转px
     private String[] names = null;
     private float startX = 0.0f;
 
@@ -74,15 +100,10 @@ public class Activity_SendMsg extends AppCompatActivity {
         initView();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
     private void initView() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
-            window.setStatusBarColor(Color.parseColor("#e51c23"));
+            window.setStatusBarColor(getResources().getColor(R.color.red_status));
         }
 
         setSupportActionBar(tb_sendmsg);
@@ -105,6 +126,16 @@ public class Activity_SendMsg extends AppCompatActivity {
             }
         });
 
+        tv_receiver = (TextView) findViewById(R.id.textView_sendmsg_receiver);
+        sw_settime = (Switch) findViewById(R.id.switch_sendmsg_menu_settime);
+        sw_temp = (Switch) findViewById(R.id.switch_sendmsg_menu_temp);
+
+        // 设置左下角图标颜色
+        GradientDrawable bgShape_temp = (GradientDrawable) ibtn_temp.getBackground();
+        bgShape_temp.setColor(getResources().getColor(R.color.pink_A200));
+        GradientDrawable bgShape_settime = (GradientDrawable) ibtn_settime.getBackground();
+        bgShape_settime.setColor(getResources().getColor(R.color.red));
+
         // 获取默认信息管理器对象
         smsManager = SmsManager.getDefault();
 
@@ -124,93 +155,175 @@ public class Activity_SendMsg extends AppCompatActivity {
         String temp = getIntent().getStringExtra("temp");
         if (temp != null) {
             isTemp = true;
+            hasTemp = true;
+            sw_temp.setChecked(true);
             et_content.setText(temp);
         }
 
-        tv_receiver = (TextView) findViewById(R.id.textView_sendmsg_receiver);
+        scale = getApplicationContext().getResources().getDisplayMetrics().density;
+
+        // 夺取滑动事件
+        et_content.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                v.getParent().requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+
+        });
+
+        SoftKeyboardStateHelper softKeyboardStateHelper = new SoftKeyboardStateHelper(layout_sendmsg);
+        softKeyboardStateHelper.addSoftKeyboardStateListener(new SoftKeyboardStateHelper.SoftKeyboardStateListener() {
+            @Override
+            public void onSoftKeyboardOpened(int keyboardHeightInPx) {
+                // 设置笔的位置
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                        (int) (30 * scale + 0.5f),
+                        (int) (25 * scale + 0.5f));
+                lp.setMargins(15, 0, 0, 0);
+                iv_pen.setLayoutParams(lp);
+
+                // 至少占5行
+                et_content.setMinLines(5);
+
+                setFabAnimation();
+            }
+
+            @Override
+            public void onSoftKeyboardClosed() {
+                setFabAnimation();
+            }
+        });
+    }
+
+    private void setFabAnimation() {
+        if (fab_send.getVisibility() == View.GONE) {
+            Animation animation = new ScaleAnimation(0.0f, 1.0f, 0.0f, 1.0f,
+                    Animation.RELATIVE_TO_SELF, 0.5f,
+                    Animation.RELATIVE_TO_SELF, 0.5f);
+            animation.setInterpolator(new DecelerateInterpolator());
+            animation.setFillAfter(true);
+            animation.setDuration(1000);
+            animation.setStartOffset(200);
+            animation.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
+
+                }
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    fab_send.setVisibility(View.VISIBLE);
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+            });
+            fab_send.startAnimation(animation);
+        } else {
+            Animation animation = new ScaleAnimation(1.0f, 0.0f, 1.0f, 0.0f,
+                    Animation.RELATIVE_TO_SELF, 0.5f,
+                    Animation.RELATIVE_TO_SELF, 0.5f);
+            animation.setInterpolator(new AnticipateInterpolator());
+            animation.setFillAfter(true);
+            animation.setDuration(1000);
+            animation.setStartOffset(200);
+            animation.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
+
+                }
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    fab_send.setVisibility(View.GONE);
+                    sv_sendmsg.smoothScrollTo(0, (int) (30 * scale + 0.5f));
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+            });
+            fab_send.startAnimation(animation);
+        }
     }
 
     @OnClick({R.id.imageButton_sendmsg_add, R.id.floatingActionButton_sendmsg_send,
-            R.id.imageButton_sendmsg_menu, R.id.editText_sendmsg_names,
-            R.id.editText_sendmsg_content})
+            R.id.editText_sendmsg_names, R.id.switch_sendmsg_menu_settime, R.id.switch_sendmsg_menu_temp})
     public void onClick(View v) {
-        Toast toast;
         switch (v.getId()) {
-            case R.id.imageButton_sendmsg_menu:
-                if (!hasMenu) {
-                    ll_menu.setVisibility(View.VISIBLE);
-                    hasMenu = true;
+
+            case R.id.switch_sendmsg_menu_temp:
+                if (sw_temp.isChecked()) {
+                    // 读取模板
+                    final DBHelper tHelper = new DBHelper(this, "TempTbl");
+                    final Cursor cursor = tHelper.query();
+                    cursor.moveToFirst();
+
+                    String[] titles = new String[cursor.getCount()];
+                    for (int i = 0; i < cursor.getCount(); i++) {
+                        String title = cursor.getString(1);
+                        titles[i] = title;
+
+                        cursor.moveToNext();
+                    }
+
+                    final MaterialDialog dialog = new MaterialDialog(this);
+
+                    ListView listView = new ListView(this);
+                    ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, titles);
+                    listView.setAdapter(adapter);
+                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            cursor.moveToPosition(position);
+                            et_content.setText(cursor.getString(2));
+
+                            tHelper.close();
+
+                            hasTemp = true;
+
+                            dialog.dismiss();
+                        }
+                    });
+
+
+                    dialog.setView(listView);
+                    dialog.setCanceledOnTouchOutside(true);
+
+                    dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                        @Override
+                        public void onDismiss(DialogInterface dialog) {
+                            if (!hasTemp) {
+                                sw_temp.setChecked(!sw_temp.isChecked());
+                            }
+                        }
+                    });
+
+                    dialog.show();
                 } else {
-                    ll_menu.setVisibility(View.GONE);
-                    hasMenu = false;
+                    hasTemp = false;
+                    et_content.setText("");
                 }
 
-                // 关闭软键盘
-                InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(et_content.getWindowToken(), 0);
                 break;
 
-            case R.id.editText_sendmsg_content:
-                ll_menu.setVisibility(View.GONE);
+            case R.id.switch_sendmsg_menu_settime:
+                if (!isOnTime) { // 非定时，则弹出时间设置
+                    SetDateDialog sdd = new SetDateDialog();
+                    sdd.show(getFragmentManager(), "DatePicker");
+                } else { // 否则取消设定好的定时
+                    isOnTime = false;
+                    tv_receiver.setText("接收者");
+
+                    Toast.makeText(this, "已取消定时发送", Toast.LENGTH_SHORT).show();
+                }
                 break;
 
-//            case R.id.imageButton_sendmsg_menu_temp:
-//                AlertDialog.Builder tempBuilder = new AlertDialog.Builder(
-//                        Activity_SendMsg.this);
-//
-//                tempBuilder.setTitle("选一个吧");
-//
-//                // 读取模板
-//                final DBHelper tHelper = new DBHelper(this, "TempTbl");
-//                final Cursor cursor = tHelper.query();
-//                cursor.moveToFirst();
-//
-//                String[] titles = new String[cursor.getCount()];
-//                for (int i = 0; i < cursor.getCount(); i++) {
-//                    String title = cursor.getString(1);
-//                    titles[i] = title;
-//
-//                    cursor.moveToNext();
-//                }
-//
-//                // 参数（数据列表，默认索引（-1表示不选中），事件处理）
-//                tempBuilder.setSingleChoiceItems(titles, -1,
-//                        new DialogInterface.OnClickListener() {
-//
-//                            @Override
-//                            public void onClick(DialogInterface dialog,
-//                                                int which) {
-//                                cursor.moveToPosition(which);
-//                                et_content.setText(cursor.getString(2));
-//
-//                                tHelper.close();
-//
-//                                // 选择完就关掉
-//                                dialog.dismiss();
-//                                ll_menu.setVisibility(View.GONE);
-//                            }
-//                        });
-//
-//                tempBuilder.show();
-//
-//                break;
-//
-//            case R.id.imageButton_sendmsg_menu_settime:
-//                if (!isOnTime) { // 非定时，则弹出时间设置
-//                    SetDateDialog sdd = new SetDateDialog();
-//                    sdd.show(getFragmentManager(), "DatePicker");
-//                } else { // 否则取消设定好的定时
-//                    isOnTime = false;
-//                    tv_receiver.setText("接收者");
-//
-//                    Toast.makeText(this, "已取消定时发送", Toast.LENGTH_SHORT).show();
-//                }
-//                break;
-//            case R.id.imageButton_sendmsg_menu_urgent:
-//                toast = Toast.makeText(this, "还没有实现呢。。\\n做好了就告诉你吧", Toast.LENGTH_SHORT);
-//                toast.setGravity(Gravity.CENTER, 0, 0);
-//                toast.show();
-//                break;
 
             case R.id.editText_sendmsg_names:
             case R.id.imageButton_sendmsg_add:
@@ -322,20 +435,11 @@ public class Activity_SendMsg extends AppCompatActivity {
                     } else {
                         // 把短信进行拆分
                         ArrayList<String> contents = smsManager
-                                .divideMessage(et_content.getText().toString());
-
-                        // 发送短信
-                        int size = contents.size();
+                                .divideMessage(et_content.getText().toString() + "【来自“收到请回复”客户端】");
 
                         for (int i = 0; i < phones.size(); i++) {
                             // 参数（要发送的号码，信息中心的号码Null，内容，，)
-                            for (int j = 0; j < size; j++) {
-                                if (j == size - 1) {
-                                    smsManager.sendTextMessage(phones.get(i), null, contents.get(j) + "【来自“收到请回复”客户端】", null, null);
-                                } else {
-                                    smsManager.sendTextMessage(phones.get(i), null, contents.get(j), null, null);
-                                }
-                            }
+                            smsManager.sendMultipartTextMessage(phones.get(i), null, contents, null, null);
                         }
 
                         Calendar current = Calendar.getInstance();
@@ -414,6 +518,13 @@ public class Activity_SendMsg extends AppCompatActivity {
 
             SetTimeDialog std = new SetTimeDialog();
             std.show(getFragmentManager(), "TimePicker");
+        }
+
+        @Override
+        public void onCancel(DialogInterface dialog) {
+            super.onCancel(dialog);
+
+            sw_settime.setChecked(false);
         }
     }
 

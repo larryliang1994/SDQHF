@@ -36,7 +36,7 @@ public class Activity_About extends AppCompatActivity {
     private void initView(){
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
-            window.setStatusBarColor(Color.parseColor("#0288d1"));
+            window.setStatusBarColor(getResources().getColor(R.color.blue_status));
         }
 
         setSupportActionBar(tb_about);

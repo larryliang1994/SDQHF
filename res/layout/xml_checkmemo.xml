@@ -14,7 +14,7 @@
             android:id="@+id/toolbar_checkmemo"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#673ab7"
+            android:background="@color/purple"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:navigationIcon="@drawable/back_selector"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"

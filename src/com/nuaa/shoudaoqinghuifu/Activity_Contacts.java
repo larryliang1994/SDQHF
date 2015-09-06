@@ -100,7 +100,7 @@ public class Activity_Contacts extends AppCompatActivity {
     public void initView() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
-            window.setStatusBarColor(Color.parseColor("#0288d1"));
+            window.setStatusBarColor(getResources().getColor(R.color.blue_status));
         }
 
         setSupportActionBar(tb_contacts);
@@ -390,7 +390,7 @@ public class Activity_Contacts extends AppCompatActivity {
 
             // 设置头像颜色
             GradientDrawable bgShape = (GradientDrawable) holder.tv_photo.getBackground();
-            bgShape.setColor(Color.parseColor(Value.colors[position % Value.colors.length]));
+            bgShape.setColor(getResources().getColor(Value.colors[position % Value.colors.length]));
 
             // 当前联系人的sortKey
             String currentStr = getAlpha(list.get(position).getAsString(

@@ -91,7 +91,7 @@ public class Activity_AddMemo extends AppCompatActivity implements View.OnTouchL
     public void initView() {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
-            window.setStatusBarColor(Color.parseColor("#512da8"));
+            window.setStatusBarColor(getResources().getColor(R.color.purple_status));
         }
 
         setSupportActionBar(tb_addmemo);

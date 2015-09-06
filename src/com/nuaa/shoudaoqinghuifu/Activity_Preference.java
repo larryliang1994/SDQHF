@@ -53,7 +53,7 @@ public class Activity_Preference extends PreferenceActivity {
     public void setContentView(int layoutResID) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
-            window.setStatusBarColor(Color.parseColor("#0288d1"));
+            window.setStatusBarColor(getResources().getColor(R.color.blue_status));
         }
 
         ViewGroup contentView = (ViewGroup) LayoutInflater.from(this).inflate(

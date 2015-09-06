@@ -45,7 +45,7 @@ public class Activity_CheckMsg extends AppCompatActivity {
     private void initView() {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
-            window.setStatusBarColor(Color.parseColor("#e51c23"));
+            window.setStatusBarColor(getResources().getColor(R.color.red_status));
         }
 
         setSupportActionBar(tb_checkmsg);

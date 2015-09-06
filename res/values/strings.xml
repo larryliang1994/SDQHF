@@ -21,7 +21,7 @@
     <string name="contact_choose">联系人</string>
     <string name="msg_contact_input">点此添加收件人</string>
     <string name="msg_new">新建消息</string>
-    <string name="msg_content_input">点此输入消息内容</string>
+    <string name="msg_content_input">消息内容</string>
     <string name="about">关于</string>
     <string name="feedback">意见反馈</string>
     <string name="feedback_content_hint">点此输入您的反馈意见</string>

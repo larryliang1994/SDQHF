@@ -20,7 +20,7 @@
                 android:id="@+id/toolbar_msg"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="#ff5252"
+                android:background="@color/red"
                 android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 app:navigationIcon="@drawable/navigation"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"

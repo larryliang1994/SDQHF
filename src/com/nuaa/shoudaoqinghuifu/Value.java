@@ -26,7 +26,9 @@ public class Value {
             + " TempTbl(_id integer primary key autoincrement,title text,content text) ";
 
     public static final String SHAER_TEXT = "为用户提供通知模板功能，让部门高管不再需要独自编写短信、逐个选择联系人进行通知；提供备忘录功能，让你不再忘记任何重要事情；点此下载【收到请回复】测试版 http://20055.jiubai.cc/uploadfile/webeditor2/android/ShouDaoQingHuiFu-debug.apk";
-    public static final String[] colors = {"#E51C23", "#259b24", "#5677fc", "#FF9800", "#0d5302", "#9c27b0"};
+    public static final int[] colors = {R.color.pink_A200, R.color.blue_A200,
+            R.color.green_A200, R.color.orange_A200,
+            R.color.purple_A200, R.color.brown_A200};
     public static final String[] titles = {"开会通知1", "开会通知2", "比赛通知", "聚会通知", "出游通知", "活动通知"};
     public static final String[] temps = {
             "又临近熟悉的时间，就携手来到熟悉的地点，让我们坐下畅谈。例会将于11.13(周四)晚九点于东区值班室举行。(如确有不能到场的原因，请在短信中说明，例会乃我部集体之活动，请假需谨慎。)",

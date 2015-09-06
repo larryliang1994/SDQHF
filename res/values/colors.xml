@@ -2,5 +2,21 @@
 <resources>
     <color name="transparent">#00FFFFFF</color>
     <color name="rippelColor">#FFFFFF</color>
+
     <color name="blue">#03A9F4</color>
+    <color name="blue_status">#0288D1</color>
+    <color name="red">#F36C60</color>
+    <color name="red_status">#E84E40</color>
+    <color name="green">#8bc34a</color>
+    <color name="green_status">#689f38</color>
+    <color name="purple">#9C27B0</color>
+    <color name="purple_status">#7b1fa2</color>
+    <color name="orange">#03A9F4</color>
+
+    <color name="pink_A200">#ff4081</color>
+    <color name="blue_A200">#6889ff</color>
+    <color name="green_A200">#8bc34a</color>
+    <color name="orange_A200">#ffab40</color>
+    <color name="purple_A200">#e040fb</color>
+    <color name="brown_A200">#795548</color>
 </resources>

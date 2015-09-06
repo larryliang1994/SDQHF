@@ -87,7 +87,7 @@ public class Activity_Msg extends AppCompatActivity {
     private void initView() {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
-            window.setStatusBarColor(Color.parseColor("#e51c23"));
+            window.setStatusBarColor(getResources().getColor(R.color.red_status));
         }
 
         setSupportActionBar(tb_msg);
@@ -406,7 +406,7 @@ public class Activity_Msg extends AppCompatActivity {
 
             // 设置头像颜色
             GradientDrawable bgShape = (GradientDrawable) holder.iv_photo.getBackground();
-            bgShape.setColor(Color.parseColor(Value.colors[position % Value.colors.length]));
+            bgShape.setColor(getResources().getColor(Value.colors[position % Value.colors.length]));
 
             return convertView;
         }

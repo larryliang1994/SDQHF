@@ -66,7 +66,7 @@ public class Activity_AddGroup extends AppCompatActivity {
     public void initView() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
-            window.setStatusBarColor(Color.parseColor("#0288d1"));
+            window.setStatusBarColor(getResources().getColor(R.color.blue_status));
         }
 
         setSupportActionBar(tb_addgroup);
@@ -293,7 +293,7 @@ public class Activity_AddGroup extends AppCompatActivity {
 
             // 设置头像颜色
             GradientDrawable bgShape = (GradientDrawable) holder.tv_photo.getBackground();
-            bgShape.setColor(Color.parseColor(Value.colors[position % Value.colors.length].replace("#", "#9f")));
+            bgShape.setColor(getResources().getColor(Value.colors[position % Value.colors.length]));
 
             holder.tv_photo.setText(names[position].substring(0, 1));
             holder.tv_name.setText(names[position]);

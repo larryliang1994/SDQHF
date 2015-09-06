@@ -109,7 +109,7 @@ public class Activity_Memo extends AppCompatActivity {
     private void initView() {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
-            window.setStatusBarColor(Color.parseColor("#512da8"));
+            window.setStatusBarColor(getResources().getColor(R.color.purple_status));
         }
 
         setSupportActionBar(tb_memo);

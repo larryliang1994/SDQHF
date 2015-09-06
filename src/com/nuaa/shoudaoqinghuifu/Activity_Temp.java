@@ -84,7 +84,7 @@ public class Activity_Temp extends AppCompatActivity {
     private void initView() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
-            window.setStatusBarColor(Color.parseColor("#689f38"));
+            window.setStatusBarColor(getResources().getColor(R.color.green_status));
         }
 
         setSupportActionBar(tb_temp);
@@ -169,7 +169,7 @@ public class Activity_Temp extends AppCompatActivity {
                 // 设置属性
                 Temp temp = vector_temps.get(position);
                 tv_content.setText(temp.content);
-                cv.setCardBackgroundColor(Color.parseColor(Value.colors[position % Value.colors.length]));
+                cv.setCardBackgroundColor(getResources().getColor(Value.colors[position % Value.colors.length]));
 
                 // 设置单击事件
                 RippleView tv_title = (RippleView)v.findViewById(R.id.textView_temp_dialog_title);
@@ -454,7 +454,7 @@ public class Activity_Temp extends AppCompatActivity {
 
             holder.tv_title.setText(temp.title);
             holder.tv_content.setText(temp.content);
-            holder.cv.setCardBackgroundColor(Color.parseColor(Value.colors[position % Value.colors.length]));
+            holder.cv.setCardBackgroundColor(getResources().getColor(Value.colors[position % Value.colors.length]));
 
             return convertView;
         }

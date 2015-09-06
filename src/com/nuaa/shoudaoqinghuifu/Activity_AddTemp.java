@@ -61,7 +61,7 @@ public class Activity_AddTemp extends AppCompatActivity implements View.OnTouchL
     public void initView() {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
-            window.setStatusBarColor(Color.parseColor("#689f38"));
+            window.setStatusBarColor(getResources().getColor(R.color.green_status));
         }
 
         setSupportActionBar(tb_addtemp);
