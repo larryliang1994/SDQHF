@@ -24,6 +24,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.umeng.analytics.MobclickAgent;
+import com.umeng.fb.FeedbackAgent;
 import com.umeng.update.UmengUpdateAgent;
 import com.umeng.update.UmengUpdateListener;
 import com.umeng.update.UpdateResponse;
@@ -129,12 +130,15 @@ public class Activity_Preference extends PreferenceActivity {
                 break;
 
             case "feedBack":
-                intent = new Intent(this, Activity_Feedback.class);
+//                intent = new Intent(this, Activity_Feedback.class);
+//
+//                startActivity(intent);
+//
+//                overridePendingTransition(R.anim.in_right_left,
+//                        R.anim.scale_stay);
 
-                startActivity(intent);
-
-                overridePendingTransition(R.anim.in_right_left,
-                        R.anim.scale_stay);
+                FeedbackAgent agent = new FeedbackAgent(this);
+                agent.startFeedbackActivity();
 
                 break;
 

@@ -14,7 +14,7 @@
             android:id="@+id/toolbar_addmemo"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#673ab7"
+            android:background="@color/purple"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:navigationIcon="@drawable/back_selector"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
@@ -174,4 +174,4 @@
         </LinearLayout>
     </ScrollView>
 
-</LinearLayout><!-- From: file:/E:/2015cotrun/SDQHF/res/layout/xml_addmemo.xml -->
+</LinearLayout><!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/layout/xml_addmemo.xml -->

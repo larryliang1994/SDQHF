@@ -59,8 +59,7 @@
                 android:gravity="center"
                 android:text="@string/msg_empty"
                 android:textColor="#55000000"
-                android:textSize="17sp"
-                android:textStyle="italic" />
+                android:textSize="17sp" />
 
         </RelativeLayout>
 

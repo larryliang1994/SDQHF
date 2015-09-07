@@ -8,16 +8,16 @@ import butterknife.ButterKnife.ViewBinder;
 public class Activity_Temp$$ViewBinder<T extends com.nuaa.shoudaoqinghuifu.Activity_Temp> implements ViewBinder<T> {
   @Override public void bind(final Finder finder, final T target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131493087, "field 'gv_temp'");
-    target.gv_temp = finder.castView(view, 2131493087, "field 'gv_temp'");
-    view = finder.findRequiredView(source, 2131493088, "field 'tv_empty'");
-    target.tv_empty = finder.castView(view, 2131493088, "field 'tv_empty'");
-    view = finder.findRequiredView(source, 2131493085, "field 'tb_temp'");
-    target.tb_temp = finder.castView(view, 2131493085, "field 'tb_temp'");
-    view = finder.findRequiredView(source, 2131493089, "field 'nv_temp'");
-    target.nv_temp = finder.castView(view, 2131493089, "field 'nv_temp'");
-    view = finder.findRequiredView(source, 2131493084, "field 'dw_temp'");
-    target.dw_temp = finder.castView(view, 2131493084, "field 'dw_temp'");
+    view = finder.findRequiredView(source, 2131558688, "field 'gv_temp'");
+    target.gv_temp = finder.castView(view, 2131558688, "field 'gv_temp'");
+    view = finder.findRequiredView(source, 2131558689, "field 'tv_empty'");
+    target.tv_empty = finder.castView(view, 2131558689, "field 'tv_empty'");
+    view = finder.findRequiredView(source, 2131558686, "field 'tb_temp'");
+    target.tb_temp = finder.castView(view, 2131558686, "field 'tb_temp'");
+    view = finder.findRequiredView(source, 2131558690, "field 'nv_temp'");
+    target.nv_temp = finder.castView(view, 2131558690, "field 'nv_temp'");
+    view = finder.findRequiredView(source, 2131558685, "field 'dw_temp'");
+    target.dw_temp = finder.castView(view, 2131558685, "field 'dw_temp'");
   }
 
   @Override public void unbind(T target) {

@@ -56,7 +56,7 @@
             android:layout_height="35dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="15dp"
             android:background="@null"
             android:contentDescription="@string/hello"
             android:scaleType="centerInside"
@@ -100,29 +100,41 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp">
+                android:layout_height="64dp">
 
                 <TextView
                     android:id="@+id/textView_sendmsg_divider"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="32dp"
                     android:background="#00eeeeee" />
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="32dp"
                     android:layout_alignParentBottom="true"
                     android:background="#ffffff" />
 
-                <android.support.design.widget.FloatingActionButton
+                <com.nuaa.shoudaoqinghuifu.RippleView
                     android:id="@+id/floatingActionButton_sendmsg_send"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
                     android:layout_marginRight="15dp"
-                    android:src="@drawable/ic_send_white_48dp"
-                    app:backgroundTint="@color/red"
-                    app:fabSize="normal" />
+                    android:background="@drawable/cycle"
+                    app:rv_color="@color/ripple_material_dark"
+                    app:rv_rippleDuration="100"
+                    app:rv_type="simpleRipple"
+                    app:rv_zoom="true">
+
+                    <ImageButton
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:background="@null"
+                        android:padding="15dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ic_send_white_48dp" />
+                </com.nuaa.shoudaoqinghuifu.RippleView>
 
             </RelativeLayout>
 
@@ -187,11 +199,11 @@
                         android:id="@+id/imageButton_sendmsg_temp"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
+                        android:background="@drawable/cycle"
+                        android:contentDescription="@string/hello"
                         android:cropToPadding="true"
                         android:padding="8dp"
                         android:scaleType="centerCrop"
-                        android:background="@drawable/cycle"
-                        android:contentDescription="@string/hello"
                         android:src="@drawable/menu_temp" />
 
                     <TextView
@@ -209,7 +221,9 @@
                         android:id="@+id/switch_sendmsg_menu_temp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical" />
+                        android:layout_gravity="center_vertical"
+                        android:textOff="未选"
+                        android:textOn="已选" />
 
                 </LinearLayout>
 
@@ -232,11 +246,11 @@
                         android:id="@+id/imageButton_sendmsg_settime"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
+                        android:background="@drawable/cycle"
+                        android:contentDescription="@string/hello"
                         android:cropToPadding="true"
                         android:padding="8dp"
                         android:scaleType="centerCrop"
-                        android:background="@drawable/cycle"
-                        android:contentDescription="@string/hello"
                         android:src="@drawable/menu_settime" />
 
                     <TextView
@@ -254,7 +268,9 @@
                         android:id="@+id/switch_sendmsg_menu_settime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical" />
+                        android:layout_gravity="center_vertical"
+                        android:textOff="未选"
+                        android:textOn="已选" />
                 </LinearLayout>
 
                 <Space

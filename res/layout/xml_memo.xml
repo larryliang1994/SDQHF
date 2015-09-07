@@ -58,8 +58,7 @@
                 android:gravity="center"
                 android:text="@string/memo_empty"
                 android:textColor="#55000000"
-                android:textSize="17sp"
-                android:textStyle="italic" />
+                android:textSize="17sp" />
 
         </RelativeLayout>
 

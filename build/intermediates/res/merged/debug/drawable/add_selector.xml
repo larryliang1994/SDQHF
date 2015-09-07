@@ -6,4 +6,4 @@
     <item android:drawable="@drawable/add_press" android:state_focused="true" />
     <item android:drawable="@drawable/add" />
 
-</selector><!-- From: file:/E:/2015cotrun/SDQHF/res/drawable/add_selector.xml -->
+</selector><!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/drawable/add_selector.xml -->

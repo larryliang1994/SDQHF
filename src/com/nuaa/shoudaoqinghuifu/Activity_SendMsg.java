@@ -13,7 +13,6 @@ import android.database.Cursor;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.telephony.SmsManager;
@@ -53,7 +52,7 @@ import me.drakeet.materialdialog.MaterialDialog;
 
 public class Activity_SendMsg extends AppCompatActivity {
     @Bind(R.id.floatingActionButton_sendmsg_send)
-    FloatingActionButton fab_send;
+    RippleView fab_send;
 
     @Bind(R.id.editText_sendmsg_names)
     EditText et_names;
@@ -105,6 +104,7 @@ public class Activity_SendMsg extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.setStatusBarColor(getResources().getColor(R.color.red_status));
+            fab_send.setElevation(4.0f);
         }
 
         setSupportActionBar(tb_sendmsg);
@@ -136,6 +136,8 @@ public class Activity_SendMsg extends AppCompatActivity {
         bgShape_temp.setColor(getResources().getColor(R.color.pink_A200));
         GradientDrawable bgShape_settime = (GradientDrawable) ibtn_settime.getBackground();
         bgShape_settime.setColor(getResources().getColor(R.color.red));
+        GradientDrawable bgShape_fab = (GradientDrawable) fab_send.getBackground();
+        bgShape_fab.setColor(getResources().getColor(R.color.red));
 
         // 获取默认信息管理器对象
         smsManager = SmsManager.getDefault();
@@ -196,6 +198,90 @@ public class Activity_SendMsg extends AppCompatActivity {
                 setFabAnimation();
             }
         });
+
+        fab_send.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
+            @Override
+            public void onComplete(RippleView rippleView) {
+                if (!et_names.getText().toString().isEmpty()
+                        && !et_content.getText().toString().isEmpty()) {
+                    if (isOnTime) {
+                        MyDate mydate = new MyDate(mYear, mMonth, mDay, mHour, mMinute);
+
+                        Msg msg = new Msg();
+                        msg.setName(et_names.getText().toString());
+                        msg.setContent(et_content.getText().toString());
+                        msg.setSendtime(mydate);
+
+                        onTimeSend(msg);
+
+                        // 插入数据库
+                        DBHelper helper = new DBHelper(Activity_SendMsg.this, "MsgTbl");
+                        helper.creatTable();
+                        helper.insert("msg", msg);
+                        helper.close();
+
+                        Intent intent = new Intent(Activity_SendMsg.this, Activity_Msg.class);
+                        intent.putExtra("msg", msg);
+
+                        if (isGroup || isTemp) {
+                            startActivity(intent);
+                        }
+
+                        Toast.makeText(Activity_SendMsg.this, "已经准备好发送了", Toast.LENGTH_SHORT).show();
+
+                        Activity_SendMsg.this.setResult(RESULT_OK, intent);
+                        Activity_SendMsg.this.finish();
+                        overridePendingTransition(R.anim.scale_stay,
+                                R.anim.out_left_right);
+                    } else {
+                        // 把短信进行拆分
+                        ArrayList<String> contents = smsManager
+                                .divideMessage(et_content.getText().toString() + "【来自“收到请回复”客户端】");
+
+                        for (int i = 0; i < phones.size(); i++) {
+                            // 参数（要发送的号码，信息中心的号码Null，内容，，)
+                            smsManager.sendMultipartTextMessage(phones.get(i), null, contents, null, null);
+                        }
+
+                        Calendar current = Calendar.getInstance();
+                        MyDate mydate = new MyDate(current.get(Calendar.YEAR),
+                                current.get(Calendar.MONTH) + 1,
+                                current.get(Calendar.DAY_OF_MONTH),
+                                current.get(Calendar.HOUR_OF_DAY),
+                                current.get(Calendar.MINUTE));
+
+                        Msg msg = new Msg();
+                        msg.setName(et_names.getText().toString());
+                        msg.setContent(et_content.getText().toString());
+                        msg.setSendtime(mydate);
+
+                        // 插入数据库
+                        DBHelper helper = new DBHelper(Activity_SendMsg.this, "MsgTbl");
+                        helper.creatTable();
+                        helper.insert("msg", msg);
+                        helper.close();
+
+                        Intent intent = new Intent(Activity_SendMsg.this, Activity_Msg.class);
+                        intent.putExtra("msg", msg);
+
+                        if (isGroup || isTemp) {
+                            startActivity(intent);
+                        }
+
+                        Toast.makeText(Activity_SendMsg.this, "发送成功", Toast.LENGTH_SHORT).show();
+
+                        Activity_SendMsg.this.setResult(RESULT_OK, intent);
+                        Activity_SendMsg.this.finish();
+                        overridePendingTransition(R.anim.scale_stay,
+                                R.anim.out_left_right);
+                    }
+                } else if (et_names.getText().toString().isEmpty()) {
+                    Toast.makeText(Activity_SendMsg.this, "请输入收件人", Toast.LENGTH_SHORT).show();
+                } else if (et_content.getText().toString().isEmpty()) {
+                    Toast.makeText(Activity_SendMsg.this, "请输入正文", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     private void setFabAnimation() {
@@ -224,6 +310,7 @@ public class Activity_SendMsg extends AppCompatActivity {
                 }
             });
             fab_send.startAnimation(animation);
+
         } else {
             Animation animation = new ScaleAnimation(1.0f, 0.0f, 1.0f, 0.0f,
                     Animation.RELATIVE_TO_SELF, 0.5f,
@@ -241,7 +328,7 @@ public class Activity_SendMsg extends AppCompatActivity {
                 @Override
                 public void onAnimationEnd(Animation animation) {
                     fab_send.setVisibility(View.GONE);
-                    sv_sendmsg.smoothScrollTo(0, (int) (30 * scale + 0.5f));
+                    sv_sendmsg.smoothScrollTo(0, (int) (32 * scale + 0.5f));
                 }
 
                 @Override
@@ -253,8 +340,8 @@ public class Activity_SendMsg extends AppCompatActivity {
         }
     }
 
-    @OnClick({R.id.imageButton_sendmsg_add, R.id.floatingActionButton_sendmsg_send,
-            R.id.editText_sendmsg_names, R.id.switch_sendmsg_menu_settime, R.id.switch_sendmsg_menu_temp})
+    @OnClick({R.id.imageButton_sendmsg_add,R.id.editText_sendmsg_names,
+            R.id.switch_sendmsg_menu_settime, R.id.switch_sendmsg_menu_temp})
     public void onClick(View v) {
         switch (v.getId()) {
 
@@ -406,88 +493,6 @@ public class Activity_SendMsg extends AppCompatActivity {
                 dialog.setCanceledOnTouchOutside(true);
 
                 dialog.show();
-
-                break;
-
-            case R.id.floatingActionButton_sendmsg_send:
-                if (!et_names.getText().toString().isEmpty()
-                        && !et_content.getText().toString().isEmpty()) {
-                    if (isOnTime) {
-                        MyDate mydate = new MyDate(mYear, mMonth, mDay, mHour, mMinute);
-
-                        Msg msg = new Msg();
-                        msg.setName(et_names.getText().toString());
-                        msg.setContent(et_content.getText().toString());
-                        msg.setSendtime(mydate);
-
-                        onTimeSend(msg);
-
-                        // 插入数据库
-                        DBHelper helper = new DBHelper(Activity_SendMsg.this, "MsgTbl");
-                        helper.creatTable();
-                        helper.insert("msg", msg);
-                        helper.close();
-
-                        Intent intent = new Intent(this, Activity_Msg.class);
-                        intent.putExtra("msg", msg);
-
-                        if (isGroup || isTemp) {
-                            startActivity(intent);
-                        }
-
-                        Toast.makeText(this, "已经准备好发送了", Toast.LENGTH_SHORT).show();
-
-                        this.setResult(RESULT_OK, intent);
-                        this.finish();
-                        overridePendingTransition(R.anim.scale_stay,
-                                R.anim.out_left_right);
-                    } else {
-                        // 把短信进行拆分
-                        ArrayList<String> contents = smsManager
-                                .divideMessage(et_content.getText().toString() + "【来自“收到请回复”客户端】");
-
-                        for (int i = 0; i < phones.size(); i++) {
-                            // 参数（要发送的号码，信息中心的号码Null，内容，，)
-                            smsManager.sendMultipartTextMessage(phones.get(i), null, contents, null, null);
-                        }
-
-                        Calendar current = Calendar.getInstance();
-                        MyDate mydate = new MyDate(current.get(Calendar.YEAR),
-                                current.get(Calendar.MONTH) + 1,
-                                current.get(Calendar.DAY_OF_MONTH),
-                                current.get(Calendar.HOUR_OF_DAY),
-                                current.get(Calendar.MINUTE));
-
-                        Msg msg = new Msg();
-                        msg.setName(et_names.getText().toString());
-                        msg.setContent(et_content.getText().toString());
-                        msg.setSendtime(mydate);
-
-                        // 插入数据库
-                        DBHelper helper = new DBHelper(Activity_SendMsg.this, "MsgTbl");
-                        helper.creatTable();
-                        helper.insert("msg", msg);
-                        helper.close();
-
-                        Intent intent = new Intent(this, Activity_Msg.class);
-                        intent.putExtra("msg", msg);
-
-                        if (isGroup || isTemp) {
-                            startActivity(intent);
-                        }
-
-                        Toast.makeText(this, "发送成功", Toast.LENGTH_SHORT).show();
-
-                        this.setResult(RESULT_OK, intent);
-                        this.finish();
-                        overridePendingTransition(R.anim.scale_stay,
-                                R.anim.out_left_right);
-                    }
-                } else if (et_names.getText().toString().isEmpty()) {
-                    Toast.makeText(this, "请输入收件人", Toast.LENGTH_SHORT).show();
-                } else if (et_content.getText().toString().isEmpty()) {
-                    Toast.makeText(this, "请输入正文", Toast.LENGTH_SHORT).show();
-                }
 
                 break;
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nuaa.shoudaoqinghuifu"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionCode="2"
+    android:versionName="0.9.0.3" >
 
     <uses-sdk
         android:minSdkVersion="15"
@@ -19,6 +19,9 @@
     <uses-permission android:name="android.permission.READ_CALENDAR" />
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
         android:allowBackup="true"
@@ -56,11 +59,11 @@
         <activity
             android:name="com.nuaa.shoudaoqinghuifu.Activity_SendMsg"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustResize" />
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
         <activity
             android:name="com.nuaa.shoudaoqinghuifu.Activity_Feedback"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustResize" />
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
         <activity
             android:name="com.nuaa.shoudaoqinghuifu.Activity_Contacts"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
@@ -103,6 +106,27 @@
         </receiver>
 
         <service android:name="com.nuaa.shoudaoqinghuifu.Service_Alarm" />
+        <service
+            android:name="com.umeng.update.net.DownloadingService"
+            android:process=":DownloadingService" >
+        </service>
+
+        <activity
+            android:name="com.umeng.update.UpdateDialogActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+        <activity android:name="com.umeng.fb.ConversationActivity" />
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="55d429f067e58eab8e0020a8" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="Channel ID" />
+
+        <activity
+            android:name="android.support.v7.widget.TestActivity"
+            android:label="RecyclerViewTestActivity" />
     </application>
 
 </manifest>

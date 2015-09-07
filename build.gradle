@@ -8,13 +8,16 @@ apply plugin: 'com.android.application'
 dependencies {
     compile files('libs/butterknife-7.0.1.jar')
     compile files('libs/pinyin4j.jar')
+    compile files('libs/umeng-update-v2.6.0.1.jar')
     compile 'com.android.support:cardview-v7:22.2.1'
     compile 'com.android.support:support-annotations:23.0.0'
     compile 'com.android.support:design:22.2.1'
     compile 'com.android.support:appcompat-v7:22.2.1'
     compile 'me.drakeet.materialdialog:library:1.2.2'
     compile 'com.umeng.analytics:analytics:latest.integration'
-    compile files('libs/umeng-update-v2.6.0.1.jar')
+    compile 'com.melnykov:floatingactionbutton:1.2.0'
+    compile 'com.android.support:support-v4:21.+'
+    compile files('libs/com.umeng.fb.5.4.0.jar')
 }
 
 allprojects {
@@ -34,7 +37,7 @@ android {
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 21
-        versionCode 6
+        versionCode 2
         versionName "0.9.0.3"
     }
 

@@ -14,7 +14,7 @@
             android:id="@+id/toolbar_checkmsg"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#ff5252"
+            android:background="@color/red"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:navigationIcon="@drawable/back_selector"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
@@ -43,4 +43,4 @@
         android:textColor="#212121"
         android:textSize="17sp" />
 
-</LinearLayout><!-- From: file:/E:/2015cotrun/SDQHF/res/layout/xml_checkmsg.xml -->
+</LinearLayout><!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/layout/xml_checkmsg.xml -->

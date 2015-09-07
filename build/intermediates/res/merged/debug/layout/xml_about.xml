@@ -16,7 +16,7 @@
             android:id="@+id/toolbar_about"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#03A9F4"
+            android:background="@color/blue"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:navigationIcon="@drawable/back_selector"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
@@ -73,4 +73,4 @@
         android:layout_height="0dp"
         android:layout_weight="0.5" />
 
-</LinearLayout><!-- From: file:/E:/2015cotrun/SDQHF/res/layout/xml_about.xml -->
+</LinearLayout><!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/layout/xml_about.xml -->
