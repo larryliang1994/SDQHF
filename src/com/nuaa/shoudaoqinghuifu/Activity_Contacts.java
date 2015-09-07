@@ -140,8 +140,12 @@ public class Activity_Contacts extends AppCompatActivity {
                             }
                         }
 
+                        if (!("".equals(names))) {
+                            names = names.substring(2);
+                        }
+
                         // 设置返回的结果
-                        backIntent.putExtra("names", names.substring(2));
+                        backIntent.putExtra("names", names);
                         backIntent.putExtra("phones", phones);
 
                         // 结果编码

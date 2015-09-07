@@ -233,8 +233,6 @@ public class Activity_Group extends AppCompatActivity {
         switch (requestCode) {
             case Value.ADD_GROUP:
                 if (resultCode == RESULT_OK) {
-                    setListViewAnimation();
-
                     // 获取最后一条数据，也就是新插入的数据
                     Cursor cursor = helper.query();
                     cursor.moveToPosition(cursor.getCount() - 1);

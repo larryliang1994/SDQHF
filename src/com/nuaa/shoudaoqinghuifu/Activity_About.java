@@ -1,6 +1,8 @@
 package com.nuaa.shoudaoqinghuifu;
 
 import android.annotation.TargetApi;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,6 +12,7 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
+import android.widget.TextView;
 
 import com.umeng.analytics.MobclickAgent;
 
@@ -19,6 +22,9 @@ import butterknife.ButterKnife;
 public class Activity_About extends AppCompatActivity {
     @Bind(R.id.toolbar_about)
     Toolbar tb_about;
+
+    @Bind(R.id.textView_about_version)
+    TextView tv_version;
 
     private float startX = 0.0f;
 
@@ -34,7 +40,7 @@ public class Activity_About extends AppCompatActivity {
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    private void initView(){
+    private void initView() {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.setStatusBarColor(getResources().getColor(R.color.blue_status));
@@ -49,6 +55,17 @@ public class Activity_About extends AppCompatActivity {
                         R.anim.out_left_right);
             }
         });
+
+        // 获取packagemanager的实例
+        PackageManager packageManager = getPackageManager();
+        // getPackageName()是你当前类的包名，0代表是获取版本信息
+        try {
+            PackageInfo packInfo = packageManager.getPackageInfo(getPackageName(),0);
+            tv_version.setText(packInfo.versionName);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Override

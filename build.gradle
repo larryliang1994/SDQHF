@@ -15,7 +15,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:22.2.1'
     compile 'me.drakeet.materialdialog:library:1.2.2'
     compile 'com.umeng.analytics:analytics:latest.integration'
-    compile 'com.melnykov:floatingactionbutton:1.2.0'
     compile 'com.android.support:support-v4:21.+'
     compile files('libs/com.umeng.fb.5.4.0.jar')
 }
@@ -37,8 +36,8 @@ android {
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 21
-        versionCode 2
-        versionName "0.9.0.3"
+        versionCode 3
+        versionName "0.9.1.0"
     }
 
     compileOptions {

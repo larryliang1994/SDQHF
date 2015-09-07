@@ -26,10 +26,12 @@
 
         <Preference
             android:key="update"
+            android:summary="获取最新版本"
             android:title="检查更新" />
 
         <Preference
             android:key="about"
+            android:summary="查看版本信息"
             android:title="关于" />
     </PreferenceCategory>
 

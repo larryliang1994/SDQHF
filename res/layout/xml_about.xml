@@ -54,6 +54,14 @@
         android:textColor="#727272"
         android:textSize="15sp" />
 
+    <TextView
+        android:id="@+id/textView_about_version"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#727272"
+        android:textSize="15sp" />
+
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
