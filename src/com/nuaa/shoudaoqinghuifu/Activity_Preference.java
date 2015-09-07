@@ -24,6 +24,11 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.umeng.update.UmengUpdateAgent;
+import com.umeng.update.UmengUpdateListener;
+import com.umeng.update.UpdateResponse;
+import com.umeng.update.UpdateStatus;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import me.drakeet.materialdialog.MaterialDialog;
@@ -194,7 +199,27 @@ public class Activity_Preference extends PreferenceActivity {
 
                 if (info != null && info.isAvailable()) {
                     // 若网络可用，检查更新
-                    Toast.makeText(this, "已经是最新版本", Toast.LENGTH_SHORT).show();
+                    UmengUpdateAgent.setUpdateAutoPopup(false);
+                    UmengUpdateAgent.setUpdateListener(new UmengUpdateListener() {
+                        @Override
+                        public void onUpdateReturned(int updateStatus, UpdateResponse updateInfo) {
+                            switch (updateStatus) {
+                                case UpdateStatus.NoneWifi:
+                                case UpdateStatus.Yes: // has update
+                                    UmengUpdateAgent.showUpdateDialog(Activity_Preference.this, updateInfo);
+                                    break;
+
+                                case UpdateStatus.No: // has no update
+                                    Toast.makeText(Activity_Preference.this, "已经是最新版本了", Toast.LENGTH_SHORT).show();
+                                    break;
+
+                                case UpdateStatus.Timeout: // time out
+                                    Toast.makeText(Activity_Preference.this, "Oops...网络出错了哦", Toast.LENGTH_SHORT).show();
+                                    break;
+                            }
+                        }
+                    });
+                    UmengUpdateAgent.forceUpdate(this);
                 } else {
                     Toast.makeText(this, "Oops...网络出错了哦", Toast.LENGTH_SHORT).show();
                 }

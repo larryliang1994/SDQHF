@@ -14,6 +14,8 @@ import android.view.animation.LayoutAnimationController;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.umeng.update.UmengUpdateAgent;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -55,6 +57,9 @@ public class Activity_Welcome extends Activity {
             editor.putBoolean("needTemp", false);
             editor.apply();
         }
+
+        // 检查更新
+        UmengUpdateAgent.update(this);
 
         // 延迟启动主界面
         new Handler().postDelayed(new Runnable() {
