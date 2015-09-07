@@ -41,6 +41,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.umeng.analytics.MobclickAgent;
+
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Vector;
@@ -418,9 +420,15 @@ public class Activity_Memo extends AppCompatActivity {
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
-
+        MobclickAgent.onResume(this);
         // 启动闹钟监听
         if (needNotify && !isBroadcast) {
             Intent service = new Intent(this, Service_Alarm.class);

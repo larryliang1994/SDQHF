@@ -1,19 +1,18 @@
 package com.nuaa.shoudaoqinghuifu;
 
 import android.annotation.TargetApi;
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
-import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
+
+import com.umeng.analytics.MobclickAgent;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -62,6 +61,18 @@ public class Activity_CheckMsg extends AppCompatActivity {
         tv_content.setText(msg.content);
         tv_sendtime.setText(msg.sendtime.toString());
         tb_checkmsg.setTitle(msg.name);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 
     // 按下返回键返回上层

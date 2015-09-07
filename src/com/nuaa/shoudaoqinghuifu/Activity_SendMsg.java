@@ -1,7 +1,6 @@
 package com.nuaa.shoudaoqinghuifu;
 
 import android.app.AlarmManager;
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -41,6 +40,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import com.umeng.analytics.MobclickAgent;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -324,18 +325,23 @@ public class Activity_SendMsg extends AppCompatActivity {
                 }
                 break;
 
-
             case R.id.editText_sendmsg_names:
             case R.id.imageButton_sendmsg_add:
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
                 String[] name = {"从通讯录中选取", "从我的群组中选取"};
 
-                builder.setItems(name, new DialogInterface.OnClickListener() {
+                final MaterialDialog dialog = new MaterialDialog(this);
 
+                ListView listView = new ListView(this);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, name);
+                listView.setAdapter(adapter);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
-                    public void onClick(DialogInterface arg0, int which) {
-                        if (which == 0) {
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        // 通讯录中选取
+                        if (position == 0) {
+                            dialog.dismiss();
+
                             Intent openActivity = new Intent(Activity_SendMsg.this,
                                     Activity_Contacts.class);
                             openActivity.putExtra("names", names);
@@ -344,12 +350,7 @@ public class Activity_SendMsg extends AppCompatActivity {
                                     Value.CHOOSE_CONTACTS);
                             overridePendingTransition(R.anim.in_right_left,
                                     R.anim.scale_stay);
-                        } else {
-                            AlertDialog.Builder builder = new AlertDialog.Builder(
-                                    Activity_SendMsg.this);
-
-                            builder.setTitle("选一个吧");
-
+                        } else { // 我的群组中选取
                             // 读取群组
                             final DBHelper tHelper = new DBHelper(Activity_SendMsg.this, "GroupTbl");
                             final Cursor cursor = tHelper.query();
@@ -363,40 +364,48 @@ public class Activity_SendMsg extends AppCompatActivity {
                                 cursor.moveToNext();
                             }
 
-                            // 参数（数据列表，默认索引（-1表示不选中），事件处理）
-                            builder.setSingleChoiceItems(names, -1,
-                                    new DialogInterface.OnClickListener() {
+                            final MaterialDialog mDialog = new MaterialDialog(Activity_SendMsg.this);
 
-                                        @Override
-                                        public void onClick(DialogInterface dialog,
-                                                            int which) {
-                                            cursor.moveToPosition(which);
-                                            et_names.setText(cursor.getString(1));
-                                            String member_s = cursor.getString(2);
+                            ListView listView = new ListView(Activity_SendMsg.this);
+                            ArrayAdapter<String> adapter = new ArrayAdapter<>(Activity_SendMsg.this, android.R.layout.simple_list_item_1, names);
+                            listView.setAdapter(adapter);
+                            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                    cursor.moveToPosition(position);
+                                    et_names.setText(cursor.getString(1));
+                                    String member_s = cursor.getString(2);
 
-                                            String[] member_split = member_s.split("#!#");
+                                    String[] member_split = member_s.split("#!#");
 
-                                            // 获取选取的组所有成员的手机号
-                                            phones.clear();
-                                            for (String aMember_split : member_split) {
-                                                String[] member_each = aMember_split.split(":");
+                                    // 获取选取的组所有成员的手机号
+                                    phones.clear();
+                                    for (String aMember_split : member_split) {
+                                        String[] member_each = aMember_split.split(":");
 
-                                                phones.add(member_each[1]);
-                                            }
+                                        phones.add(member_each[1]);
+                                    }
 
-                                            tHelper.close();
+                                    tHelper.close();
 
-                                            // 选择完就关掉
-                                            dialog.dismiss();
-                                        }
-                                    });
-                            AlertDialog dialog = builder.create();
-                            dialog.setCanceledOnTouchOutside(true);
-                            dialog.show();
+                                    mDialog.dismiss();
+                                }
+                            });
+
+                            mDialog.setView(listView);
+                            mDialog.setCanceledOnTouchOutside(true);
+
+                            mDialog.show();
+
+                            dialog.dismiss();
                         }
                     }
                 });
-                builder.show();
+
+                dialog.setView(listView);
+                dialog.setCanceledOnTouchOutside(true);
+
+                dialog.show();
 
                 break;
 
@@ -485,6 +494,18 @@ public class Activity_SendMsg extends AppCompatActivity {
             default:
                 break;
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 
     // 日期选择对话框

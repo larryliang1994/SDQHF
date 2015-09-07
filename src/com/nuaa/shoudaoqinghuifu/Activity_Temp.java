@@ -35,6 +35,8 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.umeng.analytics.MobclickAgent;
+
 import java.util.Vector;
 
 import butterknife.Bind;
@@ -172,7 +174,7 @@ public class Activity_Temp extends AppCompatActivity {
                 cv.setCardBackgroundColor(getResources().getColor(Value.colors[position % Value.colors.length]));
 
                 // 设置单击事件
-                RippleView tv_title = (RippleView)v.findViewById(R.id.textView_temp_dialog_title);
+                RippleView tv_title = (RippleView) v.findViewById(R.id.textView_temp_dialog_title);
                 tv_title.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
                     @Override
                     public void onComplete(RippleView rippleView) {
@@ -330,6 +332,18 @@ public class Activity_Temp extends AppCompatActivity {
         } else {
             tv_empty.setVisibility(View.INVISIBLE);
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 
     @Override

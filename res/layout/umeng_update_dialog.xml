@@ -83,13 +83,15 @@
             android:button="@drawable/umeng_update_button_check_selector"
             android:text="@string/UMIgnore"
             android:textColor="#212121"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:visibility="gone" />
 
         <!-- OK&Cancel Button -->
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/umeng_update_id_ignore"

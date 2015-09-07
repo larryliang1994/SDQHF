@@ -25,6 +25,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.umeng.analytics.MobclickAgent;
+
 import java.util.ArrayList;
 
 import butterknife.Bind;
@@ -194,9 +196,15 @@ public class Activity_AddGroup extends AppCompatActivity {
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
-
+        MobclickAgent.onResume(this);
         lv_addgroup.setAdapter(new MyAdapter());
     }
 

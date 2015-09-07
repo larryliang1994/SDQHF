@@ -14,7 +14,7 @@ import android.view.animation.LayoutAnimationController;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.umeng.update.UmengUpdateAgent;
+import com.umeng.analytics.MobclickAgent;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -57,9 +57,6 @@ public class Activity_Welcome extends Activity {
             editor.putBoolean("needTemp", false);
             editor.apply();
         }
-
-        // 检查更新
-        UmengUpdateAgent.update(this);
 
         // 延迟启动主界面
         new Handler().postDelayed(new Runnable() {
@@ -130,5 +127,17 @@ public class Activity_Welcome extends Activity {
             Temp temp = new Temp(Value.titles[i], Value.temps[i]);
             helper.insert("temp", temp);
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 }

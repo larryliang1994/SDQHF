@@ -3,7 +3,6 @@ package com.nuaa.shoudaoqinghuifu;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -17,6 +16,8 @@ import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.umeng.analytics.MobclickAgent;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -138,6 +139,18 @@ public class Activity_AddTemp extends AppCompatActivity implements View.OnTouchL
 
         edt_title.setOnTouchListener(this);
         edt_content.setOnTouchListener(this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 
     // 按下返回键返回上层

@@ -2,9 +2,6 @@ package com.nuaa.shoudaoqinghuifu;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
@@ -31,11 +28,14 @@ import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.umeng.analytics.MobclickAgent;
 
 import java.util.Calendar;
 import java.util.Vector;
@@ -85,7 +85,7 @@ public class Activity_Msg extends AppCompatActivity {
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void initView() {
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.setStatusBarColor(getResources().getColor(R.color.red_status));
         }
@@ -170,66 +170,75 @@ public class Activity_Msg extends AppCompatActivity {
         lv_msg.setOnItemLongClickListener(new OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view,
-                                           int p, long id) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(
-                        Activity_Msg.this);
-
-                final int position = p;
+                                           final int p, long id) {
                 final String[] names = {"添加到备忘录", "删除"};
 
-                builder.setItems(names, new DialogInterface.OnClickListener() {
+                final MaterialDialog dialog = new MaterialDialog(Activity_Msg.this);
 
+                ListView listView = new ListView(Activity_Msg.this);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(Activity_Msg.this, android.R.layout.simple_list_item_1, names);
+                listView.setAdapter(adapter);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // 添加到备忘录
-                        if (which == 0) {
-                            Intent intent = new Intent(Activity_Msg.this,
-                                    Activity_AddMemo.class);
-                            intent.putExtra("msg", vector_msgs.get(position));
-                            startActivity(intent);
-                            Activity_Msg.this.finish();
-                            overridePendingTransition(R.anim.in_right_left,
-                                    R.anim.out_right_left);
-                        }
-                        // 删除
-                        else if (which == 1) {
-                            final MaterialDialog mDialog = new MaterialDialog(Activity_Msg.this)
-                                    .setCanceledOnTouchOutside(true)
-                                    .setTitle("删除")
-                                    .setMessage("真的要删除该消息吗？");
-                            mDialog.setPositiveButton("真的",
-                                    new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            // 设置退出动画
-                                            setListViewAnimation();
+                    public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                        switch (position) {
+                            // 添加到备忘录
+                            case 0:
+                                dialog.dismiss();
 
-                                            // 刷新页面
-                                            Cursor cursor = helper.query();
-                                            cursor.moveToPosition(vector_msgs.size() - position - 1);
-                                            helper.delete(cursor.getInt(0));
-                                            vector_msgs.remove(position);
-                                            setAdapter();
+                                Intent intent = new Intent(Activity_Msg.this,
+                                        Activity_AddMemo.class);
+                                intent.putExtra("msg", vector_msgs.get(position));
+                                startActivity(intent);
+                                Activity_Msg.this.finish();
+                                overridePendingTransition(R.anim.in_right_left,
+                                        R.anim.out_right_left);
+                                break;
 
-                                            Toast.makeText(Activity_Msg.this,
-                                                    "已删除", Toast.LENGTH_SHORT)
-                                                    .show();
-                                            mDialog.dismiss();
-                                        }
-                                    })
-                                    .setNegativeButton("假的", new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            mDialog.dismiss();
-                                        }
-                                    });
-                            mDialog.show();
+                            // 删除
+                            case 1:
+                                dialog.dismiss();
+
+                                final MaterialDialog mDialog = new MaterialDialog(Activity_Msg.this)
+                                        .setCanceledOnTouchOutside(true)
+                                        .setTitle("删除")
+                                        .setMessage("真的要删除该消息吗？");
+                                mDialog.setPositiveButton("真的",
+                                        new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                // 设置退出动画
+                                                setListViewAnimation();
+
+                                                // 刷新页面
+                                                Cursor cursor = helper.query();
+                                                cursor.moveToPosition(vector_msgs.size() - p - 1);
+                                                helper.delete(cursor.getInt(0));
+                                                vector_msgs.remove(p);
+                                                setAdapter();
+
+                                                Toast.makeText(Activity_Msg.this,
+                                                        "已删除", Toast.LENGTH_SHORT)
+                                                        .show();
+                                                mDialog.dismiss();
+                                            }
+                                        })
+                                        .setNegativeButton("假的", new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                mDialog.dismiss();
+                                            }
+                                        });
+                                mDialog.show();
+
+                                break;
                         }
                     }
                 });
-                Dialog bDialog = builder.create();
-                bDialog.setCanceledOnTouchOutside(true);
-                bDialog.show();
+
+                dialog.setView(listView);
+                dialog.setCanceledOnTouchOutside(true);
+                dialog.show();
                 return true;
             }
 
@@ -245,6 +254,18 @@ public class Activity_Msg extends AppCompatActivity {
         lac.setDelay(0.3f);
 
         lv_msg.setLayoutAnimation(lac);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 
     @Override
