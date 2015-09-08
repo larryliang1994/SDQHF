@@ -21,8 +21,21 @@
     <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <attr format="reference" name="drawerArrowStyle"/>
+    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/attrs.xml -->
+    <eat-comment/>
+    <attr format="color" name="group"/>
+    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
+    <eat-comment/>
     <attr format="dimension" name="height"/>
     <attr format="boolean" name="isLightTheme"/>
+    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/attrs.xml -->
+    <eat-comment/>
+    <attr format="color" name="memo"/>
+    <attr format="reference" name="msg"/>
+    <attr format="color" name="other"/>
+    <attr format="color" name="temp"/>
+    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
+    <eat-comment/>
     <attr format="string" name="title"/>
     <bool name="abc_action_bar_embed_tabs">true</bool>
     <bool name="abc_action_bar_embed_tabs_pre_jb">false</bool>
@@ -45,6 +58,8 @@
     <eat-comment/>
     <color name="blue">#03A9F4</color>
     <color name="blue_A200">#6889ff</color>
+    <color name="blue_deep">#5677fc</color>
+    <color name="blue_deep_status">#455ede</color>
     <color name="blue_status">#0288D1</color>
     <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
@@ -71,6 +86,9 @@
     <color name="cardview_light_background">#FFFAFAFA</color>
     <color name="cardview_shadow_end_color">#03000000</color>
     <color name="cardview_shadow_start_color">#37000000</color>
+    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/colors.xml -->
+    <eat-comment/>
+    <color name="dark">#293238</color>
     <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <color name="dim_foreground_disabled_material_dark">#80bebebe</color>
@@ -88,6 +106,8 @@
     <eat-comment/>
     <color name="green">#8bc34a</color>
     <color name="green_A200">#8bc34a</color>
+    <color name="green_deep">#259b24</color>
+    <color name="green_deep_status">#0a7e07</color>
     <color name="green_status">#689f38</color>
     <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
@@ -100,10 +120,6 @@
     <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/me.drakeet.materialdialog/library/1.2.2/res/values/values.xml -->
     <eat-comment/>
     <color name="lite_blue">#ff359ff2</color>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.melnykov/floatingactionbutton/1.2.0/res/values/values.xml -->
-    <eat-comment/>
-    <color name="material_blue_500">#5677fc</color>
-    <color name="material_blue_600">#4e6cef</color>
     <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <color name="material_blue_grey_800">#ff37474f</color>
@@ -130,8 +146,12 @@
     <eat-comment/>
     <color name="purple">#9C27B0</color>
     <color name="purple_A200">#e040fb</color>
+    <color name="purple_deep">#673ab7</color>
+    <color name="purple_deep_status">#512da8</color>
     <color name="purple_status">#7b1fa2</color>
     <color name="red">#F36C60</color>
+    <color name="red_deep">#e91e63</color>
+    <color name="red_deep_status">#c2185b</color>
     <color name="red_status">#E84E40</color>
     <color name="rippelColor">#FFFFFF</color>
     <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
@@ -189,7 +209,7 @@
     <declare-styleable name="CoordinatorLayout"><attr format="reference" name="keylines"/><attr format="reference" name="statusBarBackground"/></declare-styleable>
     <declare-styleable name="CoordinatorLayout_LayoutParams"><attr name="android:layout_gravity"/><attr format="string" name="layout_behavior"/><attr format="reference" name="layout_anchor"/><attr format="integer" name="layout_keyline"/><attr name="layout_anchorGravity"><flag name="top" value="0x30"/><flag name="bottom" value="0x50"/><flag name="left" value="0x03"/><flag name="right" value="0x05"/><flag name="center_vertical" value="0x10"/><flag name="fill_vertical" value="0x70"/><flag name="center_horizontal" value="0x01"/><flag name="fill_horizontal" value="0x07"/><flag name="center" value="0x11"/><flag name="fill" value="0x77"/><flag name="clip_vertical" value="0x80"/><flag name="clip_horizontal" value="0x08"/><flag name="start" value="0x00800003"/><flag name="end" value="0x00800005"/></attr></declare-styleable>
     <declare-styleable name="DrawerArrowToggle"><attr format="color" name="color"/><attr format="boolean" name="spinBars"/><attr format="dimension" name="drawableSize"/><attr format="dimension" name="gapBetweenBars"/><attr format="dimension" name="topBottomBarArrowSize"/><attr format="dimension" name="middleBarArrowSize"/><attr format="dimension" name="barSize"/><attr format="dimension" name="thickness"/></declare-styleable>
-    <declare-styleable name="FloatingActionButton"><attr format="color" name="fab_colorPressed"/><attr format="color" name="fab_colorNormal"/><attr format="color" name="fab_colorRipple"/><attr format="boolean" name="fab_shadow"/><attr format="enum" name="fab_type"><enum name="normal" value="0"/><enum name="mini" value="1"/></attr><attr name="android:background"/><attr name="backgroundTint"/><attr name="backgroundTintMode"/><attr format="color" name="rippleColor"/><attr name="fabSize"><enum name="normal" value="0"/><enum name="mini" value="1"/></attr><attr name="elevation"/><attr format="dimension" name="pressedTranslationZ"/><attr format="dimension" name="borderWidth"/></declare-styleable>
+    <declare-styleable name="FloatingActionButton"><attr name="android:background"/><attr name="backgroundTint"/><attr name="backgroundTintMode"/><attr format="color" name="rippleColor"/><attr name="fabSize"><enum name="normal" value="0"/><enum name="mini" value="1"/></attr><attr name="elevation"/><attr format="dimension" name="pressedTranslationZ"/><attr format="dimension" name="borderWidth"/></declare-styleable>
     <declare-styleable name="LinearLayoutCompat"><attr name="android:orientation"/><attr name="android:gravity"/><attr name="android:baselineAligned"/><attr name="android:baselineAlignedChildIndex"/><attr name="android:weightSum"/><attr format="boolean" name="measureWithLargestChild"/><attr name="divider"/><attr name="showDividers"><flag name="none" value="0"/><flag name="beginning" value="1"/><flag name="middle" value="2"/><flag name="end" value="4"/></attr><attr format="dimension" name="dividerPadding"/></declare-styleable>
     <declare-styleable name="LinearLayoutCompat_Layout"><attr name="android:layout_width"/><attr name="android:layout_height"/><attr name="android:layout_weight"/><attr name="android:layout_gravity"/></declare-styleable>
     <declare-styleable name="ListPopupWindow"><attr name="android:dropDownVerticalOffset"/><attr name="android:dropDownHorizontalOffset"/></declare-styleable>
@@ -300,13 +320,6 @@
     <dimen name="fab_border_width">0.5dp</dimen>
     <dimen name="fab_content_size">24dp</dimen>
     <dimen name="fab_elevation">8dp</dimen>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.melnykov/floatingactionbutton/1.2.0/res/values/values.xml -->
-    <eat-comment/>
-    <dimen name="fab_elevation_lollipop">8dp</dimen>
-    <dimen name="fab_scroll_threshold">4dp</dimen>
-    <dimen name="fab_shadow_size">12dp</dimen>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/design/22.2.1/res/values/values.xml -->
-    <eat-comment/>
     <dimen name="fab_size_mini">40dp</dimen>
     <dimen name="fab_size_normal">56dp</dimen>
     <dimen name="fab_translation_z_pressed">6dp</dimen>
@@ -422,11 +435,6 @@
     <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/strings.xml -->
     <eat-comment/>
     <string name="contact_choose">联系人</string>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.melnykov/floatingactionbutton/1.2.0/res/values/values.xml -->
-    <eat-comment/>
-    <string name="define_FloatingActionButton"/>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/strings.xml -->
-    <eat-comment/>
     <string name="delete">删除</string>
     <string name="feedback">意见反馈</string>
     <string name="feedback_contact_hint">联系方式：邮箱/QQ/手机号</string>
@@ -443,17 +451,6 @@
     <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/me.drakeet.materialdialog/library/1.2.2/res/values/values.xml -->
     <eat-comment/>
     <string name="hello_world">Hello world!</string>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.melnykov/floatingactionbutton/1.2.0/res/values/values.xml -->
-    <eat-comment/>
-    <string name="library_FloatingActionButton_author">Oleksandr Melnykov</string>
-    <string name="library_FloatingActionButton_authorWebsite">https://github.com/makovkastar/FloatingActionButton</string>
-    <string name="library_FloatingActionButton_isOpenSource">true</string>
-    <string name="library_FloatingActionButton_libraryDescription">Android Google+ like floating action button which reacts on the list view scrolling events. Becomes visible when the list view is scrolled up and invisible when scrolled down.</string>
-    <string name="library_FloatingActionButton_libraryName">FloatingActionButton</string>
-    <string name="library_FloatingActionButton_libraryVersion">1.0.0</string>
-    <string name="library_FloatingActionButton_libraryWebsite">https://github.com/makovkastar/FloatingActionButton</string>
-    <string name="library_FloatingActionButton_licenseId">mit</string>
-    <string name="library_FloatingActionButton_repositoryLink">https://github.com/makovkastar/FloatingActionButton</string>
     <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/strings.xml -->
     <eat-comment/>
     <string name="memo">备忘录</string>
@@ -475,6 +472,7 @@
     <string name="needmemo">是否提醒</string>
     <string name="phone">电话号码</string>
     <string name="receiver">接收者</string>
+    <string name="reply_list">回复情况</string>
     <string name="setting">设置</string>
     <string name="sign">Copyright © 2014–2015 NUAA. All Rights Reserved.</string>
     <string name="sign_short"> © 2014–2015 NUAA. </string>
@@ -565,7 +563,7 @@
     <string name="umeng_fb_write_contact_title">Write contact Info</string>
     <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/strings.xml -->
     <eat-comment/>
-    <string name="version">Version Beta</string>
+    <string name="version">Version</string>
     <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
@@ -1792,12 +1790,6 @@
     <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/styles.xml -->
     <eat-comment/>
     <style name="Theme.Application" parent="@style/Theme.AppCompat"/>
-    <style name="Theme.Settings" parent="@style/AppBaseTheme">
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowActionBar">false</item>
-
-        <item name="toolbarStyle">@style/Widget.Toolbar</item>
-    </style>
     <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <style name="ThemeOverlay.AppCompat" parent="Base.ThemeOverlay.AppCompat"/>
@@ -1805,6 +1797,38 @@
     <style name="ThemeOverlay.AppCompat.Dark" parent="Base.ThemeOverlay.AppCompat.Dark"/>
     <style name="ThemeOverlay.AppCompat.Dark.ActionBar" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="ThemeOverlay.AppCompat.Light" parent="Base.ThemeOverlay.AppCompat.Light"/>
+    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="Theme_Blue" parent="AppTheme">
+        <item name="msg">@color/blue</item>
+        <item name="group">@color/blue</item>
+        <item name="memo">@color/blue</item>
+        <item name="temp">@color/blue</item>
+        <item name="other">@color/blue</item>
+    </style>
+    <style name="Theme_Colorful_Deep" parent="AppTheme">
+        <item name="msg">@color/red_deep</item>
+        <item name="group">@color/blue_deep</item>
+        <item name="memo">@color/purple_deep</item>
+        <item name="temp">@color/green_deep</item>
+        <item name="other">@color/blue_deep</item>
+    </style>
+    <style name="Theme_Colorful_Light" parent="AppTheme">
+        <item name="msg">@color/red</item>
+        <item name="group">@color/blue</item>
+        <item name="memo">@color/purple</item>
+        <item name="temp">@color/green</item>
+        <item name="other">@color/blue</item>
+    </style>
+    <style name="Theme_Dark" parent="AppTheme">
+        <item name="msg">@color/dark</item>
+        <item name="group">@color/dark</item>
+        <item name="memo">@color/dark</item>
+        <item name="temp">@color/dark</item>
+        <item name="other">@color/dark</item>
+    </style>
+    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
+    <eat-comment/>
     <style name="Widget.AppCompat.ActionBar" parent="Base.Widget.AppCompat.ActionBar">
     </style>
     <style name="Widget.AppCompat.ActionBar.Solid" parent="Base.Widget.AppCompat.ActionBar.Solid">
@@ -1948,9 +1972,6 @@
     </style>
     <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/styles.xml -->
     <eat-comment/>
-    <style name="Widget.Toolbar" parent="@style/Widget.AppCompat.Toolbar">
-        <item name="android:background">#03A9F4</item>
-    </style>
     <style name="mystyle" parent="android:Animation">
         <item name="@android:windowEnterAnimation">@anim/in_left_right</item>  //进入时的动画
         <item name="@android:windowExitAnimation">@anim/out_right_left</item>    //退出时的动画

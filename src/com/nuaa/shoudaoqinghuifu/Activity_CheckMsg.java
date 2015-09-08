@@ -1,15 +1,16 @@
 package com.nuaa.shoudaoqinghuifu;
 
-import android.annotation.TargetApi;
-import android.os.Build;
+import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
 import android.widget.TextView;
 
 import com.umeng.analytics.MobclickAgent;
@@ -28,6 +29,9 @@ public class Activity_CheckMsg extends AppCompatActivity {
     Toolbar tb_checkmsg;
 
     private float startX = 0.0f;
+    private Msg msg;
+    private boolean isGroup = false;
+    private String[] names = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +46,12 @@ public class Activity_CheckMsg extends AppCompatActivity {
         initView();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_items_msg, menu);
+        return true;
+    }
+
     private void initView() {
         setSupportActionBar(tb_checkmsg);
         tb_checkmsg.setNavigationOnClickListener(new View.OnClickListener() {
@@ -53,10 +63,43 @@ public class Activity_CheckMsg extends AppCompatActivity {
             }
         });
 
-        Msg msg = (Msg) getIntent().getSerializableExtra("msg");
+        msg = (Msg) getIntent().getSerializableExtra("msg");
         tv_content.setText(msg.content);
         tv_sendtime.setText(msg.sendtime.toString());
         tb_checkmsg.setTitle(msg.name);
+
+        //处理否来自群组的信息
+        String msg_name = msg.name;
+        DBHelper helper = new DBHelper(Activity_CheckMsg.this, "MsgTbl");
+        helper.creatTable();
+        Cursor cursor = helper.query();
+        cursor.moveToFirst();
+
+        //名字相同则说明来自群组
+        for (int i = 0; i < cursor.getCount(); i++) {
+            String M_name = cursor.getString(1);
+            String[] M_names = M_name.split("@@@");
+            if (msg_name.equals(M_names[0])) {
+                msg.setName(M_name);
+                isGroup = true;
+                break;
+            } else {
+                cursor.moveToNext();
+            }
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.item_check:
+                Intent intent = new Intent(Activity_CheckMsg.this, Activity_CheckMsgList.class);
+                intent.putExtra("names", names);
+                intent.putExtra("Msg", msg);
+                intent.putExtra("isGroup", isGroup);
+                startActivityForResult(intent, Value.CHECK_MEMBER);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -100,5 +143,23 @@ public class Activity_CheckMsg extends AppCompatActivity {
         }
 
         return super.onTouchEvent(event);
+    }
+
+    // 重写返回结果方法
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode) {
+            // 返回结果适用对象为选择成员
+            case Value.CHECK_MEMBER:
+                if (resultCode == RESULT_OK) {
+                    names = data.getStringExtra("msg_name").split(",");
+                }
+                break;
+
+            default:
+                break;
+        }
     }
 }

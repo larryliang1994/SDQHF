@@ -83,11 +83,13 @@ public class Activity_SendMsg extends AppCompatActivity {
     private static String date = null;
     private static int mYear, mMonth, mDay, mHour, mMinute;
     private ArrayList<String> phones = new ArrayList<>(); // 联系人号码
-    private boolean isGroup = false, isTemp = false, hasTemp = false;
+    private ArrayList<String> g_names = new ArrayList<>();
+    private boolean isGroup = false, isTemp = false, hasTemp = false, fromGroup = false;
     private static boolean isOnTime = false;
     private float scale; // 用于dp转px
     private String[] names = null;
     private float startX = 0.0f;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -146,11 +148,13 @@ public class Activity_SendMsg extends AppCompatActivity {
         Group group = (Group) getIntent().getSerializableExtra("group");
         if (group != null) {
             isGroup = true;
+            fromGroup = true;
             et_names.setText(group.getName());
             phones.clear();
             ArrayList<Member> members = group.members;
             for (int i = 0; i < members.size(); i++) {
                 phones.add(members.get(i).phone);
+                g_names.add(members.get(i).name);
             }
         }
 
@@ -208,7 +212,30 @@ public class Activity_SendMsg extends AppCompatActivity {
                         MyDate mydate = new MyDate(mYear, mMonth, mDay, mHour, mMinute);
 
                         Msg msg = new Msg();
-                        msg.setName(et_names.getText().toString());
+                        if (!fromGroup) {
+                            String new_names = "";
+                            String names = et_names.getText().toString();
+                            String[] names_split = names.split(",");
+                            for (int i = 0; i < names_split.length; i++) {
+                                if (i != names_split.length - 1) {
+                                    new_names = new_names + "0" + names_split[i] + ",";
+                                } else {
+                                    new_names = new_names + "0" + names_split[i];
+                                }
+                            }
+                            msg.setName(new_names);
+                        } else {
+                            String new_names = "";
+                            new_names += et_names.getText().toString() + "@@@";
+                            for (int i = 0; i < g_names.size(); i++) {
+                                if (i != g_names.size() - 1) {
+                                    new_names += "0" + g_names.get(i) + ",";
+                                } else {
+                                    new_names += "0" + g_names.get(i);
+                                }
+                            }
+                            msg.setName(new_names);
+                        }
                         msg.setContent(et_content.getText().toString());
                         msg.setSendtime(mydate);
 
@@ -220,6 +247,7 @@ public class Activity_SendMsg extends AppCompatActivity {
                         helper.insert("msg", msg);
                         helper.close();
 
+                        msg.setName(et_names.getText().toString());//因为此时msg的name已经更新
                         Intent intent = new Intent(Activity_SendMsg.this, Activity_Msg.class);
                         intent.putExtra("msg", msg);
 
@@ -251,7 +279,30 @@ public class Activity_SendMsg extends AppCompatActivity {
                                 current.get(Calendar.MINUTE));
 
                         Msg msg = new Msg();
-                        msg.setName(et_names.getText().toString());
+                        if (!fromGroup) {
+                            String new_names = "";
+                            String names = et_names.getText().toString();
+                            String[] names_split = names.split(",");
+                            for (int i = 0; i < names_split.length; i++) {
+                                if (i != names_split.length - 1) {
+                                    new_names = new_names + "0" + names_split[i] + ",";
+                                } else {
+                                    new_names = new_names + "0" + names_split[i];
+                                }
+                            }
+                            msg.setName(new_names);
+                        } else {
+                            String new_names = "";
+                            new_names += et_names.getText().toString() + "@@@";
+                            for (int i = 0; i < g_names.size(); i++) {
+                                if (i != g_names.size() - 1) {
+                                    new_names += "0" + g_names.get(i) + ",";
+                                } else {
+                                    new_names += "0" + g_names.get(i);
+                                }
+                            }
+                            msg.setName(new_names);
+                        }
                         msg.setContent(et_content.getText().toString());
                         msg.setSendtime(mydate);
 
@@ -261,6 +312,7 @@ public class Activity_SendMsg extends AppCompatActivity {
                         helper.insert("msg", msg);
                         helper.close();
 
+                        msg.setName(et_names.getText().toString());
                         Intent intent = new Intent(Activity_SendMsg.this, Activity_Msg.class);
                         intent.putExtra("msg", msg);
 
@@ -340,7 +392,7 @@ public class Activity_SendMsg extends AppCompatActivity {
         }
     }
 
-    @OnClick({R.id.imageButton_sendmsg_add,R.id.editText_sendmsg_names,
+    @OnClick({R.id.imageButton_sendmsg_add, R.id.editText_sendmsg_names,
             R.id.switch_sendmsg_menu_settime, R.id.switch_sendmsg_menu_temp})
     public void onClick(View v) {
         switch (v.getId()) {
@@ -438,6 +490,8 @@ public class Activity_SendMsg extends AppCompatActivity {
                             overridePendingTransition(R.anim.in_right_left,
                                     R.anim.scale_stay);
                         } else { // 我的群组中选取
+                            fromGroup = true;
+
                             // 读取群组
                             final DBHelper tHelper = new DBHelper(Activity_SendMsg.this, "GroupTbl");
                             final Cursor cursor = tHelper.query();
@@ -467,10 +521,13 @@ public class Activity_SendMsg extends AppCompatActivity {
 
                                     // 获取选取的组所有成员的手机号
                                     phones.clear();
+                                    g_names.clear();
                                     for (String aMember_split : member_split) {
                                         String[] member_each = aMember_split.split(":");
 
                                         phones.add(member_each[1]);
+
+                                        g_names.add(member_each[0]);
                                     }
 
                                     tHelper.close();

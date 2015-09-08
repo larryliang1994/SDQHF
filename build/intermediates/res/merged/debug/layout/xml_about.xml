@@ -16,7 +16,7 @@
             android:id="@+id/toolbar_about"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/blue"
+            android:background="?attr/other"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:navigationIcon="@drawable/back_selector"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
@@ -51,6 +51,14 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/version"
+        android:textColor="#727272"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/textView_about_version"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
         android:textColor="#727272"
         android:textSize="15sp" />
 

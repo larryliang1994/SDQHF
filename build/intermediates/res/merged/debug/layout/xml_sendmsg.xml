@@ -16,7 +16,7 @@
             android:id="@+id/toolbar_sendmsg"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/red"
+            android:background="?attr/msg"
             app:navigationIcon="@drawable/back_selector"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
@@ -36,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/appbar_sendmsg"
-        android:background="@color/red"
+        android:background="?attr/msg"
         android:paddingLeft="15dp"
         android:text="接收者"
         android:textColor="#9fffffff" />
@@ -46,7 +46,7 @@
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:layout_below="@id/textView_sendmsg_receiver"
-        android:background="@color/red"
+        android:background="?attr/msg"
         android:gravity="center"
         android:paddingLeft="15dp">
 

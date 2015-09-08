@@ -1,14 +1,12 @@
 package com.nuaa.shoudaoqinghuifu;
 
 import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -21,7 +19,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
@@ -305,7 +302,23 @@ public class Activity_Msg extends AppCompatActivity {
                 Integer.parseInt(sendtimearray[2]),
                 Integer.parseInt(sendtimearray[3]),
                 Integer.parseInt(sendtimearray[4]));
-        return new Msg(name, content, send_time);
+
+        String new_names = "";
+        String[] group_split = name.split("@@@");
+        if (group_split.length == 2) {
+            new_names = group_split[0];
+        } else {
+            String[] names_split = name.split(",");
+            for (int i = 0; i < names_split.length; i++) {
+                if (i != names_split.length - 1) {
+                    new_names = new_names + names_split[i].substring(1) + ",";
+                } else {
+                    new_names = new_names + names_split[i].substring(1);
+                }
+            }
+        }
+
+        return new Msg(new_names, content, send_time);
     }
 
     // 刷新列表

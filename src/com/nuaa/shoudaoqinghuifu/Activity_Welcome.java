@@ -62,14 +62,6 @@ public class Activity_Welcome extends Activity {
         // 获取主题
         ThemeUtil.Theme = sp.getInt("Theme", 0);
 
-        // 检查更新
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                UmengUpdateAgent.update(Activity_Welcome.this);
-            }
-        }).start();
-
         // 延迟启动主界面
         new Handler().postDelayed(new Runnable() {
             @Override

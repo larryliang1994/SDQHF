@@ -93,6 +93,7 @@ public class Activity_Preference extends PreferenceActivity {
                 dw_preference.openDrawer(GravityCompat.START);
             }
         });
+        tb_preference.setTitleTextColor(Color.parseColor("#ffffff"));
 
         nv_preference.setItemTextColor(ColorStateList.valueOf(Color.parseColor("#000000")));
         nv_preference.setItemIconTintList(null);
@@ -388,6 +389,7 @@ public class Activity_Preference extends PreferenceActivity {
                 if (info != null && info.isAvailable()) {
                     // 若网络可用，检查更新
                     UmengUpdateAgent.setUpdateAutoPopup(false);
+                    UmengUpdateAgent.setUpdateOnlyWifi(false);
                     UmengUpdateAgent.setUpdateListener(new UmengUpdateListener() {
                         @Override
                         public void onUpdateReturned(int updateStatus, UpdateResponse updateInfo) {

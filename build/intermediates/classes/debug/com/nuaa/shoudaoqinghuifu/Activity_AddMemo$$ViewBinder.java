@@ -8,8 +8,8 @@ import butterknife.ButterKnife.ViewBinder;
 public class Activity_AddMemo$$ViewBinder<T extends com.nuaa.shoudaoqinghuifu.Activity_AddMemo> implements ViewBinder<T> {
   @Override public void bind(final Finder finder, final T target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131558606, "field 'edt_content' and method 'onClick'");
-    target.edt_content = finder.castView(view, 2131558606, "field 'edt_content'");
+    view = finder.findRequiredView(source, 2131558603, "field 'edt_content' and method 'onClick'");
+    target.edt_content = finder.castView(view, 2131558603, "field 'edt_content'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(
@@ -18,10 +18,10 @@ public class Activity_AddMemo$$ViewBinder<T extends com.nuaa.shoudaoqinghuifu.Ac
           target.onClick(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131558603, "field 'edt_address'");
-    target.edt_address = finder.castView(view, 2131558603, "field 'edt_address'");
-    view = finder.findRequiredView(source, 2131558604, "field 'cb_needNotify' and method 'onClick'");
-    target.cb_needNotify = finder.castView(view, 2131558604, "field 'cb_needNotify'");
+    view = finder.findRequiredView(source, 2131558600, "field 'edt_address'");
+    target.edt_address = finder.castView(view, 2131558600, "field 'edt_address'");
+    view = finder.findRequiredView(source, 2131558601, "field 'cb_needNotify' and method 'onClick'");
+    target.cb_needNotify = finder.castView(view, 2131558601, "field 'cb_needNotify'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(
@@ -30,20 +30,20 @@ public class Activity_AddMemo$$ViewBinder<T extends com.nuaa.shoudaoqinghuifu.Ac
           target.onClick(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131558601, "field 'sv'");
-    target.sv = finder.castView(view, 2131558601, "field 'sv'");
-    view = finder.findRequiredView(source, 2131558600, "field 'tb_addmemo'");
-    target.tb_addmemo = finder.castView(view, 2131558600, "field 'tb_addmemo'");
+    view = finder.findRequiredView(source, 2131558598, "field 'sv'");
+    target.sv = finder.castView(view, 2131558598, "field 'sv'");
+    view = finder.findRequiredView(source, 2131558597, "field 'tb_addmemo'");
+    target.tb_addmemo = finder.castView(view, 2131558597, "field 'tb_addmemo'");
+    view = finder.findRequiredView(source, 2131558599, "method 'onClick'");
+    view.setOnClickListener(
+      new butterknife.internal.DebouncingOnClickListener() {
+        @Override public void doClick(
+          android.view.View p0
+        ) {
+          target.onClick(p0);
+        }
+      });
     view = finder.findRequiredView(source, 2131558602, "method 'onClick'");
-    view.setOnClickListener(
-      new butterknife.internal.DebouncingOnClickListener() {
-        @Override public void doClick(
-          android.view.View p0
-        ) {
-          target.onClick(p0);
-        }
-      });
-    view = finder.findRequiredView(source, 2131558605, "method 'onClick'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(

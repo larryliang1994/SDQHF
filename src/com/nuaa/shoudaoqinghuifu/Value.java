@@ -15,6 +15,7 @@ public class Value {
     public static final int ADD_TEMP = 9;
     public static final int MODIFY_TEMP = 10;
     public static final int CHECK_MEMO = 11;
+    public static final int CHECK_MEMBER = 12;
 
     public static final String CREATE_TBL_MSG = " create table if not exists"
             + " MsgTbl(_id integer primary key autoincrement,name text,content text, sendtime text) ";
