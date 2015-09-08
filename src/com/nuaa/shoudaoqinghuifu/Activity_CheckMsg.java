@@ -33,6 +33,8 @@ public class Activity_CheckMsg extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        ThemeUtil.onSetTheme(this, "msg");
+
         setContentView(R.layout.xml_checkmsg);
 
         ButterKnife.bind(this);
@@ -40,13 +42,7 @@ public class Activity_CheckMsg extends AppCompatActivity {
         initView();
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void initView() {
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.setStatusBarColor(getResources().getColor(R.color.red_status));
-        }
-
         setSupportActionBar(tb_checkmsg);
         tb_checkmsg.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

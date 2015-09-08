@@ -20,7 +20,6 @@ import android.text.format.DateFormat;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnticipateInterpolator;
 import android.view.animation.DecelerateInterpolator;
@@ -93,6 +92,9 @@ public class Activity_SendMsg extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        ThemeUtil.onSetTheme(this, "msg");
+
         setContentView(R.layout.xml_sendmsg);
 
         ButterKnife.bind(this);
@@ -102,8 +104,6 @@ public class Activity_SendMsg extends AppCompatActivity {
 
     private void initView() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.setStatusBarColor(getResources().getColor(R.color.red_status));
             fab_send.setElevation(4.0f);
         }
 
@@ -133,7 +133,7 @@ public class Activity_SendMsg extends AppCompatActivity {
 
         // 设置左下角图标颜色
         GradientDrawable bgShape_temp = (GradientDrawable) ibtn_temp.getBackground();
-        bgShape_temp.setColor(getResources().getColor(R.color.pink_A200));
+        bgShape_temp.setColor(getResources().getColor(R.color.red));
         GradientDrawable bgShape_settime = (GradientDrawable) ibtn_settime.getBackground();
         bgShape_settime.setColor(getResources().getColor(R.color.red));
         GradientDrawable bgShape_fab = (GradientDrawable) fab_send.getBackground();

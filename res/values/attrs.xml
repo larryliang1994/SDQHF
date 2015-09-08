@@ -41,4 +41,10 @@
         <attr name="rv_zoomScale" format="float" />
 
     </declare-styleable>
+
+    <attr name="msg" format="reference"/>
+    <attr name="group" format="color"/>
+    <attr name="memo" format="color"/>
+    <attr name="temp" format="color"/>
+    <attr name="other" format="color"/>
 </resources>

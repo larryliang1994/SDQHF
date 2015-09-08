@@ -41,6 +41,8 @@ public class Activity_AddTemp extends AppCompatActivity implements View.OnTouchL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        ThemeUtil.onSetTheme(this, "temp");
+
         setContentView(R.layout.xml_addtemp);
 
         ButterKnife.bind(this);
@@ -58,13 +60,7 @@ public class Activity_AddTemp extends AppCompatActivity implements View.OnTouchL
         return true;
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void initView() {
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.setStatusBarColor(getResources().getColor(R.color.green_status));
-        }
-
         setSupportActionBar(tb_addtemp);
         tb_addtemp.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,8 +118,8 @@ public class Activity_AddTemp extends AppCompatActivity implements View.OnTouchL
                 return true;
             }
         });
-        
-        
+
+
         // 来自修改
         Temp temp = (Temp) getIntent().getSerializableExtra("temp");
         if (temp != null) {

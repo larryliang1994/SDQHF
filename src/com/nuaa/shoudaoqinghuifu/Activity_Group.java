@@ -66,6 +66,9 @@ public class Activity_Group extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        ThemeUtil.onSetTheme(this, "group");
+
         setContentView(R.layout.xml_group);
 
         ButterKnife.bind(this);
@@ -82,13 +85,7 @@ public class Activity_Group extends AppCompatActivity {
         return true;
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void initView() {
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.setStatusBarColor(getResources().getColor(R.color.blue_status));
-        }
-
         setSupportActionBar(tb_group);
         tb_group.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -140,6 +137,7 @@ public class Activity_Group extends AppCompatActivity {
 
                     case R.id.navItem_setting:
                         intent = new Intent(Activity_Group.this, Activity_Preference.class);
+                        Activity_Group.this.finish();
                         break;
                 }
 

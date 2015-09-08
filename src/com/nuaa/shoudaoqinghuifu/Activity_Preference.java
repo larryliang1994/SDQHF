@@ -4,22 +4,33 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
 import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -38,49 +49,126 @@ public class Activity_Preference extends PreferenceActivity {
     @Bind(R.id.progressBar_preference)
     ProgressBar pb;
 
-    private float startX = 0.0f;
+    @Bind(R.id.navigationView_preference)
+    NavigationView nv_preference;
+
+    @Bind(R.id.drawerLayout_preference)
+    DrawerLayout dw_preference;
+
+    @Bind(R.id.toolbar_preference)
+    Toolbar tb_preference;
+
+    @Bind(R.id.imageView_preference_expand)
+    ImageView iv_expand;
+
     private SharedPreferences sp;
-    private boolean isTemp = false;
     private DBHelper helper = new DBHelper(Activity_Preference.this, "TempTbl");
+    private long exitTime = 0;
 
     @SuppressWarnings("deprecation")
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        ThemeUtil.onSetTheme(this, "other");
+
         super.onCreate(savedInstanceState);
 
-        addPreferencesFromResource(R.xml.xml_preference);
+        addPreferencesFromResource(R.xml.xml_preference_body);
 
         ButterKnife.bind(this);
 
-        isTemp = getIntent().getBooleanExtra("isTemp", false);
+        initView();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_items_main, menu);
+        return true;
+    }
+
+    @SuppressWarnings("deprecation")
+    private void initView() {
+        tb_preference.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dw_preference.openDrawer(GravityCompat.START);
+            }
+        });
+
+        nv_preference.setItemTextColor(ColorStateList.valueOf(Color.parseColor("#000000")));
+        nv_preference.setItemIconTintList(null);
+        nv_preference.getMenu().getItem(4).setChecked(true);
+        nv_preference.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem) {
+                Intent intent = null;
+                dw_preference.closeDrawer(GravityCompat.START);
+                switch (menuItem.getItemId()) {
+                    case R.id.navItem_msg:
+                        intent = new Intent(Activity_Preference.this, Activity_Msg.class);
+                        Activity_Preference.this.finish();
+                        break;
+
+                    case R.id.navItem_group:
+                        intent = new Intent(Activity_Preference.this, Activity_Group.class);
+                        Activity_Preference.this.finish();
+                        break;
+
+                    case R.id.navItem_memo:
+                        intent = new Intent(Activity_Preference.this, Activity_Memo.class);
+                        Activity_Preference.this.finish();
+                        break;
+
+                    case R.id.navItem_temp:
+                        intent = new Intent(Activity_Preference.this, Activity_Temp.class);
+                        Activity_Preference.this.finish();
+                        break;
+
+                    case R.id.navItem_setting:
+                        intent = null;
+                        break;
+                }
+
+                if (intent != null) {
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
+                }
+
+                return true;
+            }
+        });
+
+        GradientDrawable bgShape_temp = (GradientDrawable) iv_expand.getBackground();
+        bgShape_temp.setColor(Color.parseColor("#ffffff"));
+
+        // 设置主题处字样
+        String themeName = "";
+        switch (ThemeUtil.Theme) {
+            case ThemeUtil.THEME_COLORFUL_LIGHT:
+                themeName = "五彩";
+                break;
+
+            case ThemeUtil.THEME_COLORFUL_DEEP:
+                themeName = "绚烂";
+                break;
+
+            case ThemeUtil.THEME_BLUE:
+                themeName = "蔚蓝";
+                break;
+
+            case ThemeUtil.THEME_DARK:
+                themeName = "酷黑";
+                break;
+        }
+        findPreference("theme").setSummary("当前主题：" + themeName);
     }
 
     @Override
     public void setContentView(int layoutResID) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.setStatusBarColor(getResources().getColor(R.color.blue_status));
-        }
-
         ViewGroup contentView = (ViewGroup) LayoutInflater.from(this).inflate(
-                R.layout.actionbar_preference, new LinearLayout(this), false);
+                R.layout.xml_preference, new LinearLayout(this), false);
 
         ViewGroup contentWrapper = (ViewGroup) contentView.findViewById(R.id.content_wrapper);
         LayoutInflater.from(this).inflate(layoutResID, contentWrapper, true);
-
-        Toolbar tb_preference = (Toolbar) contentView.findViewById(R.id.toolbar_preference);
-        tb_preference.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isTemp) {
-                    startActivity(new Intent(Activity_Preference.this, Activity_Temp.class));
-                }
-
-                Activity_Preference.this.finish();
-                overridePendingTransition(R.anim.scale_stay,
-                        R.anim.out_left_right);
-            }
-        });
 
         getWindow().setContentView(contentView);
     }
@@ -91,6 +179,79 @@ public class Activity_Preference extends PreferenceActivity {
                                          android.preference.Preference preference) {
         Intent intent;
         switch (preference.getKey()) {
+
+            case "theme":
+                final MaterialDialog dialog = new MaterialDialog(Activity_Preference.this)
+                        .setCanceledOnTouchOutside(true);
+
+                String[] titles = {"五彩", "绚烂", "蔚蓝", "酷黑"};
+                ListView listView = new ListView(this);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, titles);
+                listView.setAdapter(adapter);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        switch (position) {
+                            case 0:
+                                ThemeUtil.Theme = ThemeUtil.THEME_COLORFUL_LIGHT;
+                                break;
+
+                            case 1:
+                                ThemeUtil.Theme = ThemeUtil.THEME_COLORFUL_DEEP;
+                                break;
+
+                            case 2:
+                                ThemeUtil.Theme = ThemeUtil.THEME_BLUE;
+                                break;
+
+                            case 3:
+                                ThemeUtil.Theme = ThemeUtil.THEME_DARK;
+                                break;
+                        }
+
+                        // 写入文件
+                        SharedPreferences sharedPreferences = getSharedPreferences("setting", MODE_PRIVATE);
+                        Editor editor = sharedPreferences.edit();
+                        editor.putInt("Theme", ThemeUtil.Theme);
+                        editor.apply();
+
+                        Animation anim = AnimationUtils.loadAnimation(Activity_Preference.this, R.anim.scale_expand_cycle);
+                        anim.setFillAfter(true);
+
+                        anim.setAnimationListener(new Animation.AnimationListener() {
+                            @Override
+                            public void onAnimationStart(Animation animation) {
+
+                            }
+
+                            @Override
+                            public void onAnimationEnd(Animation animation) {
+                                // 刷新页面
+                                Intent myIntent = new Intent(Activity_Preference.this, Activity_Preference.class);
+                                startActivity(myIntent);
+                                Activity_Preference.this.finish();
+                                overridePendingTransition(R.anim.zoom_restore, 0);
+
+                                Toast.makeText(Activity_Preference.this, "切换成功", Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void onAnimationRepeat(Animation animation) {
+
+                            }
+                        });
+
+                        tb_preference.setVisibility(View.GONE);
+                        iv_expand.setVisibility(View.VISIBLE);
+                        iv_expand.startAnimation(anim);
+
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.setView(listView);
+                dialog.show();
+                break;
 
             case "reset":
                 final MaterialDialog mDialog = new MaterialDialog(Activity_Preference.this)
@@ -113,10 +274,40 @@ public class Activity_Preference extends PreferenceActivity {
 
                                 // 写完就不再写入
                                 editor.putBoolean("needTemp", false);
+                                editor.putInt("Theme", ThemeUtil.THEME_COLORFUL_LIGHT);
                                 editor.apply();
 
-                                Toast.makeText(Activity_Preference.this, "恢复成功",
-                                        Toast.LENGTH_SHORT).show();
+                                // 刷新页面
+                                ThemeUtil.Theme = ThemeUtil.THEME_COLORFUL_LIGHT;
+                                Animation anim = AnimationUtils.loadAnimation(Activity_Preference.this, R.anim.scale_expand_cycle);
+                                anim.setFillAfter(true);
+
+                                anim.setAnimationListener(new Animation.AnimationListener() {
+                                    @Override
+                                    public void onAnimationStart(Animation animation) {
+
+                                    }
+
+                                    @Override
+                                    public void onAnimationEnd(Animation animation) {
+                                        // 刷新页面
+                                        Intent myIntent = new Intent(Activity_Preference.this, Activity_Preference.class);
+                                        startActivity(myIntent);
+                                        Activity_Preference.this.finish();
+                                        overridePendingTransition(R.anim.zoom_restore, 0);
+                                        Toast.makeText(Activity_Preference.this, "恢复成功", Toast.LENGTH_SHORT).show();
+                                    }
+
+                                    @Override
+                                    public void onAnimationRepeat(Animation animation) {
+
+                                    }
+                                });
+
+                                tb_preference.setVisibility(View.GONE);
+                                iv_expand.setVisibility(View.VISIBLE);
+                                iv_expand.startAnimation(anim);
+
                                 mDialog.dismiss();
                             }
                         })
@@ -130,13 +321,6 @@ public class Activity_Preference extends PreferenceActivity {
                 break;
 
             case "feedBack":
-//                intent = new Intent(this, Activity_Feedback.class);
-//
-//                startActivity(intent);
-//
-//                overridePendingTransition(R.anim.in_right_left,
-//                        R.anim.scale_stay);
-
                 FeedbackAgent agent = new FeedbackAgent(this);
                 agent.startFeedbackActivity();
 
@@ -260,32 +444,18 @@ public class Activity_Preference extends PreferenceActivity {
     public boolean onKeyDown(int keyCode, @NonNull KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK
                 && event.getAction() == KeyEvent.ACTION_DOWN) {
-            if (isTemp) {
-                startActivity(new Intent(this, Activity_Temp.class));
+            // 收起抽屉
+            if (dw_preference.isDrawerOpen(GravityCompat.START)) {
+                dw_preference.closeDrawer(GravityCompat.START);
+            } else if ((System.currentTimeMillis() - exitTime) > 2000) {
+                Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                exitTime = System.currentTimeMillis();
+            } else {
+                finish();
+                System.exit(0);
             }
-
-            this.finish();
-            overridePendingTransition(R.anim.scale_stay,
-                    R.anim.out_left_right);
+            return true;
         }
         return super.onKeyDown(keyCode, event);
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            startX = event.getX();
-        } else if (event.getAction() == MotionEvent.ACTION_UP
-                && event.getX() - startX > 200) {
-            if (isTemp) {
-                startActivity(new Intent(this, Activity_Temp.class));
-            }
-
-            this.finish();
-            overridePendingTransition(R.anim.scale_stay,
-                    R.anim.out_left_right);
-        }
-
-        return super.onTouchEvent(event);
     }
 }

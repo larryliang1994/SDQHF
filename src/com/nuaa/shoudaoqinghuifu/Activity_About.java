@@ -3,6 +3,7 @@ package com.nuaa.shoudaoqinghuifu;
 import android.annotation.TargetApi;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -32,6 +33,8 @@ public class Activity_About extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        ThemeUtil.onSetTheme(this, "other");
+
         setContentView(R.layout.xml_about);
 
         ButterKnife.bind(this);
@@ -39,13 +42,7 @@ public class Activity_About extends AppCompatActivity {
         initView();
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void initView() {
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.setStatusBarColor(getResources().getColor(R.color.blue_status));
-        }
-
         setSupportActionBar(tb_about);
         tb_about.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +57,7 @@ public class Activity_About extends AppCompatActivity {
         PackageManager packageManager = getPackageManager();
         // getPackageName()是你当前类的包名，0代表是获取版本信息
         try {
-            PackageInfo packInfo = packageManager.getPackageInfo(getPackageName(),0);
+            PackageInfo packInfo = packageManager.getPackageInfo(getPackageName(), 0);
             tv_version.setText(packInfo.versionName);
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();

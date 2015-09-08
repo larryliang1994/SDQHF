@@ -6,8 +6,13 @@
     <PreferenceCategory android:title="功能">
 
         <Preference
+            android:key="theme"
+            android:summary="选取你喜欢的主题"
+            android:title="切换主题" />
+
+        <Preference
             android:key="reset"
-            android:summary="恢复默认设置，包括模板"
+            android:summary="恢复默认设置，包括主题和模板"
             android:title="恢复" />
 
     </PreferenceCategory>

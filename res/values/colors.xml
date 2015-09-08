@@ -13,6 +13,17 @@
     <color name="purple_status">#7b1fa2</color>
     <color name="orange">#03A9F4</color>
 
+    <color name="dark">#293238</color>
+
+    <color name="blue_deep">#5677fc</color>
+    <color name="blue_deep_status">#455ede</color>
+    <color name="red_deep">#e91e63</color>
+    <color name="red_deep_status">#c2185b</color>
+    <color name="green_deep">#259b24</color>
+    <color name="green_deep_status">#0a7e07</color>
+    <color name="purple_deep">#673ab7</color>
+    <color name="purple_deep_status">#512da8</color>
+
     <color name="pink_A200">#ff4081</color>
     <color name="blue_A200">#6889ff</color>
     <color name="green_A200">#8bc34a</color>

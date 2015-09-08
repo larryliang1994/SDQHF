@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.umeng.analytics.MobclickAgent;
+import com.umeng.update.UmengUpdateAgent;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -23,7 +24,7 @@ public class Activity_Welcome extends Activity {
     @Bind(R.id.layout_welcome)
     LinearLayout layout;
 
-    @Bind(R.id.imageView_expand)
+    @Bind(R.id.imageView_welcome_expand)
     ImageView iv_expand;
 
     private DBHelper helper = new DBHelper(this, "TempTbl");
@@ -57,6 +58,17 @@ public class Activity_Welcome extends Activity {
             editor.putBoolean("needTemp", false);
             editor.apply();
         }
+
+        // 获取主题
+        ThemeUtil.Theme = sp.getInt("Theme", 0);
+
+        // 检查更新
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                UmengUpdateAgent.update(Activity_Welcome.this);
+            }
+        }).start();
 
         // 延迟启动主界面
         new Handler().postDelayed(new Runnable() {

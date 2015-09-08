@@ -27,15 +27,40 @@
 
     <style name="Theme.Application" parent="@style/Theme.AppCompat" />
 
-    <style name="Theme.Settings" parent="@style/AppBaseTheme">
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowActionBar">false</item>
-
-        <item name="toolbarStyle">@style/Widget.Toolbar</item>
+    <!--浅色彩虹主题-->
+    <style name="Theme_Colorful_Light" parent="AppTheme">
+        <item name="msg">@color/red</item>
+        <item name="group">@color/blue</item>
+        <item name="memo">@color/purple</item>
+        <item name="temp">@color/green</item>
+        <item name="other">@color/blue</item>
     </style>
 
-    <style name="Widget.Toolbar" parent="@style/Widget.AppCompat.Toolbar">
-        <item name="android:background">#03A9F4</item>
+    <!--深色彩虹主题-->
+    <style name="Theme_Colorful_Deep" parent="AppTheme">
+        <item name="msg">@color/red_deep</item>
+        <item name="group">@color/blue_deep</item>
+        <item name="memo">@color/purple_deep</item>
+        <item name="temp">@color/green_deep</item>
+        <item name="other">@color/blue_deep</item>
+    </style>
+
+    <!--浅蓝主题-->
+    <style name="Theme_Blue" parent="AppTheme">
+        <item name="msg">@color/blue</item>
+        <item name="group">@color/blue</item>
+        <item name="memo">@color/blue</item>
+        <item name="temp">@color/blue</item>
+        <item name="other">@color/blue</item>
+    </style>
+
+    <!--夜间主题-->
+    <style name="Theme_Dark" parent="AppTheme">
+        <item name="msg">@color/dark</item>
+        <item name="group">@color/dark</item>
+        <item name="memo">@color/dark</item>
+        <item name="temp">@color/dark</item>
+        <item name="other">@color/dark</item>
     </style>
 
 </resources>

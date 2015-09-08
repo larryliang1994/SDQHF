@@ -77,6 +77,9 @@ public class Activity_Contacts extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        ThemeUtil.onSetTheme(this, "other");
+
         setContentView(R.layout.xml_contacts);
 
         ButterKnife.bind(this);
@@ -97,13 +100,7 @@ public class Activity_Contacts extends AppCompatActivity {
         return true;
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void initView() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.setStatusBarColor(getResources().getColor(R.color.blue_status));
-        }
-
         setSupportActionBar(tb_contacts);
         tb_contacts.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

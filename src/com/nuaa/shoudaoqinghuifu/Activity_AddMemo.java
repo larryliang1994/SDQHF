@@ -70,6 +70,9 @@ public class Activity_AddMemo extends AppCompatActivity implements View.OnTouchL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        ThemeUtil.onSetTheme(this, "memo");
+
         setContentView(R.layout.xml_addmemo);
 
         ButterKnife.bind(this);
@@ -86,13 +89,7 @@ public class Activity_AddMemo extends AppCompatActivity implements View.OnTouchL
         return true;
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void initView() {
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.setStatusBarColor(getResources().getColor(R.color.purple_status));
-        }
-
         setSupportActionBar(tb_addmemo);
         tb_addmemo.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -269,7 +266,7 @@ public class Activity_AddMemo extends AppCompatActivity implements View.OnTouchL
     }
 
     @OnClick({R.id.editText_addmemo_time_happen, R.id.editText_addmemo_time_memo,
-        R.id.editText_addmemo_content, R.id.checkBox_addmemo})
+            R.id.editText_addmemo_content, R.id.checkBox_addmemo})
     public void onClick(View v) {
         SetDateDialog sdd;
 
@@ -282,7 +279,7 @@ public class Activity_AddMemo extends AppCompatActivity implements View.OnTouchL
                 break;
 
             case R.id.editText_addmemo_time_memo:
-                if(cb_needNotify.isChecked()) {
+                if (cb_needNotify.isChecked()) {
                     isMemo = true;
 
                     sdd = new SetDateDialog();
@@ -304,7 +301,7 @@ public class Activity_AddMemo extends AppCompatActivity implements View.OnTouchL
                 break;
 
             case R.id.checkBox_addmemo:
-                if(cb_needNotify.isChecked()){
+                if (cb_needNotify.isChecked()) {
                     edt_time_memo.setTextColor(Color.parseColor("#212121"));
                     edt_time_memo.setHintTextColor(Color.parseColor("#99000000"));
                 } else {

@@ -38,6 +38,8 @@ public class Activity_Feedback extends AppCompatActivity implements View.OnTouch
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        ThemeUtil.onSetTheme(this, "other");
+
         setContentView(R.layout.xml_feedback);
 
         ButterKnife.bind(this);
@@ -45,13 +47,7 @@ public class Activity_Feedback extends AppCompatActivity implements View.OnTouch
         initView();
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void initView() {
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.setStatusBarColor(getResources().getColor(R.color.blue_status));
-        }
-
         setSupportActionBar(tb_feedback);
         tb_feedback.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

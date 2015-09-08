@@ -67,6 +67,9 @@ public class Activity_Msg extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        ThemeUtil.onSetTheme(this, "msg");
+
         setContentView(R.layout.xml_msg);
 
         ButterKnife.bind(this);
@@ -83,13 +86,7 @@ public class Activity_Msg extends AppCompatActivity {
         return true;
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void initView() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.setStatusBarColor(getResources().getColor(R.color.red_status));
-        }
-
         setSupportActionBar(tb_msg);
         tb_msg.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,6 +138,7 @@ public class Activity_Msg extends AppCompatActivity {
 
                     case R.id.navItem_setting:
                         intent = new Intent(Activity_Msg.this, Activity_Preference.class);
+                        Activity_Msg.this.finish();
                         break;
                 }
 

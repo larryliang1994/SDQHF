@@ -66,6 +66,9 @@ public class Activity_Temp extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        ThemeUtil.onSetTheme(this, "temp");
+
         setContentView(R.layout.xml_temp);
 
         ButterKnife.bind(this);
@@ -82,13 +85,7 @@ public class Activity_Temp extends AppCompatActivity {
         return true;
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void initView() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.setStatusBarColor(getResources().getColor(R.color.green_status));
-        }
-
         setSupportActionBar(tb_temp);
         tb_temp.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -140,7 +137,6 @@ public class Activity_Temp extends AppCompatActivity {
 
                     case R.id.navItem_setting:
                         intent = new Intent(Activity_Temp.this, Activity_Preference.class);
-                        intent.putExtra("isTemp", true);
                         Activity_Temp.this.finish();
                         break;
                 }
