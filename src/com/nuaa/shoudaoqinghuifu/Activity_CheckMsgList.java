@@ -321,15 +321,13 @@ public class Activity_CheckMsgList extends AppCompatActivity {
             ContentValues cv = list.get(position);
 
             holder.tv_name.setText(cv.getAsString(NAME));
+
             holder.cb_isChosen.setChecked(isChecked.get(position));
+
             if (isGroup) {
                 holder.tv_photo.setText(cv.getAsString(NAME).substring(0, 1));
             } else {
-                if (position != 0) {
-                    holder.tv_photo.setText(cv.getAsString(NAME).substring(1, 2));
-                } else {
-                    holder.tv_photo.setText(cv.getAsString(NAME).substring(0, 1));
-                }
+                holder.tv_photo.setText(cv.getAsString(NAME).substring(0, 1));
             }
 
             // 设置头像颜色

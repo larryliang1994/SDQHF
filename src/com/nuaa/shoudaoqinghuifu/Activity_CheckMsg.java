@@ -15,6 +15,8 @@ import android.widget.TextView;
 
 import com.umeng.analytics.MobclickAgent;
 
+import java.util.Arrays;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -64,9 +66,11 @@ public class Activity_CheckMsg extends AppCompatActivity {
         });
 
         msg = (Msg) getIntent().getSerializableExtra("msg");
-        tv_content.setText(msg.content);
+        names = getIntent().getStringExtra("names").split(",");
+
+        tv_content.setText(msg.getContent());
         tv_sendtime.setText(msg.sendtime.toString());
-        tb_checkmsg.setTitle(msg.name);
+        tb_checkmsg.setTitle(msg.getName().replace(",", ", "));
 
         //处理否来自群组的信息
         String msg_name = msg.name;
@@ -94,10 +98,13 @@ public class Activity_CheckMsg extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.item_check:
                 Intent intent = new Intent(Activity_CheckMsg.this, Activity_CheckMsgList.class);
+
                 intent.putExtra("names", names);
                 intent.putExtra("Msg", msg);
                 intent.putExtra("isGroup", isGroup);
+
                 startActivityForResult(intent, Value.CHECK_MEMBER);
+                overridePendingTransition(R.anim.in_right_left, R.anim.scale_stay);
         }
         return super.onOptionsItemSelected(item);
     }

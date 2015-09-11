@@ -13,10 +13,12 @@ import android.database.Cursor;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.telephony.SmsManager;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -24,14 +26,11 @@ import android.view.animation.Animation;
 import android.view.animation.AnticipateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.ScaleAnimation;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.Switch;
@@ -47,7 +46,6 @@ import java.util.Calendar;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import me.drakeet.materialdialog.MaterialDialog;
 
 public class Activity_SendMsg extends AppCompatActivity {
     @Bind(R.id.floatingActionButton_sendmsg_send)
@@ -214,26 +212,21 @@ public class Activity_SendMsg extends AppCompatActivity {
                         Msg msg = new Msg();
                         if (!fromGroup) {
                             String new_names = "";
-                            String names = et_names.getText().toString();
-                            String[] names_split = names.split(",");
-                            for (int i = 0; i < names_split.length; i++) {
-                                if (i != names_split.length - 1) {
-                                    new_names = new_names + "0" + names_split[i] + ",";
-                                } else {
-                                    new_names = new_names + "0" + names_split[i];
-                                }
+
+                            for (String name : names) {
+                                new_names += "0" + name + ",";
                             }
+
                             msg.setName(new_names);
                         } else {
                             String new_names = "";
+
                             new_names += et_names.getText().toString() + "@@@";
+
                             for (int i = 0; i < g_names.size(); i++) {
-                                if (i != g_names.size() - 1) {
-                                    new_names += "0" + g_names.get(i) + ",";
-                                } else {
-                                    new_names += "0" + g_names.get(i);
-                                }
+                                new_names += "0" + g_names.get(i) + ",";
                             }
+
                             msg.setName(new_names);
                         }
                         msg.setContent(et_content.getText().toString());
@@ -279,30 +272,28 @@ public class Activity_SendMsg extends AppCompatActivity {
                                 current.get(Calendar.MINUTE));
 
                         Msg msg = new Msg();
+
                         if (!fromGroup) {
                             String new_names = "";
-                            String names = et_names.getText().toString();
-                            String[] names_split = names.split(",");
-                            for (int i = 0; i < names_split.length; i++) {
-                                if (i != names_split.length - 1) {
-                                    new_names = new_names + "0" + names_split[i] + ",";
-                                } else {
-                                    new_names = new_names + "0" + names_split[i];
-                                }
+
+                            for (String name : names) {
+                                new_names += "0" + name + ",";
                             }
+
                             msg.setName(new_names);
+
                         } else {
                             String new_names = "";
+
                             new_names += et_names.getText().toString() + "@@@";
+
                             for (int i = 0; i < g_names.size(); i++) {
-                                if (i != g_names.size() - 1) {
-                                    new_names += "0" + g_names.get(i) + ",";
-                                } else {
-                                    new_names += "0" + g_names.get(i);
-                                }
+                                new_names += "0" + g_names.get(i) + ",";
                             }
+
                             msg.setName(new_names);
                         }
+
                         msg.setContent(et_content.getText().toString());
                         msg.setSendtime(mydate);
 
@@ -412,30 +403,23 @@ public class Activity_SendMsg extends AppCompatActivity {
                         cursor.moveToNext();
                     }
 
-                    final MaterialDialog dialog = new MaterialDialog(this);
+                    AlertDialog.Builder mBuilder = new AlertDialog.Builder(this);
 
-                    ListView listView = new ListView(this);
-                    ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, titles);
-                    listView.setAdapter(adapter);
-                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    mBuilder.setItems(titles, new DialogInterface.OnClickListener() {
                         @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            cursor.moveToPosition(position);
+                        public void onClick(DialogInterface dialog, int which) {
+                            cursor.moveToPosition(which);
                             et_content.setText(cursor.getString(2));
 
                             tHelper.close();
 
                             hasTemp = true;
-
-                            dialog.dismiss();
                         }
                     });
 
-
-                    dialog.setView(listView);
-                    dialog.setCanceledOnTouchOutside(true);
-
-                    dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                    AlertDialog alertDialog = mBuilder.create();
+                    alertDialog.setCanceledOnTouchOutside(true);
+                    alertDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                         @Override
                         public void onDismiss(DialogInterface dialog) {
                             if (!hasTemp) {
@@ -443,8 +427,8 @@ public class Activity_SendMsg extends AppCompatActivity {
                             }
                         }
                     });
+                    alertDialog.show();
 
-                    dialog.show();
                 } else {
                     hasTemp = false;
                     et_content.setText("");
@@ -469,16 +453,13 @@ public class Activity_SendMsg extends AppCompatActivity {
 
                 String[] name = {"从通讯录中选取", "从我的群组中选取"};
 
-                final MaterialDialog dialog = new MaterialDialog(this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-                ListView listView = new ListView(this);
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, name);
-                listView.setAdapter(adapter);
-                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                builder.setItems(name, new DialogInterface.OnClickListener() {
                     @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    public void onClick(DialogInterface dialog, int which) {
                         // 通讯录中选取
-                        if (position == 0) {
+                        if (which == 0) {
                             dialog.dismiss();
 
                             Intent openActivity = new Intent(Activity_SendMsg.this,
@@ -505,15 +486,12 @@ public class Activity_SendMsg extends AppCompatActivity {
                                 cursor.moveToNext();
                             }
 
-                            final MaterialDialog mDialog = new MaterialDialog(Activity_SendMsg.this);
+                            AlertDialog.Builder gBuilder = new AlertDialog.Builder(Activity_SendMsg.this);
 
-                            ListView listView = new ListView(Activity_SendMsg.this);
-                            ArrayAdapter<String> adapter = new ArrayAdapter<>(Activity_SendMsg.this, android.R.layout.simple_list_item_1, names);
-                            listView.setAdapter(adapter);
-                            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            gBuilder.setItems(names, new DialogInterface.OnClickListener() {
                                 @Override
-                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                    cursor.moveToPosition(position);
+                                public void onClick(DialogInterface dialog, int which) {
+                                    cursor.moveToPosition(which);
                                     et_names.setText(cursor.getString(1));
                                     String member_s = cursor.getString(2);
 
@@ -531,24 +509,18 @@ public class Activity_SendMsg extends AppCompatActivity {
                                     }
 
                                     tHelper.close();
-
-                                    mDialog.dismiss();
                                 }
                             });
 
-                            mDialog.setView(listView);
-                            mDialog.setCanceledOnTouchOutside(true);
-
-                            mDialog.show();
-
-                            dialog.dismiss();
+                            AlertDialog gDialog = gBuilder.create();
+                            gDialog.setCanceledOnTouchOutside(true);
+                            gDialog.show();
                         }
                     }
                 });
 
-                dialog.setView(listView);
+                AlertDialog dialog = builder.create();
                 dialog.setCanceledOnTouchOutside(true);
-
                 dialog.show();
 
                 break;

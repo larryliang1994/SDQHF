@@ -107,15 +107,15 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     // 删除
-    public void delete(int id) {
+    public int delete(int id) {
         if (db == null) {
             db = getWritableDatabase();
         }
-        db.delete(TBL_NAME, "_id=?", new String[]{String.valueOf(id)});
+        return db.delete(TBL_NAME, "_id=?", new String[]{String.valueOf(id)});
     }
 
     // 更新
-    public void update(String _id, String type, Object item) {
+    public int update(String _id, String type, Object item) {
         SQLiteDatabase db = getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -151,7 +151,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 break;
         }
 
-        db.update(TBL_NAME, values, "_id=?", new String[]{_id});
+        return db.update(TBL_NAME, values, "_id=?", new String[]{_id});
     }
 
     // 清空

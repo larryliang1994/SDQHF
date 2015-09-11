@@ -294,7 +294,7 @@ public class Activity_Memo extends AppCompatActivity {
                                         Activity_Memo.this);
                                 Memo ncMemo = vector_memos.get(position);
                                 ncBuilder.setContentTitle(ncMemo.content);
-                                ncBuilder.setSmallIcon(R.drawable.icon_outside_small);
+                                ncBuilder.setSmallIcon(R.drawable.icon_outside);
                                 ncBuilder.setContentText(ncMemo.address);
 
                                 // 设置为常驻通知

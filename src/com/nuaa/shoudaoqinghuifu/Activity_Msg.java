@@ -1,6 +1,7 @@
 package com.nuaa.shoudaoqinghuifu;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
@@ -12,6 +13,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
@@ -25,7 +27,6 @@ import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -59,6 +60,7 @@ public class Activity_Msg extends AppCompatActivity {
 
     public static Vector<Msg> vector_msgs = new Vector<>();
     private DBHelper helper = new DBHelper(this, "MsgTbl");
+    private String names = "";
     private long exitTime = 0;
 
     @Override
@@ -154,6 +156,7 @@ public class Activity_Msg extends AppCompatActivity {
                                     int position, long id) {
                 Intent intent = new Intent(Activity_Msg.this,
                         Activity_CheckMsg.class);
+                intent.putExtra("names", names);
                 intent.putExtra("msg", vector_msgs.get(position));
                 intent.putExtra("position", position);
                 startActivity(intent);
@@ -168,22 +171,17 @@ public class Activity_Msg extends AppCompatActivity {
                                            final int p, long id) {
                 final String[] names = {"添加到备忘录", "删除"};
 
-                final MaterialDialog dialog = new MaterialDialog(Activity_Msg.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(Activity_Msg.this);
 
-                ListView listView = new ListView(Activity_Msg.this);
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(Activity_Msg.this, android.R.layout.simple_list_item_1, names);
-                listView.setAdapter(adapter);
-                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                builder.setItems(names, new DialogInterface.OnClickListener() {
                     @Override
-                    public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                        switch (position) {
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which) {
                             // 添加到备忘录
                             case 0:
-                                dialog.dismiss();
-
                                 Intent intent = new Intent(Activity_Msg.this,
                                         Activity_AddMemo.class);
-                                intent.putExtra("msg", vector_msgs.get(position));
+                                intent.putExtra("msg", vector_msgs.get(p));
                                 startActivity(intent);
                                 Activity_Msg.this.finish();
                                 overridePendingTransition(R.anim.in_right_left,
@@ -192,8 +190,6 @@ public class Activity_Msg extends AppCompatActivity {
 
                             // 删除
                             case 1:
-                                dialog.dismiss();
-
                                 final MaterialDialog mDialog = new MaterialDialog(Activity_Msg.this)
                                         .setCanceledOnTouchOutside(true)
                                         .setTitle("删除")
@@ -231,9 +227,10 @@ public class Activity_Msg extends AppCompatActivity {
                     }
                 });
 
-                dialog.setView(listView);
+                AlertDialog dialog = builder.create();
                 dialog.setCanceledOnTouchOutside(true);
                 dialog.show();
+
                 return true;
             }
 
@@ -311,12 +308,19 @@ public class Activity_Msg extends AppCompatActivity {
             String[] names_split = name.split(",");
             for (int i = 0; i < names_split.length; i++) {
                 if (i != names_split.length - 1) {
-                    new_names = new_names + names_split[i].substring(1) + ",";
+                    new_names += names_split[i].substring(1) + ",";
                 } else {
-                    new_names = new_names + names_split[i].substring(1);
+                    new_names += names_split[i].substring(1);
+                }
+
+                if (names_split[i].substring(0, 1).equals("1")) {
+                    names += names_split[i].substring(1) + ",";
                 }
             }
         }
+
+        // 去除空格
+        names = names.replace(" ", "");
 
         return new Msg(new_names, content, send_time);
     }
@@ -344,6 +348,8 @@ public class Activity_Msg extends AppCompatActivity {
                     setListViewAnimation();
 
                     Msg msg = (Msg) data.getSerializableExtra("msg");
+
+                    msg.setName(msg.getName().replace(" ", ""));
 
                     vector_msgs.add(0, msg);
 
@@ -418,8 +424,8 @@ public class Activity_Msg extends AppCompatActivity {
 
             Msg tmp = vector_msgs.get(position);
 
-            holder.tv_name.setText(tmp.name);
-            holder.tv_content.setText(tmp.content);
+            holder.tv_name.setText(tmp.getName().replace(",", ", "));
+            holder.tv_content.setText(tmp.getContent());
 
             Calendar current = Calendar.getInstance();
             if ((current.get(Calendar.YEAR) == tmp.sendtime.year)

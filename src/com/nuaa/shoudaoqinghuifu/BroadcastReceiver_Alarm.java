@@ -22,7 +22,7 @@ public class BroadcastReceiver_Alarm extends BroadcastReceiver {
                     context);
             Memo memo = (Memo) intent.getSerializableExtra("memo");
             builder.setContentTitle(memo.content);
-            builder.setSmallIcon(R.drawable.icon_outside_small);
+            builder.setSmallIcon(R.drawable.icon_outside);
             builder.setContentText(memo.address);
             builder.setAutoCancel(true);
             builder.setDefaults(Notification.DEFAULT_VIBRATE);

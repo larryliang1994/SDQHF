@@ -71,6 +71,7 @@
             android:background="@null"
             android:ellipsize="end"
             android:focusable="false"
+            android:inputType="none"
             android:hint="@string/msg_contact_input"
             android:singleLine="true"
             android:textColor="#ffffff"

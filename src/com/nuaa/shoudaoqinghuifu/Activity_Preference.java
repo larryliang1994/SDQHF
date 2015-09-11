@@ -1,6 +1,7 @@
 package com.nuaa.shoudaoqinghuifu;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -17,6 +18,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -26,11 +28,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -182,17 +181,14 @@ public class Activity_Preference extends PreferenceActivity {
         switch (preference.getKey()) {
 
             case "theme":
-                final MaterialDialog dialog = new MaterialDialog(Activity_Preference.this)
-                        .setCanceledOnTouchOutside(true);
-
                 String[] titles = {"五彩", "绚烂", "蔚蓝", "酷黑"};
-                ListView listView = new ListView(this);
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, titles);
-                listView.setAdapter(adapter);
-                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+                builder.setItems(titles, new DialogInterface.OnClickListener() {
                     @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        switch (position) {
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which) {
                             case 0:
                                 ThemeUtil.Theme = ThemeUtil.THEME_COLORFUL_LIGHT;
                                 break;
@@ -245,13 +241,13 @@ public class Activity_Preference extends PreferenceActivity {
                         tb_preference.setVisibility(View.GONE);
                         iv_expand.setVisibility(View.VISIBLE);
                         iv_expand.startAnimation(anim);
-
-                        dialog.dismiss();
                     }
                 });
 
-                dialog.setView(listView);
+                AlertDialog dialog = builder.create();
+                dialog.setCanceledOnTouchOutside(true);
                 dialog.show();
+
                 break;
 
             case "reset":

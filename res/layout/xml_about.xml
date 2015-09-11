@@ -72,6 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:gravity="center"
+        android:visibility="gone"
         android:text="@string/sign"
         android:textColor="#727272"
         android:textSize="12sp" />
