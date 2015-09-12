@@ -47,6 +47,7 @@ public class Activity_CheckMsgList extends AppCompatActivity {
     private Msg msg;
     private boolean isGroup;
     private String msg_name = "";
+    private int position;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -90,12 +91,16 @@ public class Activity_CheckMsgList extends AppCompatActivity {
                 list.add(cv);
             }
         }
+
         adapter = new ListAdapter(this);
+
+        position = getIntent().getIntExtra("position", -1);
+        String[] names = Activity_Msg.vector_checkedName.get(position).split(",");
+
         if (list.size() > 0) {
             lv_checkList.setAdapter(adapter);
-            String[] names = getIntent().getStringArrayExtra("names");
             // 初始化勾选
-            if (!list.isEmpty() && names != null) {
+            if (!list.isEmpty()) {
                 int i = 0, j = 0;
                 while (j < names.length && i < list.size()) {
                     if (names[j].equals(list.get(i).getAsString(NAME))) {
@@ -138,7 +143,6 @@ public class Activity_CheckMsgList extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.item_ok:
-                        Intent backIntent = getIntent();
                         if (isGroup) {
                             String[] name = msg.getName().split("@@@");
                             String g_name = name[1];
@@ -182,7 +186,6 @@ public class Activity_CheckMsgList extends AppCompatActivity {
                                     cursor.moveToNext();
                                 }
                             }
-                            backIntent.putExtra("msg_name", msg_name);
                         } else {
                             String[] m_name = msg.getName().split(",");
                             String mn = "";
@@ -220,11 +223,12 @@ public class Activity_CheckMsgList extends AppCompatActivity {
                                     cursor.moveToNext();
                                 }
                             }
-                            backIntent.putExtra("msg_name", msg_name);
                         }
 
+                        // 保存已回复的联系人
+                        Activity_Msg.vector_checkedName.set(position, msg_name);
+
                         // 结果编码
-                        Activity_CheckMsgList.this.setResult(RESULT_OK, backIntent);
                         Activity_CheckMsgList.this.finish();
                         overridePendingTransition(R.anim.scale_stay,
                                 R.anim.out_left_right);

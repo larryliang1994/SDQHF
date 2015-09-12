@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,8 +15,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.umeng.analytics.MobclickAgent;
-
-import java.util.Arrays;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -33,7 +32,7 @@ public class Activity_CheckMsg extends AppCompatActivity {
     private float startX = 0.0f;
     private Msg msg;
     private boolean isGroup = false;
-    private String[] names = null;
+    private int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,8 +64,8 @@ public class Activity_CheckMsg extends AppCompatActivity {
             }
         });
 
+        position = getIntent().getIntExtra("position", -1);
         msg = (Msg) getIntent().getSerializableExtra("msg");
-        names = getIntent().getStringExtra("names").split(",");
 
         tv_content.setText(msg.getContent());
         tv_sendtime.setText(msg.sendtime.toString());
@@ -99,11 +98,11 @@ public class Activity_CheckMsg extends AppCompatActivity {
             case R.id.item_check:
                 Intent intent = new Intent(Activity_CheckMsg.this, Activity_CheckMsgList.class);
 
-                intent.putExtra("names", names);
+                intent.putExtra("position", position);
                 intent.putExtra("Msg", msg);
                 intent.putExtra("isGroup", isGroup);
 
-                startActivityForResult(intent, Value.CHECK_MEMBER);
+                startActivity(intent);
                 overridePendingTransition(R.anim.in_right_left, R.anim.scale_stay);
         }
         return super.onOptionsItemSelected(item);
@@ -150,23 +149,5 @@ public class Activity_CheckMsg extends AppCompatActivity {
         }
 
         return super.onTouchEvent(event);
-    }
-
-    // 重写返回结果方法
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        switch (requestCode) {
-            // 返回结果适用对象为选择成员
-            case Value.CHECK_MEMBER:
-                if (resultCode == RESULT_OK) {
-                    names = data.getStringExtra("msg_name").split(",");
-                }
-                break;
-
-            default:
-                break;
-        }
     }
 }

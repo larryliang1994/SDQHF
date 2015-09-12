@@ -16,6 +16,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -60,7 +61,7 @@ public class Activity_Msg extends AppCompatActivity {
 
     public static Vector<Msg> vector_msgs = new Vector<>();
     private DBHelper helper = new DBHelper(this, "MsgTbl");
-    private String names = "";
+    public static Vector<String> vector_checkedName = new Vector<>();
     private long exitTime = 0;
 
     @Override
@@ -156,7 +157,6 @@ public class Activity_Msg extends AppCompatActivity {
                                     int position, long id) {
                 Intent intent = new Intent(Activity_Msg.this,
                         Activity_CheckMsg.class);
-                intent.putExtra("names", names);
                 intent.putExtra("msg", vector_msgs.get(position));
                 intent.putExtra("position", position);
                 startActivity(intent);
@@ -301,9 +301,17 @@ public class Activity_Msg extends AppCompatActivity {
                 Integer.parseInt(sendtimearray[4]));
 
         String new_names = "";
+        String cname = "";
         String[] group_split = name.split("@@@");
         if (group_split.length == 2) {
             new_names = group_split[0];
+
+            String[] names_split = group_split[1].split(",");
+            for (String aNames_split : names_split) {
+                if (aNames_split.substring(0, 1).equals("1")) {
+                    cname += aNames_split.substring(1) + ",";
+                }
+            }
         } else {
             String[] names_split = name.split(",");
             for (int i = 0; i < names_split.length; i++) {
@@ -314,13 +322,15 @@ public class Activity_Msg extends AppCompatActivity {
                 }
 
                 if (names_split[i].substring(0, 1).equals("1")) {
-                    names += names_split[i].substring(1) + ",";
+                    cname += names_split[i].substring(1) + ",";
                 }
             }
         }
 
-        // 去除空格
-        names = names.replace(" ", "");
+        vector_checkedName.add(0, cname);
+
+        Log.i("msg", "msg:" + cname);
+        Log.i("msg", "msg:" + Activity_Msg.vector_checkedName.get(0));
 
         return new Msg(new_names, content, send_time);
     }
