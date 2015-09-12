@@ -329,9 +329,6 @@ public class Activity_Msg extends AppCompatActivity {
 
         vector_checkedName.add(0, cname);
 
-        Log.i("msg", "msg:" + cname);
-        Log.i("msg", "msg:" + Activity_Msg.vector_checkedName.get(0));
-
         return new Msg(new_names, content, send_time);
     }
 

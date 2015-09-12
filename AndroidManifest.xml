@@ -36,43 +36,47 @@
 
         <activity android:name=".Activity_Welcome" />
 
-        <activity android:name=".Activity_Msg" />
+        <activity android:name=".Activity_Msg" android:fitsSystemWindows="true"/>
 
-        <activity android:name=".Activity_Group" />
+        <activity android:name=".Activity_Group" android:fitsSystemWindows="true"/>
 
-        <activity android:name=".Activity_CheckMsg"/>
+        <activity android:name=".Activity_CheckMsg" android:fitsSystemWindows="true"/>
 
-        <activity android:name=".Activity_Memo" />
+        <activity android:name=".Activity_Memo" android:fitsSystemWindows="true"/>
 
-        <activity android:name=".Activity_Temp" />
+        <activity android:name=".Activity_Temp" android:fitsSystemWindows="true"/>
 
-        <activity android:name=".Activity_AddTemp" />
+        <activity android:name=".Activity_AddTemp" android:fitsSystemWindows="true"/>
 
         <activity
             android:name=".Activity_SendMsg"
+            android:fitsSystemWindows="true"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
 
         <activity
             android:name=".Activity_Feedback"
+            android:fitsSystemWindows="true"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
 
-        <activity android:name=".Activity_Contacts" />
+        <activity android:name=".Activity_Contacts" android:fitsSystemWindows="true"/>
 
-        <activity android:name=".Activity_CheckMemo" />
+        <activity android:name=".Activity_CheckMemo" android:fitsSystemWindows="true"/>
 
         <activity
             android:name=".Activity_AddGroup"
+            android:fitsSystemWindows="true"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
 
         <activity
             android:name=".Activity_AddMemo"
+            android:fitsSystemWindows="true"
             android:windowSoftInputMode="adjustResize|stateHidden" />
 
-        <activity android:name=".Activity_Preference" />
+        <activity android:name=".Activity_Preference" android:fitsSystemWindows="true"/>
 
-        <activity android:name=".Activity_About" />
+        <activity android:name=".Activity_About" android:fitsSystemWindows="true"/>
 
-        <activity android:name=".Activity_CheckMsgList"/>
+        <activity android:name=".Activity_CheckMsgList" android:fitsSystemWindows="true"/>
 
         <receiver android:name=".BroadcastReceiver_CatchBoot">
             <intent-filter>
