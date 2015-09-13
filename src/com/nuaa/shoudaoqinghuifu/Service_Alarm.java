@@ -43,8 +43,8 @@ public class Service_Alarm extends Service {
 
                     Calendar tmpTime = Calendar.getInstance();
                     MyDate date_memo = tmp.date_memo;
-                    tmpTime.set(date_memo.year, date_memo.month - 1,
-                            date_memo.day, date_memo.hour, date_memo.minute);
+                    tmpTime.set(date_memo.getYear(), date_memo.getMonth() - 1,
+                            date_memo.getDay(), date_memo.getHour(), date_memo.getMinute());
 
                     // 未过期且needNotify
                     if (tmp.needNotify && current.before(tmpTime)) {

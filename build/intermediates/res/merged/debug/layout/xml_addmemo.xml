@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
+    android:fitsSystemWindows="true"
     android:orientation="vertical">
 
     <android.support.design.widget.AppBarLayout
@@ -160,12 +161,12 @@
                     android:id="@+id/editText_addmemo_content"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:gravity="top"
-                    android:minLines="5"
                     android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
                     android:background="@null"
+                    android:gravity="top"
                     android:hint="@string/memo_content"
+                    android:minLines="5"
                     android:textColor="#212121"
                     android:textSize="16sp" />
 

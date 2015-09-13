@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
+    android:fitsSystemWindows="true"
     android:orientation="vertical">
 
     <android.support.design.widget.AppBarLayout
@@ -75,9 +76,9 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="3dp"
-            android:tint="#b6b6b6"
             android:scaleType="centerInside"
-            android:src="@drawable/member_add" />
+            android:src="@drawable/member_add"
+            android:tint="#b6b6b6" />
 
     </LinearLayout>
 

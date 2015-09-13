@@ -435,18 +435,18 @@ public class Activity_Msg extends AppCompatActivity {
             holder.tv_content.setText(tmp.getContent());
 
             Calendar current = Calendar.getInstance();
-            if ((current.get(Calendar.YEAR) == tmp.sendtime.year)
-                    && (current.get(Calendar.MONTH) + 1 == tmp.sendtime.month)
-                    && (current.get(Calendar.DAY_OF_MONTH) == tmp.sendtime.day)) {
-                if (tmp.sendtime.minute < 10) {
-                    holder.tv_sendtime.setText(tmp.sendtime.hour + ":0" + tmp.sendtime.minute);
+            if ((current.get(Calendar.YEAR) == tmp.sendtime.getYear())
+                    && (current.get(Calendar.MONTH) + 1 == tmp.sendtime.getMonth())
+                    && (current.get(Calendar.DAY_OF_MONTH) == tmp.sendtime.getDay())) {
+                if (tmp.sendtime.getMinute() < 10) {
+                    holder.tv_sendtime.setText(tmp.sendtime.getHour() + ":0" + tmp.sendtime.getMinute());
                 } else {
-                    holder.tv_sendtime.setText(tmp.sendtime.hour + ":" + tmp.sendtime.minute);
+                    holder.tv_sendtime.setText(tmp.sendtime.getHour() + ":" + tmp.sendtime.getMinute());
                 }
-            } else if (current.get(Calendar.YEAR) != tmp.sendtime.year) {
-                holder.tv_sendtime.setText(tmp.sendtime.year + "年" + tmp.sendtime.month + "月" + tmp.sendtime.day + "日");
+            } else if (current.get(Calendar.YEAR) != tmp.sendtime.getYear()) {
+                holder.tv_sendtime.setText(tmp.sendtime.getYear() + "年" + tmp.sendtime.getMonth() + "月" + tmp.sendtime.getDay() + "日");
             } else {
-                holder.tv_sendtime.setText(tmp.sendtime.month + "月" + tmp.sendtime.day + "日");
+                holder.tv_sendtime.setText(tmp.sendtime.getMonth() + "月" + tmp.sendtime.getDay() + "日");
             }
 
             // 设置头像颜色

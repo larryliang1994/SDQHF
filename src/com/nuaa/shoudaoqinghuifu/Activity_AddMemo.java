@@ -2,8 +2,6 @@ package com.nuaa.shoudaoqinghuifu;
 
 import android.app.AlarmManager;
 import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
@@ -15,7 +13,6 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.format.DateFormat;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -36,7 +33,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class Activity_AddMemo extends AppCompatActivity implements View.OnTouchListener {
+public class Activity_AddMemo extends AppCompatActivity implements View.OnTouchListener,
+        TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
     @Bind(R.id.editText_addmemo_content)
     EditText edt_content;
 
@@ -142,9 +140,9 @@ public class Activity_AddMemo extends AppCompatActivity implements View.OnTouchL
                                 Calendar tmpTime = Calendar.getInstance();
 
                                 MyDate date_memo_tmp = tmp.date_memo;
-                                tmpTime.set(date_memo_tmp.year, date_memo_tmp.month - 1,
-                                        date_memo_tmp.day, date_memo_tmp.hour,
-                                        date_memo_tmp.minute);
+                                tmpTime.set(date_memo_tmp.getYear(), date_memo_tmp.getMonth() - 1,
+                                        date_memo_tmp.getDay(), date_memo_tmp.getHour(),
+                                        date_memo_tmp.getMinute());
 
                                 // 需要提醒且未过期
                                 if (tmp.needNotify && current.before(tmpTime)) {
@@ -265,22 +263,26 @@ public class Activity_AddMemo extends AppCompatActivity implements View.OnTouchL
     @OnClick({R.id.editText_addmemo_time_happen, R.id.editText_addmemo_time_memo,
             R.id.editText_addmemo_content, R.id.checkBox_addmemo})
     public void onClick(View v) {
-        SetDateDialog sdd;
-
+        MyDate myDate;
+        DateDialog dateDialog;
         switch (v.getId()) {
             case R.id.editText_addmemo_time_happen:
                 isHappen = true;
 
-                sdd = new SetDateDialog();
-                sdd.show(getFragmentManager(), "DatePicker");
+                myDate = getMyDate("date");
+                assert myDate != null;
+                dateDialog = new DateDialog(this, this, myDate.getYear(), myDate.getMonth(), myDate.getDay());
+                dateDialog.show();
                 break;
 
             case R.id.editText_addmemo_time_memo:
                 if (cb_needNotify.isChecked()) {
                     isMemo = true;
 
-                    sdd = new SetDateDialog();
-                    sdd.show(getFragmentManager(), "DatePicker");
+                    myDate = getMyDate("date");
+                    assert myDate != null;
+                    dateDialog = new DateDialog(this, this, myDate.getYear(), myDate.getMonth(), myDate.getDay());
+                    dateDialog.show();
                 }
 
                 break;
@@ -309,6 +311,49 @@ public class Activity_AddMemo extends AppCompatActivity implements View.OnTouchL
 
             default:
                 break;
+        }
+    }
+
+    private MyDate getMyDate(String which) {
+        if ("date".equals(which)) {
+            int year, month, day;
+
+            if ((isHappen && year_happen != 0)
+                    || (isMemo && year_happen != 0 && year_memo == 0)) {
+                year = year_happen;
+                month = month_happen - 1;
+                day = day_happen;
+            } else if ((isHappen) || (isMemo && year_memo == 0)) {
+                final Calendar c = Calendar.getInstance();
+                year = c.get(Calendar.YEAR);
+                month = c.get(Calendar.MONTH);
+                day = c.get(Calendar.DAY_OF_MONTH);
+            } else {
+                year = year_memo;
+                month = month_memo - 1;
+                day = day_memo;
+            }
+
+            return new MyDate(year, month, day, 0, 0);
+        } else if ("time".equals(which)) {
+            int hour, minute;
+
+            if ((isHappen && hour_happen != 0)
+                    || (isMemo && hour_happen != 0 && hour_memo == 0)) {
+                hour = hour_happen;
+                minute = minute_happen;
+            } else if ((isHappen) || (isMemo && hour_memo == 0)) {
+                final Calendar c = Calendar.getInstance();
+                hour = c.get(Calendar.HOUR_OF_DAY);
+                minute = c.get(Calendar.MINUTE);
+            } else {
+                hour = hour_memo;
+                minute = minute_memo;
+            }
+
+            return new MyDate(0, 0, 0, hour, minute);
+        } else {
+            return null;
         }
     }
 
@@ -385,109 +430,77 @@ public class Activity_AddMemo extends AppCompatActivity implements View.OnTouchL
         return super.onTouchEvent(event);
     }
 
-    // 日期选择对话框
-    public static class SetDateDialog extends DialogFragment implements
-            DatePickerDialog.OnDateSetListener {
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            this.setCancelable(true);
+    @Override
+    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+        monthOfYear++;
+        date = null;
+        date = year + "-" + monthOfYear + "-" + dayOfMonth;
 
-            int year, month, day;
-
-            if ((isHappen && year_happen != 0)
-                    || (isMemo && year_happen != 0 && year_memo == 0)) {
-                year = year_happen;
-                month = month_happen - 1;
-                day = day_happen;
-            } else if ((isHappen) || (isMemo && year_memo == 0)) {
-                final Calendar c = Calendar.getInstance();
-                year = c.get(Calendar.YEAR);
-                month = c.get(Calendar.MONTH);
-                day = c.get(Calendar.DAY_OF_MONTH);
-            } else {
-                year = year_memo;
-                month = month_memo - 1;
-                day = day_memo;
-            }
-
-            return new DatePickerDialog(getActivity(), this,
-                    year, month, day);
+        if (isHappen) {
+            year_happen = year;
+            month_happen = monthOfYear;
+            day_happen = dayOfMonth;
         }
 
-        @Override
-        public void onDateSet(DatePicker view, int year, int monthOfYear,
-                              int dayOfMonth) {
-            monthOfYear++;
+        if (isMemo) {
+            year_memo = year;
+            month_memo = monthOfYear;
+            day_memo = dayOfMonth;
+        }
+
+        MyDate myDate = getMyDate("time");
+        assert myDate != null;
+        TimeDialog dialog = new TimeDialog(this, this, myDate.getHour(), myDate.getMinute(), true);
+        dialog.show();
+    }
+
+    @Override
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+        if (minute >= 10) {
+            date += " " + hourOfDay + ":" + minute;
+        } else {
+            date += " " + hourOfDay + ":0" + minute;
+        }
+
+        if (isHappen) {
+            isHappen = false;
+
+            edt_time_happen.setText(date);
             date = null;
-            date = year + "-" + monthOfYear + "-" + dayOfMonth;
 
-            if (isHappen) {
-                year_happen = year;
-                month_happen = monthOfYear;
-                day_happen = dayOfMonth;
-            }
+            hour_happen = hourOfDay;
+            minute_happen = minute;
+        } else if (isMemo) {
+            isMemo = false;
+            edt_time_memo.setText(date);
+            date = null;
 
-            if (isMemo) {
-                year_memo = year;
-                month_memo = monthOfYear;
-                day_memo = dayOfMonth;
-            }
-
-            SetTimeDialog std = new SetTimeDialog();
-            std.show(getFragmentManager(), "TimePicker");
+            hour_memo = hourOfDay;
+            minute_memo = minute;
         }
     }
 
     // 时间选择对话框
-    public static class SetTimeDialog extends DialogFragment implements
-            TimePickerDialog.OnTimeSetListener {
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            this.setCancelable(false);
+    public static class TimeDialog extends TimePickerDialog {
 
-            int hour, minute;
-
-            if ((isHappen && hour_happen != 0)
-                    || (isMemo && hour_happen != 0 && hour_memo == 0)) {
-                hour = hour_happen;
-                minute = minute_happen;
-            } else if ((isHappen) || (isMemo && hour_memo == 0)) {
-                final Calendar c = Calendar.getInstance();
-                hour = c.get(Calendar.HOUR_OF_DAY);
-                minute = c.get(Calendar.MINUTE);
-            } else {
-                hour = hour_memo;
-                minute = minute_memo;
-            }
-
-            return new TimePickerDialog(getActivity(), this,
-                    hour, minute, DateFormat.is24HourFormat(getActivity()));
+        public TimeDialog(Context context, OnTimeSetListener callBack, int hourOfDay, int minute, boolean is24HourView) {
+            super(context, callBack, hourOfDay, minute, is24HourView);
         }
 
         @Override
-        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-            if (minute >= 10) {
-                date += " " + hourOfDay + ":" + minute;
-            } else {
-                date += " " + hourOfDay + ":0" + minute;
-            }
+        protected void onStop() {
+        }
+    }
 
-            if (isHappen) {
-                isHappen = false;
+    // 日期选择对话框
+    public static class DateDialog extends DatePickerDialog {
 
-                edt_time_happen.setText(date);
-                date = null;
+        public DateDialog(Context context, OnDateSetListener callBack, int year, int monthOfYear, int dayOfMonth) {
+            super(context, callBack, year, monthOfYear, dayOfMonth);
+        }
 
-                hour_happen = hourOfDay;
-                minute_happen = minute;
-            } else if (isMemo) {
-                isMemo = false;
-                edt_time_memo.setText(date);
-                date = null;
-
-                hour_memo = hourOfDay;
-                minute_memo = minute;
-            }
+        @Override
+        protected void onStop() {
         }
     }
 }

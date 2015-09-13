@@ -2,8 +2,6 @@ package com.nuaa.shoudaoqinghuifu;
 
 import android.app.AlarmManager;
 import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
@@ -17,8 +15,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.telephony.SmsManager;
-import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -47,7 +43,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class Activity_SendMsg extends AppCompatActivity {
+public class Activity_SendMsg extends AppCompatActivity
+        implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
     @Bind(R.id.floatingActionButton_sendmsg_send)
     RippleView fab_send;
 
@@ -438,8 +435,11 @@ public class Activity_SendMsg extends AppCompatActivity {
 
             case R.id.switch_sendmsg_menu_settime:
                 if (!isOnTime) { // 非定时，则弹出时间设置
-                    SetDateDialog sdd = new SetDateDialog();
-                    sdd.show(getFragmentManager(), "DatePicker");
+
+                    MyDate myDate = getMyDate("date");
+                    assert myDate != null;
+                    DateDialog dateDialog = new DateDialog(this, this, myDate.getYear(), myDate.getMonth(), myDate.getDay());
+                    dateDialog.show();
                 } else { // 否则取消设定好的定时
                     isOnTime = false;
                     tv_receiver.setText("接收者");
@@ -542,13 +542,8 @@ public class Activity_SendMsg extends AppCompatActivity {
         MobclickAgent.onPause(this);
     }
 
-    // 日期选择对话框
-    public static class SetDateDialog extends DialogFragment implements
-            DatePickerDialog.OnDateSetListener {
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            this.setCancelable(true);
-
+    private MyDate getMyDate(String which) {
+        if ("date".equals(which)) {
             int year, month, day;
 
             final Calendar c = Calendar.getInstance();
@@ -556,66 +551,51 @@ public class Activity_SendMsg extends AppCompatActivity {
             month = c.get(Calendar.MONTH);
             day = c.get(Calendar.DAY_OF_MONTH);
 
-            return new DatePickerDialog(getActivity(), this,
-                    year, month, day);
-        }
-
-        @Override
-        public void onDateSet(DatePicker view, int year, int monthOfYear,
-                              int dayOfMonth) {
-            monthOfYear++;
-            date = null;
-            date = year + "-" + monthOfYear + "-" + dayOfMonth;
-
-            mYear = year;
-            mMonth = monthOfYear;
-            mDay = dayOfMonth;
-
-            SetTimeDialog std = new SetTimeDialog();
-            std.show(getFragmentManager(), "TimePicker");
-        }
-
-        @Override
-        public void onCancel(DialogInterface dialog) {
-            super.onCancel(dialog);
-
-            sw_settime.setChecked(false);
-        }
-    }
-
-    // 时间选择对话框
-    public static class SetTimeDialog extends DialogFragment implements
-            TimePickerDialog.OnTimeSetListener {
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            this.setCancelable(false);
-
+            return new MyDate(year, month, day, 0, 0);
+        } else if ("time".equals(which)) {
             int hour, minute;
 
             final Calendar c = Calendar.getInstance();
             hour = c.get(Calendar.HOUR_OF_DAY);
             minute = c.get(Calendar.MINUTE);
 
-            return new TimePickerDialog(getActivity(), this,
-                    hour, minute, DateFormat.is24HourFormat(getActivity()));
+            return new MyDate(0, 0, 0, hour, minute);
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+        monthOfYear++;
+        date = null;
+        date = year + "-" + monthOfYear + "-" + dayOfMonth;
+
+        mYear = year;
+        mMonth = monthOfYear;
+        mDay = dayOfMonth;
+
+        MyDate myDate = getMyDate("time");
+        assert myDate != null;
+        TimeDialog dialog = new TimeDialog(this, this, myDate.getHour(), myDate.getMinute(), true);
+        dialog.show();
+    }
+
+    @Override
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+        if (minute >= 10) {
+            date += " " + hourOfDay + ":" + minute;
+        } else {
+            date += " " + hourOfDay + ":0" + minute;
         }
 
-        @Override
-        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-            if (minute >= 10) {
-                date += " " + hourOfDay + ":" + minute;
-            } else {
-                date += " " + hourOfDay + ":0" + minute;
-            }
+        tv_receiver.append("  (定时:" + date + ")");
+        date = null;
 
-            tv_receiver.append("  (定时:" + date + ")");
-            date = null;
+        mHour = hourOfDay;
+        mMinute = minute;
 
-            mHour = hourOfDay;
-            mMinute = minute;
-
-            isOnTime = true;
-        }
+        isOnTime = true;
     }
 
     // 定时发送广播
@@ -714,5 +694,66 @@ public class Activity_SendMsg extends AppCompatActivity {
         }
 
         return super.onTouchEvent(event);
+    }
+
+    // 时间选择对话框
+    public static class TimeDialog extends TimePickerDialog implements DialogInterface.OnCancelListener,
+            DialogInterface.OnClickListener {
+
+        public TimeDialog(Context context, OnTimeSetListener callBack, int hourOfDay, int minute, boolean is24HourView) {
+            super(context, callBack, hourOfDay, minute, is24HourView);
+            setOnCancelListener(this);
+            setButton(TimePickerDialog.BUTTON_NEGATIVE, "取消", this);
+            setButton(TimePickerDialog.BUTTON_POSITIVE, "完成", this);
+        }
+
+        @Override
+        protected void onStop() {
+        }
+
+
+        @Override
+        public void onCancel(DialogInterface dialog) {
+            sw_settime.setChecked(false);
+        }
+
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            if (which == TimePickerDialog.BUTTON_NEGATIVE) {
+                sw_settime.setChecked(false);
+            } else if (which == TimePickerDialog.BUTTON_POSITIVE) {
+                super.onClick(dialog, which);
+            }
+        }
+    }
+
+    // 日期选择对话框
+    public static class DateDialog extends DatePickerDialog implements DialogInterface.OnCancelListener,
+            DialogInterface.OnClickListener {
+
+        public DateDialog(Context context, OnDateSetListener callBack, int year, int monthOfYear, int dayOfMonth) {
+            super(context, callBack, year, monthOfYear, dayOfMonth);
+            setOnCancelListener(this);
+            setButton(TimePickerDialog.BUTTON_NEGATIVE, "取消", this);
+            setButton(TimePickerDialog.BUTTON_POSITIVE, "完成", this);
+        }
+
+        @Override
+        protected void onStop() {
+        }
+
+        @Override
+        public void onCancel(DialogInterface dialog) {
+            sw_settime.setChecked(false);
+        }
+
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            if (which == DatePickerDialog.BUTTON_NEGATIVE) {
+                sw_settime.setChecked(false);
+            } else if (which == DatePickerDialog.BUTTON_POSITIVE) {
+                super.onClick(dialog, which);
+            }
+        }
     }
 }

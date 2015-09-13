@@ -574,9 +574,9 @@ public class Activity_Memo extends AppCompatActivity {
             Calendar tmpTime = Calendar.getInstance();
 
             MyDate date_happen_tmp = tmp.date_happen;
-            tmpTime.set(date_happen_tmp.year, date_happen_tmp.month - 1,
-                    date_happen_tmp.day, date_happen_tmp.hour,
-                    date_happen_tmp.minute);
+            tmpTime.set(date_happen_tmp.getYear(), date_happen_tmp.getMonth() - 1,
+                    date_happen_tmp.getDay(), date_happen_tmp.getHour(),
+                    date_happen_tmp.getMinute());
 
             // 是否已过期
             if (current.before(tmpTime)) {

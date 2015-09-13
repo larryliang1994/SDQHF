@@ -400,7 +400,7 @@ public class Activity_Preference extends PreferenceActivity {
                                     break;
 
                                 case UpdateStatus.Timeout: // time out
-                                    Toast.makeText(Activity_Preference.this, "Oops...网络出错了哦", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Activity_Preference.this, "Oops...网络出错了哦(Wifi下更新可能会出现此问题)", Toast.LENGTH_SHORT).show();
                                     break;
                             }
                         }

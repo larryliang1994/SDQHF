@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:background="#ffffff"
+    android:fitsSystemWindows="true"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -72,10 +73,10 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:gravity="center"
-        android:visibility="gone"
         android:text="@string/sign"
         android:textColor="#727272"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        android:visibility="gone" />
 
     <Space
         android:layout_width="match_parent"
