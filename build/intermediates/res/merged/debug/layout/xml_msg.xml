@@ -76,4 +76,4 @@
         app:menu="@menu/navigation_drawer_items"
         app:theme="@style/NavigationMenuStyle" />
 
-</android.support.v4.widget.DrawerLayout><!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/layout/xml_msg.xml -->
+</android.support.v4.widget.DrawerLayout><!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/res/layout/xml_msg.xml -->

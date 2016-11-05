@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/checkmsg_list_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="#ffffff">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar_checklist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_checklist"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/msg"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:navigationIcon="@drawable/back_selector"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:title="@string/reply_list"/>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ListView
+        android:id="@+id/listView_checkList"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/appbar_checklist"
+        android:divider="#ffffff"
+        android:dividerHeight="0dp"
+        android:scrollbars="none"
+        android:scrollingCache="true" />
+
+</RelativeLayout>
+
+<!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/res/layout/xml_checkmsg_list.xml -->

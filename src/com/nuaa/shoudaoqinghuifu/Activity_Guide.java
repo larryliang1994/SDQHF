@@ -78,7 +78,7 @@ public class Activity_Guide extends Activity{
      */
         MyPagerAdapter myPagerAdapter = new MyPagerAdapter(this, views);
         mImageViews = new ImageView[views.size()];
-        drawCircl();
+        drawCircle();
         mViewPager.setAdapter(myPagerAdapter);
         mViewPager.setOnPageChangeListener(new GuidePageChangeListener());
     }
@@ -86,7 +86,7 @@ public class Activity_Guide extends Activity{
     /**
      * 画圆圈
      */
-    private void drawCircl() {
+    private void drawCircle() {
         int num = views.size();
         for (int i = 0; i < num; i++) {
             //实例化每一个mImageViews[i]

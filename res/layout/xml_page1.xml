@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="@drawable/msg"
+    android:background="@drawable/msg_empty"
     android:orientation="vertical" >
 
 </LinearLayout>

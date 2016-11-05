@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/umeng_fb_strings.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/res/values/umeng_fb_strings.xml -->
     <eat-comment/>
     <string-array name="umeng_fb_contact_key_array">
         <item>@string/umeng_fb_contact_key_email</item>
@@ -18,23 +18,23 @@
         <item>Feedback</item>
         <item>FAQ</item>
     </string-array>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <attr format="reference" name="drawerArrowStyle"/>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/attrs.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/res/values/attrs.xml -->
     <eat-comment/>
     <attr format="color" name="group"/>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <attr format="dimension" name="height"/>
     <attr format="boolean" name="isLightTheme"/>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/attrs.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/res/values/attrs.xml -->
     <eat-comment/>
     <attr format="color" name="memo"/>
     <attr format="reference" name="msg"/>
     <attr format="color" name="other"/>
     <attr format="color" name="temp"/>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <attr format="string" name="title"/>
     <bool name="abc_action_bar_embed_tabs">true</bool>
@@ -54,14 +54,14 @@
     <color name="background_floating_material_light">#ffeeeeee</color>
     <color name="background_material_dark">#ff303030</color>
     <color name="background_material_light">#ffeeeeee</color>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/colors.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/res/values/colors.xml -->
     <eat-comment/>
     <color name="blue">#03A9F4</color>
     <color name="blue_A200">#6889ff</color>
     <color name="blue_deep">#5677fc</color>
     <color name="blue_deep_status">#455ede</color>
     <color name="blue_status">#0288D1</color>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <color name="bright_foreground_disabled_material_dark">#80ffffff</color>
     <color name="bright_foreground_disabled_material_light">#80000000</color>
@@ -69,47 +69,47 @@
     <color name="bright_foreground_inverse_material_light">@color/bright_foreground_material_dark</color>
     <color name="bright_foreground_material_dark">@android:color/white</color>
     <color name="bright_foreground_material_light">@android:color/black</color>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/colors.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/res/values/colors.xml -->
     <eat-comment/>
     <color name="brown_A200">#795548</color>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <color name="button_material_dark">#ff5a595b</color>
     <color name="button_material_light">#ffd6d7d7</color>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/me.drakeet.materialdialog/library/1.2.2/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/me.drakeet.materialdialog/library/1.2.2/res/values/values.xml -->
     <eat-comment/>
     <color name="card_background">#ffffff</color>
     <color name="card_shadow">#10000000</color>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/cardview-v7/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/cardview-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <color name="cardview_dark_background">#FF202020</color>
     <color name="cardview_light_background">#FFFAFAFA</color>
     <color name="cardview_shadow_end_color">#03000000</color>
     <color name="cardview_shadow_start_color">#37000000</color>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/colors.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/res/values/colors.xml -->
     <eat-comment/>
     <color name="dark">#293238</color>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <color name="dim_foreground_disabled_material_dark">#80bebebe</color>
     <color name="dim_foreground_disabled_material_light">#80323232</color>
     <color name="dim_foreground_material_dark">#ffbebebe</color>
     <color name="dim_foreground_material_light">#ff323232</color>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/design/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/design/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <color name="error_color">#FFDD2C00</color>
     <color name="fab_stroke_end_inner_color">#0A000000</color>
     <color name="fab_stroke_end_outer_color">#0F000000</color>
     <color name="fab_stroke_top_inner_color">#1AFFFFFF</color>
     <color name="fab_stroke_top_outer_color">#2EFFFFFF</color>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/colors.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/res/values/colors.xml -->
     <eat-comment/>
     <color name="green">#8bc34a</color>
     <color name="green_A200">#8bc34a</color>
     <color name="green_deep">#259b24</color>
     <color name="green_deep_status">#0a7e07</color>
     <color name="green_status">#689f38</color>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <color name="highlighted_text_material_dark">#6680cbc4</color>
     <color name="highlighted_text_material_light">#66009688</color>
@@ -117,22 +117,22 @@
     <color name="hint_foreground_material_light">@color/bright_foreground_disabled_material_light</color>
     <color name="link_text_material_dark">@color/material_deep_teal_200</color>
     <color name="link_text_material_light">@color/material_deep_teal_500</color>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/me.drakeet.materialdialog/library/1.2.2/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/me.drakeet.materialdialog/library/1.2.2/res/values/values.xml -->
     <eat-comment/>
     <color name="lite_blue">#ff359ff2</color>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <color name="material_blue_grey_800">#ff37474f</color>
     <color name="material_blue_grey_900">#ff263238</color>
     <color name="material_blue_grey_950">#ff21272b</color>
     <color name="material_deep_teal_200">#ff80cbc4</color>
     <color name="material_deep_teal_500">#ff009688</color>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/colors.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/res/values/colors.xml -->
     <eat-comment/>
     <color name="orange">#03A9F4</color>
     <color name="orange_A200">#ffab40</color>
     <color name="pink_A200">#ff4081</color>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <color name="primary_dark_material_dark">#ff000000</color>
     <color name="primary_dark_material_light">#ff757575</color>
@@ -142,7 +142,7 @@
     <color name="primary_text_default_material_light">#de000000</color>
     <color name="primary_text_disabled_material_dark">#4Dffffff</color>
     <color name="primary_text_disabled_material_light">#39000000</color>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/colors.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/res/values/colors.xml -->
     <eat-comment/>
     <color name="purple">#9C27B0</color>
     <color name="purple_A200">#e040fb</color>
@@ -154,7 +154,7 @@
     <color name="red_deep_status">#c2185b</color>
     <color name="red_status">#E84E40</color>
     <color name="rippelColor">#FFFFFF</color>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <color name="ripple_material_dark">#4dffffff</color>
     <color name="ripple_material_light">#1f000000</color>
@@ -162,25 +162,25 @@
     <color name="secondary_text_default_material_light">#8a000000</color>
     <color name="secondary_text_disabled_material_dark">#36ffffff</color>
     <color name="secondary_text_disabled_material_light">#24000000</color>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/design/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/design/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <color name="shadow_end_color">@android:color/transparent</color>
     <color name="shadow_mid_color">#14000000</color>
     <color name="shadow_start_color">#44000000</color>
     <color name="snackbar_background_color">#323232</color>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <color name="switch_thumb_disabled_material_dark">#ff616161</color>
     <color name="switch_thumb_disabled_material_light">#ffbdbdbd</color>
     <color name="switch_thumb_normal_material_dark">#ffbdbdbd</color>
     <color name="switch_thumb_normal_material_light">#fff1f1f1</color>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/tb_munion_strings.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/res/values/tb_munion_strings.xml -->
     <eat-comment/>
     <color name="tb_munion_item_force">#e3e3e3</color>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/colors.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/res/values/colors.xml -->
     <eat-comment/>
     <color name="transparent">#00FFFFFF</color>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/umeng_fb_color.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/res/values/umeng_fb_color.xml -->
     <eat-comment/>
     <color name="umeng_fb_audo_dialog_bg">#F4F0745F</color>
     <color name="umeng_fb_background">#F6F6F6</color>
@@ -190,7 +190,7 @@
     <color name="umeng_fb_secondary_text_light">#8A000000</color>
     <color name="umeng_fb_tab_bg_pressed">#6633B5E5</color>
     <color name="umeng_fb_white">#FFFFFF</color>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/me.drakeet.materialdialog/library/1.2.2/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/me.drakeet.materialdialog/library/1.2.2/res/values/values.xml -->
     <eat-comment/>
     <color name="window_background">#00000000</color>
     <declare-styleable name="ActionBar"><attr name="navigationMode"><enum name="normal" value="0"/><enum name="listMode" value="1"/><enum name="tabMode" value="2"/></attr><attr name="displayOptions"><flag name="none" value="0"/><flag name="useLogo" value="0x1"/><flag name="showHome" value="0x2"/><flag name="homeAsUp" value="0x4"/><flag name="showTitle" value="0x8"/><flag name="showCustom" value="0x10"/><flag name="disableHome" value="0x20"/></attr><attr name="title"/><attr format="string" name="subtitle"/><attr format="reference" name="titleTextStyle"/><attr format="reference" name="subtitleTextStyle"/><attr format="reference" name="icon"/><attr format="reference" name="logo"/><attr format="reference" name="divider"/><attr format="reference" name="background"/><attr format="reference|color" name="backgroundStacked"/><attr format="reference|color" name="backgroundSplit"/><attr format="reference" name="customNavigationLayout"/><attr name="height"/><attr format="reference" name="homeLayout"/><attr format="reference" name="progressBarStyle"/><attr format="reference" name="indeterminateProgressStyle"/><attr format="dimension" name="progressBarPadding"/><attr name="homeAsUpIndicator"/><attr format="dimension" name="itemPadding"/><attr format="boolean" name="hideOnContentScroll"/><attr format="dimension" name="contentInsetStart"/><attr format="dimension" name="contentInsetEnd"/><attr format="dimension" name="contentInsetLeft"/><attr format="dimension" name="contentInsetRight"/><attr format="dimension" name="elevation"/><attr format="reference" name="popupTheme"/></declare-styleable>
@@ -233,7 +233,7 @@
     <declare-styleable name="Toolbar"><attr format="reference" name="titleTextAppearance"/><attr format="reference" name="subtitleTextAppearance"/><attr name="title"/><attr name="subtitle"/><attr name="android:gravity"/><attr format="dimension" name="titleMargins"/><attr format="dimension" name="titleMarginStart"/><attr format="dimension" name="titleMarginEnd"/><attr format="dimension" name="titleMarginTop"/><attr format="dimension" name="titleMarginBottom"/><attr name="contentInsetStart"/><attr name="contentInsetEnd"/><attr name="contentInsetLeft"/><attr name="contentInsetRight"/><attr format="dimension" name="maxButtonHeight"/><attr format="reference" name="collapseIcon"/><attr format="string" name="collapseContentDescription"/><attr name="popupTheme"/><attr format="reference" name="navigationIcon"/><attr format="string" name="navigationContentDescription"/><attr name="android:minHeight"/></declare-styleable>
     <declare-styleable name="View"><attr format="dimension" name="paddingStart"/><attr format="dimension" name="paddingEnd"/><attr name="android:focusable"/><attr format="reference" name="theme"/><attr name="android:theme"/><attr format="color" name="backgroundTint"/><attr name="backgroundTintMode"><enum name="src_over" value="3"/><enum name="src_in" value="5"/><enum name="src_atop" value="9"/><enum name="multiply" value="14"/><enum name="screen" value="15"/></attr></declare-styleable>
     <declare-styleable name="ViewStubCompat"><attr name="android:layout"/><attr name="android:inflatedId"/><attr name="android:id"/></declare-styleable>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <dimen name="abc_action_bar_content_inset_material">16dp</dimen>
     <dimen name="abc_action_bar_default_height_material">56dp</dimen>
@@ -295,19 +295,19 @@
     <dimen name="abc_text_size_subtitle_material_toolbar">16dp</dimen>
     <dimen name="abc_text_size_title_material">20sp</dimen>
     <dimen name="abc_text_size_title_material_toolbar">20dp</dimen>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/me.drakeet.materialdialog/library/1.2.2/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/me.drakeet.materialdialog/library/1.2.2/res/values/values.xml -->
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/design/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/design/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <dimen name="appbar_elevation">4dp</dimen>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/cardview-v7/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/cardview-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <dimen name="cardview_compat_inset_shadow">1dp</dimen>
     <dimen name="cardview_default_elevation">2dp</dimen>
     <dimen name="cardview_default_radius">2dp</dimen>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <item name="dialog_fixed_height_major" type="dimen">80%</item>
     <item name="dialog_fixed_height_minor" type="dimen">100%</item>
@@ -315,7 +315,7 @@
     <item name="dialog_fixed_width_minor" type="dimen">320dp</item>
     <item format="float" name="disabled_alpha_material_dark" type="dimen">0.30</item>
     <item format="float" name="disabled_alpha_material_light" type="dimen">0.26</item>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/design/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/design/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <dimen name="fab_border_width">0.5dp</dimen>
     <dimen name="fab_content_size">24dp</dimen>
@@ -330,12 +330,12 @@
     <dimen name="navigation_padding_bottom">8dp</dimen>
     <dimen name="navigation_padding_top_default">0dp</dimen>
     <dimen name="navigation_separator_vertical_padding">8dp</dimen>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <dimen name="notification_large_icon_height">64dp</dimen>
     <dimen name="notification_large_icon_width">64dp</dimen>
     <dimen name="notification_subtext_size">12dp</dimen>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/design/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/design/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <dimen name="snackbar_action_inline_max_width">128dp</dimen>
     <dimen name="snackbar_background_corner_radius">0dp</dimen>
@@ -349,7 +349,7 @@
     <dimen name="snackbar_text_size">14sp</dimen>
     <dimen name="tab_max_width">264dp</dimen>
     <dimen name="tab_min_width">72dp</dimen>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/umeng_fb_dimens.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/res/values/umeng_fb_dimens.xml -->
     <eat-comment/>
     <dimen name="umeng_fb_item_content_size">14sp</dimen>
     <dimen name="umeng_fb_item_height">48dp</dimen>
@@ -358,7 +358,7 @@
     <dimen name="umeng_fb_normal_size">13dp</dimen>
     <dimen name="umeng_fb_record_btn_text_size">20sp</dimen>
     <dimen name="umeng_fb_spinner_padding_left">12dp</dimen>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <drawable name="notification_template_icon_bg">#3333B5E5</drawable>
     <item name="action_bar_activity_content" type="id"/>
@@ -370,22 +370,22 @@
     <item name="progress_horizontal" type="id"/>
     <item name="split_action_bar" type="id"/>
     <item name="up" type="id"/>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/design/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/design/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <item name="view_offset_helper" type="id"/>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <integer name="abc_config_activityDefaultDur">220</integer>
     <integer name="abc_config_activityShortDur">150</integer>
     <integer name="abc_max_action_buttons">2</integer>
     <integer name="cancel_button_image_alpha">127</integer>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/design/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/design/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <integer name="snackbar_text_max_lines">2</integer>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <integer name="status_bar_notification_info_maxnum">999</integer>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/umeng_update_string.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/res/values/umeng_update_string.xml -->
     <eat-comment/>
     <string name="UMAppUpdate">App updating</string>
     <string name="UMBreak_Network">Please make sure you are connected to internet,update failed</string>
@@ -401,7 +401,7 @@
     <string name="UMUpdateNow">Update now</string>
     <string name="UMUpdateSize">Update size: </string>
     <string name="UMUpdateTitle">New version found</string>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
@@ -420,7 +420,7 @@
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/strings.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/res/values/strings.xml -->
     <eat-comment/>
     <string name="about">关于</string>
     <string name="action_settings">Settings</string>
@@ -429,10 +429,10 @@
     <string name="address_colon">地点:</string>
     <string name="address_input">添加地点</string>
     <string name="app_name">收到请回复</string>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/design/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/design/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/strings.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/res/values/strings.xml -->
     <eat-comment/>
     <string name="contact_choose">联系人</string>
     <string name="delete">删除</string>
@@ -448,10 +448,10 @@
     <string name="group_name_input">群组名称</string>
     <string name="group_new">新建群组</string>
     <string name="hello">Hello world!</string>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/me.drakeet.materialdialog/library/1.2.2/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/me.drakeet.materialdialog/library/1.2.2/res/values/values.xml -->
     <eat-comment/>
     <string name="hello_world">Hello world!</string>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/strings.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/res/values/strings.xml -->
     <eat-comment/>
     <string name="memo">备忘录</string>
     <string name="memo_content">备忘内容</string>
@@ -476,16 +476,16 @@
     <string name="setting">设置</string>
     <string name="sign">Copyright © 2014–2015 NUAA. All Rights Reserved.</string>
     <string name="sign_short"> © 2014–2015 NUAA. </string>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/strings.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/res/values/strings.xml -->
     <eat-comment/>
     <string name="submit">提交</string>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/tb_munion_strings.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/res/values/tb_munion_strings.xml -->
     <eat-comment/>
     <string name="tb_munion_tip_download_prefix">正在下载:</string>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/strings.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/res/values/strings.xml -->
     <eat-comment/>
     <string name="temp">模板大全</string>
     <string name="temp_add">制作模板</string>
@@ -504,7 +504,7 @@
     <string name="time_set_memo">提醒时间</string>
     <string name="title"> 收到请回复</string>
     <string name="title_under">生活可以更简单</string>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/umeng_common_strings.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/res/values/umeng_common_strings.xml -->
     <eat-comment/>
     <string name="umeng_common_action_cancel">Cancel</string>
     <string name="umeng_common_action_continue">Continue</string>
@@ -521,7 +521,7 @@
     <string name="umeng_common_silent_download_finish">New version is ready,click to install it.</string>
     <string name="umeng_common_start_download_notification">Download start.</string>
     <string name="umeng_common_start_patch_notification">Patch start.</string>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/umeng_fb_strings.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/res/values/umeng_fb_strings.xml -->
     <eat-comment/>
     <string name="umeng_fb_back">Back</string>
     <string name="umeng_fb_change_contact_title">Change contact Info</string>
@@ -561,16 +561,16 @@
     <string name="umeng_fb_time_this_year_format">MM/dd HH:mm:ss</string>
     <string name="umeng_fb_title">Feedback</string>
     <string name="umeng_fb_write_contact_title">Write contact Info</string>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/strings.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/res/values/strings.xml -->
     <eat-comment/>
     <string name="version">Version</string>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>
     <style name="Animation.AppCompat.DropDownUp" parent="Base.Animation.AppCompat.DropDownUp"/>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/styles.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/res/values/styles.xml -->
     <eat-comment/>
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
         <!--
@@ -581,7 +581,7 @@
     </style>
     <style name="AppTheme" parent="AppBaseTheme">
     </style>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <style name="Base.AlertDialog.AppCompat" parent="android:Widget">
         <item name="android:layout">@layout/abc_alert_dialog_material</item>
@@ -1497,7 +1497,7 @@
         <item name="android:scaleType">center</item>
         <item name="android:background">?attr/selectableItemBackground</item>
     </style>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/design/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/design/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <style name="Base.Widget.Design.TabLayout" parent="android:Widget">
         <item name="tabMaxWidth">@dimen/tab_max_width</item>
@@ -1509,7 +1509,7 @@
         <item name="tabTextAppearance">@style/TextAppearance.Design.Tab</item>
         <item name="tabSelectedTextColor">?android:textColorPrimary</item>
     </style>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/cardview-v7/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/cardview-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <style name="CardView">
         <item name="cardBackgroundColor">@color/cardview_light_background</item>
@@ -1525,12 +1525,12 @@
     <style name="CardView.Light">
         <item name="cardBackgroundColor">@color/cardview_light_background</item>
     </style>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/styles.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/res/values/styles.xml -->
     <eat-comment/>
     <style name="NavigationMenuStyle" parent="AppTheme">
         <item name="android:textSize">16sp</item>
     </style>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <style name="Platform.AppCompat" parent="android:Theme">
         <item name="android:windowNoTitle">true</item>
@@ -1729,7 +1729,7 @@
     </style>
     <style name="TextAppearance.AppCompat.Widget.Switch" parent="Base.TextAppearance.AppCompat.Widget.Switch"/>
     <style name="TextAppearance.AppCompat.Widget.TextView.SpinnerItem" parent="Base.TextAppearance.AppCompat.Widget.TextView.SpinnerItem"/>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/design/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/design/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <style name="TextAppearance.Design.CollapsingToolbar.Expanded" parent="TextAppearance.AppCompat.Display1">
         <item name="android:textColor">?android:attr/textColorPrimary</item>
@@ -1752,7 +1752,7 @@
         <item name="android:textColor">?android:textColorSecondary</item>
         <item name="textAllCaps">true</item>
     </style>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <style name="TextAppearance.StatusBar.EventContent" parent=""/>
     <style name="TextAppearance.StatusBar.EventContent.Info" parent=""/>
@@ -1787,17 +1787,17 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/styles.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/res/values/styles.xml -->
     <eat-comment/>
     <style name="Theme.Application" parent="@style/Theme.AppCompat"/>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <style name="ThemeOverlay.AppCompat" parent="Base.ThemeOverlay.AppCompat"/>
     <style name="ThemeOverlay.AppCompat.ActionBar" parent="Base.ThemeOverlay.AppCompat.ActionBar"/>
     <style name="ThemeOverlay.AppCompat.Dark" parent="Base.ThemeOverlay.AppCompat.Dark"/>
     <style name="ThemeOverlay.AppCompat.Dark.ActionBar" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="ThemeOverlay.AppCompat.Light" parent="Base.ThemeOverlay.AppCompat.Light"/>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/styles.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/res/values/styles.xml -->
     <eat-comment/>
     <style name="Theme_Blue" parent="AppTheme">
         <item name="msg">@color/blue</item>
@@ -1827,7 +1827,7 @@
         <item name="temp">@color/dark</item>
         <item name="other">@color/dark</item>
     </style>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <style name="Widget.AppCompat.ActionBar" parent="Base.Widget.AppCompat.ActionBar">
     </style>
@@ -1919,7 +1919,7 @@
     <style name="Widget.AppCompat.TextView.SpinnerItem" parent="Base.Widget.AppCompat.TextView.SpinnerItem"/>
     <style name="Widget.AppCompat.Toolbar" parent="Base.Widget.AppCompat.Toolbar"/>
     <style name="Widget.AppCompat.Toolbar.Button.Navigation" parent="RtlOverlay.Widget.AppCompat.Toolbar.Button.Navigation"/>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/build/intermediates/exploded-aar/com.android.support/design/22.2.1/res/values/values.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/build/intermediates/exploded-aar/com.android.support/design/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <style name="Widget.Design.AppBarLayout" parent="android:Widget">
         <item name="elevation">@dimen/appbar_elevation</item>
@@ -1970,13 +1970,13 @@
         <item name="hintTextAppearance">@style/TextAppearance.Design.Hint</item>
         <item name="errorTextAppearance">@style/TextAppearance.Design.Error</item>
     </style>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/styles.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/res/values/styles.xml -->
     <eat-comment/>
     <style name="mystyle" parent="android:Animation">
         <item name="@android:windowEnterAnimation">@anim/in_left_right</item>  //进入时的动画
         <item name="@android:windowExitAnimation">@anim/out_right_left</item>    //退出时的动画
     </style>
-    <!-- From: file:/D:/Others/EngineeringPractice/android/ShouDaoQingHuiFu/res/values/umeng_fb_style.xml -->
+    <!-- From: file:/D:/Others/EngineeringPractice/ShouDaoQingHuiFu/SDQHF/res/values/umeng_fb_style.xml -->
     <eat-comment/>
     <style name="umeng_fb_image_dialog_anim">
         <item name="android:windowEnterAnimation">@anim/umeng_fb_dialog_enter_anim</item>
